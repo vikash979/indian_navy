@@ -1,0 +1,736 @@
+
+{% extends "application/base.html" %}
+
+{% load static %}
+{% block header %}
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!-- Mobile Metas -->
+   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+   <!-- Site Metas -->
+   {% block title %}{% endblock %}
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- Site Icons -->
+   <link rel="shortcut icon" href="" type="image/x-icon" />
+   <link rel="apple-touch-icon" href="">
+   <!-- <script src="{% static 'js/commander.js' %}"></script> -->
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+   <!-- Site CSS -->
+   <link rel="stylesheet" href="{% static 'style.css' %}">
+   <!-- Colors CSS -->
+   <link rel="stylesheet" href="{% static 'css/colors.css' %}">
+   <!-- ALL VERSION CSS -->
+   <link rel="stylesheet" href="{% static 'css/versions.css' %}">
+   <!-- Responsive CSS -->
+   <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+   <!-- Custom CSS -->
+   <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+   <!-- font family -->
+   <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+   <!-- end font family -->
+   <link rel="stylesheet" href="{% static 'css/3dslider.css' %}" />
+   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+   <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <style>
+.dropbtn {
+  
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {color: #ddd;}
+
+.show {display: block;}
+</style>
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+
+   {% endblock header %}
+   {% block css %}
+
+
+   {% endblock %}
+   {% block base_content %}
+
+
+     <script>
+       $(window).on('load',function(){
+
+     })
+       </script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+      <!-- LOADER -->
+      <div id="preloader">
+         <img class="preloader" src="{% static 'images/loading-img.gif'%}" alt="">
+      </div>
+      <!-- END LOADER -->
+      <section id="top">
+         <header>
+            <div class="container">
+               <div class="header-top">
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="full">
+                           <div class="logo">
+                              <span style="font-weight: bold; font-family: Arial, sans-serif; color:#fff; font-size:30px;">Naval Intranet Portal</span>
+                              <!-- <a href="index.html"><img src="{% static 'images/logo.jpg' %}" alt="#" width="100%"/></a> -->
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="right_top_section">
+
+                           <ul class="social-icons pull-left">
+                              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                              <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
+                              <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                           </ul>
+
+                        
+
+                               {% if request.user.is_authenticated %}
+                                 
+                                 <div class="dropdown">
+                                    <a onclick="myFunction()" class="dropbtn">{{user.email}}</a>
+                                <div id="myDropdown" class="dropdown-content">
+                                  <a href="#home">Loout</a>
+                                 
+                                </div>
+                        </div>
+                            Logout{% endif %}            
+                              <!-- <li class="login-modal">
+                                 <a href="#" class="login"><i class="fa fa-user"></i>Login</a>
+                              </li> -->
+                              <!-- <li>
+
+                                 <div class="cart-option">
+                                    <a href="#"><i class="fa fa-shopping-cart"></i>Register</a>
+                                 </div>
+                              </li> -->
+                           </ul>
+
+                        </div>
+                     </div>
+                  </div>
+               </div>
+                {% include 'application/nav.html' %}
+            </div>
+         </header>
+         <script>
+        $('#carousel-example-generic').carousel({
+          alert("ok")
+  interval: 3000,
+  pause: null
+})
+        var touchSensitivity = 5;
+$(".carousel").on("touchstart", function (event) {
+    var xClick = event.originalEvent.touches[0].pageX;
+    $(this).one("touchmove", function (event) {
+        var xMove = event.originalEvent.touches[0].pageX;
+        if (Math.floor(xClick - xMove) > touchSensitivity) {
+            $(this).carousel('next');
+        } else if (Math.floor(xClick - xMove) < -(touchSensitivity)) {
+            $(this).carousel('prev');
+        }
+    });
+    $(".carousel").on("touchend", function () {
+        $(this).off("touchmove");
+    });
+});
+         </script>
+         <div class="full-slider">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+               <!-- Indicators -->
+               <ol class="carousel-indicators">
+                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+               </ol>
+               <!-- Wrapper for slides -->
+               <div class="carousel-inner" role="listbox">
+                  <!-- First slide -->
+                  <div class="item active deepskyblue" data-ride="carousel" data-interval="5000">
+                     <div class="carousel-caption">
+                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"></div>
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                           <div class="slider-contant" data-animation="animated fadeInRight">
+                              <h3>If you Don’t Practice<br>You <span class="color-yellow">Don’t Derserve</span><br>to win!</h3>
+                              <p>If you use this site regularly and would like to help keep the site on the Internet,<br>
+                                 please consider donating a small sum to help pay..
+                              </p>
+                              <button class="btn btn-primary btn-lg">Read More</button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- /.item -->
+                  <!-- Second slide -->
+                  <div class="item skyblue" data-ride="carousel" data-interval="5000">
+
+                     <div class="carousel-caption">
+                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"></div>
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                           <div class="slider-contant" data-animation="animated fadeInRight">
+                              <h3>If you Don’t Practice<br>You <span class="color-yellow">Don’t Derserve</span><br>to win!</h3>
+                              <p>You can make a case for several potential winners of<br>the expanded European Championships.</p>
+                              <button class="btn btn-primary btn-lg">Button</button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- /.item -->
+                  <!-- Third slide -->
+                  <div class="item darkerskyblue" data-ride="carousel" data-interval="5000">
+                    <video  id="myVideo" width="100%" height="100%" controls autoplay>
+  <source src="{% static 'images/indiannavy.mp4' %}" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+  Your browser does not support the video tag.
+</video>
+                    <!--  <div class="carousel-caption">
+                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"></div>
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                           <div class="slider-contant" data-animation="animated fadeInRight">
+                              <h3>If you Don’t Practice<br>You <span class="color-yellow">Don’t Derserve</span><br>to win!</h3>
+                              <p>You can make a case for several potential winners of<br>the expanded European Championships.</p>
+                              <button class="btn btn-primary btn-lg">Button</button>
+                           </div>
+                        </div>
+                     </div> -->
+                  </div>
+                  <!---------forth ------->
+                  <div class="item skybluein" data-ride="carousel" data-interval="5000">
+
+                     <div class="carousel-caption">
+                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"></div>
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                           <div class="slider-contant" data-animation="animated fadeInRight">
+                              <h3>If you Don’t Practice<br>You <span class="color-yellow">Don’t Derserve</span><br>to win!</h3>
+                              <p>You can make a case for several potential winners of<br>the expanded European Championships.</p>
+                              <button class="btn btn-primary btn-lg">Button</button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- /.item -->
+               </div>
+               <!-- /.carousel-inner -->
+               <!-- Controls -->
+               <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+               <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+               <span class="sr-only">Previous</span>
+               </a>
+               <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+               <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+               <span class="sr-only">Next</span>
+               </a>
+            </div>
+            <!-- /.carousel -->
+            <div class="news">
+               <div class="container">
+                  <div class="heading-slider">
+                     <p class="headline"><i class="fa fa-star" aria-hidden="true"></i> Top Headlines :</p>
+                     <!--made by vipul mirajkar thevipulm.appspot.com-->
+
+                       <!-- <a href="" id="news_listss" class="typewrite" data-period="2000"> <table><tr id="news_listss"></tr></table></a> -->
+                       <marquee class="w-100 h5 pb-0 pt-1" behavior="scroll" direction="left"
+                           onmouseover="this.setAttribute('scrollamount', 3, 0);"
+                           onmouseout="this.setAttribute('scrollamount', 2, 0);" id="news_list"><table><tr id="news_listss"></tr></table>
+
+                  </marquee>
+
+
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      
+
+      <section id="contant" class="contant" >
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-3 col-sm-4 col-xs-12">
+                
+                  <aside id="sidebar" class="left-bar">
+                     <div class="feature-matchs">
+                        <h4 style="border-bottom:1px dotted grey; background-color: #000066; color:#fff; font-weight:bold"><img src= "{% static 'images/enew.png' %}" width="20%" height
+                        ="20%"> CNS Forum</h4>
+                        <div class="team-btw-match">
+
+
+                            <table>
+                            <tr><td><input type="text" name=""  placeholder="Email"> </td></tr>
+                            <tr><td><input type="text" name=""  Placeholder="Password"></td></tr>
+                            <tr><td><input type="text" name=""  Placeholder="Address"></td></tr>
+                            <tr><td><input type="text" name=""  Placeholder="Zip"></td></tr>
+                            
+                            <tr><td><button onclick="myFunction()" class="thbg-color" style="background: #800000; background-color: #800000;
+                              border: none;
+                              color: white;
+                              padding: 10px 20px;
+                              text-align: center;
+                              text-decoration: none;
+                              display: inline-block;
+                              font-size: 16px;
+                              margin: 0px 2px;
+                              cursor: pointer;" id="myBtn">Read more</button></td></tr></table>
+                              <br/><br/>
+
+
+                        </div>
+                     </div>
+                  </aside>
+                  
+
+                  <aside id="sidebar" class="left-bar">
+                     <div class="feature-matchs">
+                       <h4 style="border-bottom:1px dotted grey; background-color: #000066; color:#fff; font-weight:bold"><img src= "{% static 'images/enew.png' %}" width="20%" height
+                        ="20%"> Discuss Forum</h4>
+                        <div class="team-btw-match">
+
+
+                            <table>
+                            <tr><td><input type="text" name=""  placeholder="Email"> </td></tr>
+                            <tr><td><input type="text" name=""  Placeholder="Password"></td></tr>
+                            <tr><td><input type="text" name=""  Placeholder="Address"></td></tr>
+                            <tr><td><input type="text" name=""  Placeholder="Zip"></td></tr>
+                            
+                            <tr><td><button onclick="myFunction()" class="thbg-color" style="background: #800000; background-color: #800000;
+                              border: none;
+                              color: white;
+                              padding: 10px 20px;
+                              text-align: center;
+                              text-decoration: none;
+                              display: inline-block;
+                              font-size: 16px;
+                              margin: 0px 2px;
+                              cursor: pointer;" id="myBtn">Read more</button></td></tr></table>
+                              <br/>
+
+
+                        </div>
+                  </aside>
+
+               </div>
+               <div class="col-lg-3 col-sm-4 col-xs-12">
+                  <aside id="sidebar" class="left-bar">
+                     <div class="banner-sidebar">
+                        <img class="img-responsive" src="{% static 'images/img-05.jpg' %}" alt="#" />
+                        <h3>Lorem Ipsum is simply dummy text.<br/>
+                        Lorem Ipsum is simply dummy text<br/><br/><br/>
+
+                     </div>
+                  </aside>
+
+                  <aside id="sidebar" class="left-bar">
+                     <div class="feature-matchs">
+                        <h4 style="border-bottom:1px dotted grey; background-color: #000066; color:#fff; font-weight:bold"><img src= "{% static 'images/enew.png' %}" width="20%" height
+                        ="20%"> ENEWS</h4>
+                        <div class="team-btw-match">
+
+
+                          <p style="border-bottom:1px dotted grey ">Home is where the heart is..</p>
+                          <p>Home is where the heart is..</p>
+                          <p>Home is where the heart is..</p>
+                          <p>Home is where the heart is..</p><p>Home is where the heart is..</p>
+                          <p>Home is where the heart is..</p>
+                         
+
+                        </div>
+                     </div>
+                  </aside>
+
+               </div>
+               <div class="col-lg-6 col-sm-8 col-xs-12">
+                  <div class="news-post-holder">
+
+                     <div class="news-post-widget" id="post_widget_data">
+
+
+                        <button class="tablink" onclick="openPage('NHQ', this, 'orange')">NHQ</button>
+                        <button class="tablink" onclick="openPage('ENC', this, 'orange')" id="defaultOpen">ENC</button>
+                        <button class="tablink" onclick="openPage('SNC', this, 'orange')">SNC</button>
+                        <button class="tablink" onclick="openPage('WNC', this, 'orange')">WNC</button>
+                        <button class="tablink" onclick="openPage('ANC', this, 'orange')">ANC</button>
+
+                        <div id="NHQ" class="tabcontent">
+                           <h3>NHQ</h3>
+                           <p>NHQ is where the heart is..</p><p>NHQ is where the heart is..</p><p>Home is where the heart is..</p><p>Home is where the heart is..</p><p>Home is where the heart is..</p>
+                        </div>
+
+                        <div id="ENC" class="tabcontent">
+                         <h3>News</h3>
+                         <p>Some news this fine day!</p>
+                        </div>
+
+                        <div id="SNC" class="tabcontent">
+                         <h3>Contact</h3>
+                         <p>Get in touch, or swing by for a cup of coffee.</p>
+                        </div>
+
+                      <div id="ANC" class="tabcontent">
+                       <h3>About</h3>
+                       <p>Who we are and what we do.</p>
+                      </div>
+
+                    </div>
+                  </div>
+                  <style>
+                    .urlImg
+                    {
+                      border-bottom:1px dotted grey; background-color: #ADD8E6; color:#000; font-weight:bold;
+
+                    }
+                    .urlImg:hover {
+                        background-color: #000066;
+                        -webkit-transform: scale(1.2);
+                        color:#fff;
+                  -ms-transform: scale(1.2);
+                  transform: scale(1.2);
+                  transition: 1s ease;
+
+                      }
+                    </style>
+                    <script>
+                      function myfunti(ddd)
+                      {
+                       var idd = ddd.split("_")
+                       var id  = idd[1]
+                       var savinimg = "ddd_"+id
+                       var imgshow = document.getElementById(savinimg)
+                       imgshow.style.display='block'
+                       var savinghide = "dd_"+id
+                       var imghide = document.getElementById(savinghide)
+                       imghide.style.display='none'
+
+
+
+                      }
+
+                            function normalImg(ddd)
+                      {
+                       var idd = ddd.split("_")
+                       var id  = idd[1]
+                       var savinghide = "dd_"+id
+                       
+                       var imgshow = document.getElementById(savinghide)
+                       imgshow.style.display='block'
+                       var savinimg = "ddd_"+id
+                       var imghide = document.getElementById(savinimg)
+                       imghide.style.display='none'
+
+
+
+                      }
+                    </script>
+                  <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <center style="color:#000; font-weight:bold; padding-bottom: 5%">Quick Links</center>
+
+                    <div class="col-lg-6 col-sm-6 col-xs-6" style="width: 50%;height:80%;">
+                        <aside id="sidebar" class="left-bar">
+                         <div class="feature-matchs urlImg">
+                         <center style="padding-top:5%" onmouseover="myfunti('ddd_1')" onmouseout="normalImg('ddd_1')"> <img class="dd" id="dd_1" src="{% static 'images/settings1.png' %}" width="50%" height
+                        ="50%"> <img class="ddd" id="ddd_1"  style="display:none " src="{% static 'images/savings21.png' %}" width="50%" height
+                        ="50%" > </center>
+                        <center>
+                        <span style=" font-weight: bold">Esewa</span>
+                        </center>
+                            
+                          </div>
+                        </aside>
+                    </div>
+                     <div class="col-lg-6 col-sm-6 col-xs-6" style="width: 50%;height:80%;">
+                        <aside id="sidebar" class="left-bar">
+                         <div class="feature-matchs urlImg">
+                          <center style="padding-top:5%" onmouseover="myfunti('ddd_2')" onmouseout="normalImg('ddd_2')"> <img class="dd" id="dd_2" src="{% static 'images/settings1.png' %}" width="50%" height
+                        ="50%"> <img class="ddd" id="ddd_2"  style="display:none " src="{% static 'images/savings21.png' %}" width="50%" height
+                        ="50%" > </center>
+                        <center>
+                        <span style=" font-weight: bold">Eoffice</span>
+                        </center>
+                            
+                          </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-xs-6" style="width: 50%;height:80%;">
+                        <aside id="sidebar" class="left-bar">
+                         <div class="feature-matchs urlImg" align="center">
+                          <center style="padding-top:5%" onmouseover="myfunti('ddd_3')" onmouseout="normalImg('ddd_3')"> <img class="dd" id="dd_3" src="{% static 'images/settings1.png' %}" width="50%" height
+                        ="50%"> <img class="ddd" id="ddd_3"  style="display:none " src="{% static 'images/savings21.png' %}" width="50%" height
+                        ="50%" > </center>
+                        <center>
+                        <span style="font-weight: bold">Publication</span>
+                        </center>
+                         
+                            
+                          </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-xs-6" style="width: 50%;height:80%;">
+                        <aside id="sidebar" class="left-bar">
+                         <div class="feature-matchs urlImg">
+                          <center style="padding-top:5%" onmouseover="myfunti('ddd_4')" onmouseout="normalImg('ddd_4')"> <img class="dd" id="dd_4" src="{% static 'images/settings1.png' %}" width="50%" height
+                        ="50%"> <img class="ddd" id="ddd_4"  style="display:none " src="{% static 'images/savings21.png' %}" width="50%" height
+                        ="50%" > </center>
+                            <center>
+                        <span style=" font-weight: bold">CNS Forum</span>
+                        </center>
+                          </div>
+                        </aside>
+                    </div>
+
+                    
+                  </div>
+                  
+                  
+
+               </div>
+            </div>
+         </div>
+      </section>
+
+
+      <section id="contant" class="contant" style="padding:5px 25px;">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-4 col-sm-4 col-xs-12">
+                  <aside id="sidebar" class="left-bar">
+                     <div class="banner-sidebar">
+                       <span id="publication" ><h4 style="border-bottom:1px dotted grey; background-color: #000066; color:#fff; font-weight:bold"><img src= "{% static 'images/publication.png' %}" width="10%" height
+                        ="10%%"> Recent Artcle</h4></span>  <hr>
+                            <table><tbody id="public_obj"><tr><td></td></tr></tbody>
+                              <tr><td><button onclick="myFunction()" class="thbg-color" style="background: #800000; background-color: #800000;
+                                border: none;
+                                color: white;
+                                padding: 10px 20px;
+                                text-align: center;
+                                text-decoration: none;
+                                display: inline-block;
+                                font-size: 16px;
+                                margin: 0px 2px;
+                                cursor: pointer;" id="myBtn">Read more</button></td></tr></table>
+                     </div>
+                  </aside>
+
+               </div>
+
+               <div class="col-lg-4 col-sm-4 col-xs-12">
+                  <aside id="sidebar" class="left-bar">
+                     <div class="banner-sidebar">
+                       <span id="publicities"><h4 style="font-weight:bold;background-color: #000066; color:#fff"><img src="{% static 'images/policy.jpeg' %}" width="15%" height="15%">Recent Document</h4> </span>  <hr>
+                          <table style="border-bottom:1px dotted grey"><tbody id="public_obj"><tr style="border-bottom:1px solid black;"><td></td></tr></tbody><tr><td><button onclick="myFunction()" class="thbg-color" style="background: #800000; background-color: #800000;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0px 2px;
+  cursor: pointer;" id="myBtn">Read more</button></td></tr></table>
+                     </div>
+                  </aside>
+
+               </div>
+
+                <div class="col-lg-4 col-sm-4 col-xs-12">
+                  <aside id="sidebar" class="left-bar">
+                     <div class="banner-sidebar">
+                       <span id="LatestNews"><h4 style="font-weight:bold;background-color: #000066;color:#fff"><img src="{% static 'images/discussion.png' %}" width="15%" height="15%">Recent Discussions</h4></span>
+
+                       <table><tr><td><span ><center style="background-color: #fadadd; border-radius: 10px; width:30%; margin-top: 2%">Punjab News</center></span><span><h3>Coronavirus | Punjab extends lockdown by two weeks, with limited relief </h3></span>
+                        <br/>
+                        <span style="padding-left:5%">Comments : </span> &nbsp;&nbsp;&nbsp; <span style="padding-left:5%">Views: 30 April 2020</span></td></tr>
+                      <tr><td><span ><center style="margin-top: 2%; background-color: #fadadd; border-radius: 10px; width:30%">Punjab News</center></span><span><h3>Coronavirus | Punjab extends lockdown by two weeks, with limited relief </h3></span>
+                        <br/>
+                        <span style="padding-left:5%">Comments : </span> &nbsp;&nbsp;&nbsp; <span style="padding-left:5%">Views: 30 April 2020</span></td></tr>
+                        <tr><td><span ><center style="margin-top: 2%; background-color: #fadadd; border-radius: 10px; width:30%">Punjab News</center></span><span><h3>Coronavirus | Punjab extends lockdown by two weeks, with limited relief </h3></span>
+                        <br/>
+                        <span style="padding-left:5%">Comments : </span> &nbsp;&nbsp;&nbsp; <span style="padding-left:5%">Views: 30 April 2020</span></td></tr>
+
+                        <tr><td><span ><center style="margin-top: 2%; background-color: #fadadd; border-radius: 10px; width:30%">Punjab News</center></span><span><h3>Coronavirus | Punjab extends lockdown by two weeks, with limited relief </h3></span>
+                        <br/>
+                        <span style="padding-left:5%">Comments : </span> &nbsp;&nbsp;&nbsp; <span style="padding-left:5%">Views: 30 April 2020</span></td></tr>
+                        <tr><td><span ><center style="margin-top: 2%; background-color: #fadadd; border-radius: 10px; width:30%">Punjab News</center></span><span><h3>Coronavirus | Punjab extends lockdown by two weeks, with limited relief </h3></span>
+                        <br/>
+                        <span style="padding-left:5%">Comments : </span> &nbsp;&nbsp;&nbsp; <span style="padding-left:5%">Views: 30 April 2020</span></td></tr>
+
+                      </table>
+                          <!-- <span id="latest_new"><marquee scrolldelay="100" direction="up" onmouseout="this.setAttribute('scrollamount', 2, 0);" onmouseover="this.setAttribute('scrollamount', 0, 0); "><table ><tbody id="lastest_obj"></tbody></tbody></table></marquee></span>   <hr>
+                          <br/> -->
+                     </div>
+                  </aside>
+
+               </div>
+               
+               <!-- <div class="col-lg-4 col-sm-4 col-xs-12">
+                  <aside id="sidebar" class="left-bar">
+                     <div class="banner-sidebar">
+
+                       <span> <h3 style="background-color: #1c1ced">Latest News</h3></span>
+                         <span id="latest_new"><marquee scrolldelay="100" direction="up" onmouseout="this.setAttribute('scrollamount', 2, 0);" onmouseover="this.setAttribute('scrollamount', 0, 0); "><table ><tbody id="lastest_obj"></tbody></tbody></table></marquee></span>   <hr>
+                     </div>
+                  </aside>
+
+               </div> -->
+
+            </div>
+         </div>
+      </section>
+   <div class="matchs-info">
+        <div class="col-md-12">
+
+          <br/>
+          <div id="team-slider">
+             <div class="container" id="defence_zone">
+             </div>
+          </div>
+
+
+
+        </div>
+      </div>
+
+
+
+
+
+
+
+     
+      <footer id="footer" class="footer">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="full">
+                     <div class="footer-widget">
+                        <div class="footer-logo">
+                           <a href="#" style="color:#fff; font-weight:bold;">Naval Intranet Portal</a>
+                        </div>
+                        <!-- <p>Most of our events have hard and easy route choices as we are always keen to encourage new riders.</p> -->
+                        <ul class="social-icons style-4 pull-left">
+                           <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                           <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                           <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
+                           <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-2">
+                  <div class="full">
+                     <div class="footer-widget">
+                        <h3>Menu</h3>
+                        <ul class="footer-menu">
+                           <li><a href="about.html">About Us</a></li>
+                           <li><a href="team.html">Application </a></li>
+                           <li><a href="news.html">Acknowledge</a></li>
+                           <li><a href="matche.html">Blog</a></li>
+                           <li><a href="blog.html">Policy</a></li>
+                           <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-3">
+                  <div class="full">
+                     <div class="footer-widget">
+                        <h3>Contact us</h3>
+                        <ul class="address-list">
+                           <li><i class="fa fa-map-marker"></i> Lorem Ipsum is simply dummy text of the printing..</li>
+                           <li><i class="fa fa-phone"></i> 123 456 7890</li>
+                           <li><i style="font-size:20px;top:5px;" class="fa fa-envelope"></i> demo@gmail.com</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-3">
+                  <div class="full">
+                     <div class="contact-footer">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d120615.72236587871!2d73.07890527988283!3d19.140910987164396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1527759905404" width="600" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="footer-bottom">
+            <div class="container">
+               <p>Copyright © 2020 Indian navy.All rights reserved.</p>
+            </div>
+         </div>
+      </footer>
+      <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+      <!-- ALL JS FILES -->
+
+
+</html>
+{% endblock base_content %}
+
+{% block htmljs %}
+
+
+{% endblock htmljs %}
