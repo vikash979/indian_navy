@@ -1,10 +1,23 @@
 from django.db import models
+
+import datetime
+import random
+
+from django.db import models
+from django.contrib import auth
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import Group, Permission
 from django.core.exceptions import PermissionDenied
+from rest_framework.authtoken.models import Token
+# from common.models import BaseResonanceModel
+# from django.contrib.auth.models import UserManager
+from django.conf import settings
+from rest_framework.authtoken.models import Token
+from django.db.models import Count
 
-from .managers import CustomUserManager
+
 
 class PermissionsMixin(models.Model):
     """
@@ -140,10 +153,32 @@ def filter_user_queryset_by_hierarchy(user, queryset,filter_on='assign_to_user__
     else:
         all_childrens = user.get_all_child
         return queryset.filter(**{filter_on:all_childrens})
-class CustomUser(AbstractUser):
-    username = None
-    name = models.CharField(max_length=200)
-    email = models.EmailField(('email address'), unique=True)
+
+
+class UserManager(BaseUserManager):
+    def create_user(self,username, email, mobile, name, password=None):
+        if not email:
+            raise ValueError('Users must have an email address')
+
+        user = self.model(username=username,mobile=mobile, name=name, email=self.normalize_email(email))
+
+        user.set_password(password)
+        user.save(using=self._db)
+
+        return user
+
+    def create_superuser(self, username, email, mobile, name, password):
+        user = self.create_user(
+            username=username, email=email, password=password, mobile=mobile, name=name)
+        user.is_staff = True
+        user.is_superuser = True
+        user.save(using=self._db)
+        return user
+
+
+
+
+class User(AbstractBaseUser, PermissionsMixin):
     USER_TYPE_CHOICES = (
         (1, "Admin"),
         (2, "Author"),
@@ -155,13 +190,39 @@ class CustomUser(AbstractUser):
         (1, 'Male'),
         (2, 'Female')
     )
+    date_of_birth = models.DateField(null=True, blank=True)
     gender =  models.PositiveSmallIntegerField(choices=gender_choice,  default=1)
+    profile_picture = models.ImageField(upload_to='users/profile/')
+    username = models.CharField(max_length=60, unique=True)
+    name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
+    mobile = models.BigIntegerField("Student Mobile")
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
     role = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES, default=4)
+    objects = UserManager()
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email','mobile', 'name']
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    def has_module_perms(self, app_label):
+        return True
 
-    objects = CustomUserManager()
+    @property
+    def get_name(self):
+        return self.name
 
-    def __str__(self):
-        return self.email
+    def get_short_name(self):
+        return self.name
+
+    def is_member(self, group_name):
+        if self.groups.filter(name__iexact=group_name).exists():
+            return True
+        return False
+
+    def get_full_name(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        Token.objects.get_or_create(user=self)
+

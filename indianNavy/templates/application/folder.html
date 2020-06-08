@@ -128,8 +128,8 @@ window.onclick = function(event) {
                      <div class="col-md-6">
                         <div class="full">
                            <div class="logo">
-                              <span style="font-weight: bold; font-family: Arial, sans-serif; color:#fff; font-size:30px;">Naval Intranet Portal</span>
-                              <!-- <a href="index.html"><img src="{% static 'images/logo.jpg' %}" alt="#" width="100%"/></a> -->
+                              <!-- <span style="font-weight: bold; font-family: Arial, sans-serif; color:#fff; font-size:30px;">Naval Intranet Portal</span> -->
+                              <a href="index.html"><img src="{% static 'images/navy_logo.png' %}" alt="#" width="100%" height="20%"/></a>
                            </div>
                         </div>
                      </div>
@@ -220,7 +220,7 @@ window.onclick = function(event) {
                       <ul id="myUL">
                         
                         {% for folder_data in folder_objs%}
-                        <li><input type="checkbox" id="aa_{{folder_data.id}}" value="{{folder_data.id}}" name="megafol" class="box" onclick="megafolder(this.id,this.className)" ><i class="fa fa-folder" style="color: yellow"></i>{{folder_data.menu_name}}--{{folder_id}}
+                        <li><input type="checkbox" id="aa_{{folder_data.id}}" value="{{folder_data.id}}" name="megafol" class="box" onclick="megafolder(this.id,this.className)" ><img src="{% static 'images/foldericon.jpg' %}" width="10%" height="10%" id="img_{{folder_data.id}}">{{folder_data.menu_name}}
                          <ul class="nested" id="nested_{{folder_data.id}}">
                             </ul>
                        
@@ -342,10 +342,10 @@ window.onclick = function(event) {
                                               {
                                                if (chkbx == true)
                                                   {
-                                               $(nested).append(`<li style="border-bottom:1px dotted black;"><input type="checkbox" id="bb_${response[i]['id']}" name="megafols" class="box" onclick="megafolders(this.id,this.className)"><i class="fa fa-folder" style="color: yellow"></i>${response[i]['menu_name']}<ul class="nested" id="nested_${response[i]['id']}" style="border-top:1px dotted black;">
+                                               $(nested).append(`<li style="border-bottom:1px dotted black;"><input type="checkbox" id="bb_${response[i]['id']}" name="megafols" class="box" onclick="megafolders(this.id,this.className)"><img src="{% static 'images/foldericon.jpg' %}" width="10%" height="10%" id="img_{{folder_data.id}}">${response[i]['menu_name']}<ul class="nested" id="nested_${response[i]['id']}" style="border-top:1px dotted black;">
                                                </ul></li>`)
                                             }
-                                               $('#policy_namee').append(`<tr><td><i class="fa fa-folder" style="color: yellow"></i>${response[i]['menu_name']}</td><td></td><td>${response[i]['added_on']}</td></tr>`)
+                                               $('#policy_namee').append(`<tr><td><img src="{% static 'images/foldericon.jpg' %}" width="10%" height="10%" id="img_{{folder_data.id}}">${response[i]['menu_name']}</td><td></td><td>${response[i]['added_on']}</td></tr>`)
                                             }
                                                //alert(JSON.stringify(response))
 
@@ -380,10 +380,10 @@ window.onclick = function(event) {
                                                for (var i=0; i<response.length;i++)
                                               { if (chkbx == true)
                                                   {
-                                              $(nested).append(`<li style="border-bottom:1px dotted black;"><input type="checkbox" id="bb_${response[i]['id']}" name="megafols" class="box" onclick="megafolders(this.id,this.className)"><i class="fa fa-folder" style="color: yellow"></i>${response[i]['menu_name']}<ul class="nested" id="nested_${response[i]['id']}" style="border-top:1px dotted black;">
+                                              $(nested).append(`<li style="border-bottom:1px dotted black;"><input type="checkbox" id="bb_${response[i]['id']}" name="megafols" class="box" onclick="megafolders(this.id,this.className)"><img src="{% static 'images/foldericon.jpg' %}" width="10%" height="10%" id="img_{{folder_data.id}}">${response[i]['menu_name']}<ul class="nested" id="nested_${response[i]['id']}" style="border-top:1px dotted black;">
                                                </ul></li>`)
                                            }
-                                              $('#policy_namee').append(`<tr><td><i class="fa fa-folder" style="color: yellow"></i>${response[i]['menu_name']}</td><td></td><td>${response[i]['added_on']}</td></tr>`)
+                                              $('#policy_namee').append(`<tr><td><img src="{% static 'images/foldericon.jpg' %}" width="10%" height="10%" id="img_{{folder_data.id}}">${response[i]['menu_name']}</td><td></td><td>${response[i]['added_on']}</td></tr>`)
                                               }
                                            }
                                         })
@@ -412,7 +412,7 @@ window.onclick = function(event) {
                         <thead><tr><th width="20%">Folder Name</th><th width="20%">Folder Size</th><th width="30%">Folder Date</th></tr></thead>
                         <tbody id="policy_namee">
                           {% for policy_obj in folder_obj %}
-                          <tr><td ><i class="fa fa-folder" style="color: yellow"></i>{{policy_obj.menu_name}}</td><td></td><td>{{policy_obj.added_on|date:"m-d-Y"}}</td></tr>{% endfor %}</tbody>
+                          <tr><td ><img src="{% static 'images/foldericon.jpg' %}" width="10%" height="10%" id="">{{policy_obj.menu_name}}</td><td></td><td>{{policy_obj.added_on|date:"m-d-Y"}}</td></tr>{% endfor %}</tbody>
                           
 
                       </table>
@@ -465,72 +465,11 @@ window.onclick = function(event) {
 
 
 
-
+ {% include 'application/footer.html' %}
 
 
      
-      <footer id="footer" class="footer">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-4">
-                  <div class="full">
-                     <div class="footer-widget">
-                        <div class="footer-logo">
-                           <a href="#" style="color:#fff; font-weight:bold;">Naval Intranet Portal</a>
-                        </div>
-                        <!-- <p>Most of our events have hard and easy route choices as we are always keen to encourage new riders.</p> -->
-                        <ul class="social-icons style-4 pull-left">
-                           <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                           <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                           <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
-                           <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-2">
-                  <div class="full">
-                     <div class="footer-widget">
-                        <h3>Menu</h3>
-                        <ul class="footer-menu">
-                           <li><a href="about.html">About Us</a></li>
-                           <li><a href="team.html">Application </a></li>
-                           <li><a href="news.html">Acknowledge</a></li>
-                           <li><a href="matche.html">Blog</a></li>
-                           <li><a href="blog.html">Policy</a></li>
-                           <li><a href="contact.html">Contact Us</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-3">
-                  <div class="full">
-                     <div class="footer-widget">
-                        <h3>Contact us</h3>
-                        <ul class="address-list">
-                           <li><i class="fa fa-map-marker"></i> Lorem Ipsum is simply dummy text of the printing..</li>
-                           <li><i class="fa fa-phone"></i> 123 456 7890</li>
-                           <li><i style="font-size:20px;top:5px;" class="fa fa-envelope"></i> demo@gmail.com</li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-3">
-                  <div class="full">
-                     <div class="contact-footer">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d120615.72236587871!2d73.07890527988283!3d19.140910987164396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1527759905404" width="600" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="footer-bottom">
-            <div class="container">
-               <p>Copyright © 2020 Indian navy.All rights reserved.</p>
-            </div>
-         </div>
-      </footer>
-      <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+     
       <!-- ALL JS FILES -->
 
 

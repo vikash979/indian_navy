@@ -1,10 +1,10 @@
 from django.db import models
 from django.conf import settings
-from .models import ack_subpublicationmenu, ack_publicationname, acknoledge_menu,acknowledge_parent_menu,ack_submenu, ack_policyname, ack_policypolicyfile, ack_publicationfile
+from .models import ack_subStandardsmenu, ack_subGuidelinesmenu,ack_subNavy_Instructionssmenu, ack_subpublicationmenu, ack_publicationname, acknoledge_menu,acknowledge_parent_menu,ack_submenu, ack_policyname, ack_policypolicyfile, ack_publicationfile
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from users.models import CustomUser
+#from users.models import CustomUser
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
 from application.views import BasicPagination
@@ -72,9 +72,25 @@ class policyViewApi(APIView):
 			policy_name =  ack_subpublicationmenu.objects.filter(parent_id=id).values()
 			policy_Id = self.get_all_children(id,ack_subpublicationmenu)
 
-			policy_name =  ack_subpublicationmenu.objects.filter(id__in=policy_Id).values()
+			policy_name =  ack_subpublicationmenu.objects.filter(id__in=policy_Id)
 			
 			serializer = serializers.AckenowledgepublicationSubmenuSerializer(policy_name,many=True)
+		elif request.GET.get('menubar') == 'Navy_Instructions':
+			policy_Id = self.get_all_children(id,ack_subNavy_Instructionssmenu)
+			
+			policy_name =  ack_subNavy_Instructionssmenu.objects.filter(id__in=policy_Id)
+			
+			serializer = serializers.AckNavyInstmenuSerializer(policy_name,many=True)
+		elif request.GET.get('menubar') == 'Guidelines':
+			policy_Id = self.get_all_children(id,ack_subGuidelinesmenu)
+			policy_name =  ack_subGuidelinesmenu.objects.filter(id__in=policy_Id)
+			serializer = serializers.AckenowledgeGuidelinesSubmenuSerializer(policy_name,many=True)
+
+			
+		elif request.GET.get('menubar') == 'Standards':
+			policy_Id = self.get_all_children(id,ack_subStandardsmenu)
+			policy_name =  ack_subStandardsmenu.objects.filter(id__in=policy_Id)
+			serializer = serializers.AckenowledgeStandardsSerializer(policy_name,many=True)
 			
 		else:
 			
@@ -132,13 +148,24 @@ class AxknowledgePublicAPI(APIView):
 class AckpolicyAPI(APIView):
 	def get(self,request, id):
 		
-		#if request.GET.get('menubar') == 'Policy Letters':
-		if request.GET.get('menubar') != 'Publications':
-			submenu = ack_submenu.objects.filter(parent_ob_id=id).values()
+		if request.GET.get('menubar') == 'Policy Letters':
+			submenu = ack_submenu.objects.filter(parent_ob_id=id,folder_type=2).values()
 			
 			serializer = serializers.AckenowledgeSubmenuSerializer(submenu,many=True)
+		elif request.GET.get('menubar') == 'Navy_Instructions':
+			
+			submenu = ack_subNavy_Instructionssmenu.objects.filter(parent_ob_id=id,folder_type=2)
+			serializer = serializers.AckNavyInstmenuSerializer(submenu,many=True)
+		elif request.GET.get('menubar') == 'Guidelines':
+			
+			submenu = ack_subGuidelinesmenu.objects.filter(parent_ob_id=id,folder_type=2)
+			serializer = serializers.AckenowledgeGuidelinesSubmenuSerializer(submenu,many=True)
+
+		elif request.GET.get('menubar') == 'Standards':
+			submenu = ack_subStandardsmenu.objects.filter(parent_ob_id=id,folder_type=2)
+			serializer = serializers.AckenowledgeStandardsSerializer(submenu,many=True)
 		else:
-			submenu = ack_subpublicationmenu.objects.filter(parent_ob_id=id).values()
+			submenu = ack_subpublicationmenu.objects.filter(parent_ob_id=id)
 			serializer = serializers.AckenowledgepublicationSubmenuSerializer(submenu,many=True)
 
 		#print(":::::::::",serializer.data)
@@ -188,24 +215,38 @@ class acknowledgeViews(TemplateView):
 		#policy_data = ack_submenu.objects.all()
 		
 		if request.GET.get('menutype') =='Policy Letters' :
-			policy_data = ack_submenu.objects.filter( parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
+			policy_data = ack_submenu.objects.filter(parent_ob_id=None, parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
+			#policy_data = ack_submenu.objects.all()
+
+			
 			
 
 			#menuobj= request.GET.get('array').split(",")
 
-			policy_obj = ack_policyname.objects.all().values().order_by("-id")
+			policy_obj = ack_submenu.objects.all()
 			#context_data['idd'] = int(request.GET.get('array'))
 		elif request.GET.get('menutype') =='Publications' :
 			policy_data = ack_subpublicationmenu.objects.filter(parent_ob_id=None,parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
 			#menuobj= request.GET.get('array').split(",")
 
 			policy_obj = ack_publicationname.objects.all().order_by("-id")
+		elif request.GET.get('menutype') =='Guidelines' :
+			policy_data = ack_subGuidelinesmenu.objects.filter(parent_ob_id=None,parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
+			#menuobj= request.GET.get('array').split(",")
+
+			#policy_obj = ack_publicationname.objects.all().order_by("-id")
+		elif request.GET.get('menutype') =='Standards' :
+			policy_data = ack_subStandardsmenu.objects.filter(parent_ob_id=None,parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
+
+		elif request.GET.get('menutype') =='Navy_Instructions' :
+			policy_data = ack_subNavy_Instructionssmenu.objects.filter(parent_ob_id=None,parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
+			
 
 		else:
 			policy_obj = ack_policyname.objects.all().values().order_by("-id")
 		# pagination_ob = 5
 
-		paginator = Paginator(policy_data,pagination_ob)
+		paginator = Paginator(policy_obj,pagination_ob)
 		if request.GET.get('page')==None:
 			page = 1
 		else:
@@ -225,7 +266,7 @@ class acknowledgeViews(TemplateView):
 		program_numpages = paginator.num_pages
 		program_numpages = program_numpages+1
 		context_data['PAGINATION_COUNT'] = range(1,program_numpages)
-		context_data['sub_menu'] = users
+		context_data['sub_menu'] = policy_data
 		context_data['menu_bar'] = request.GET.get('menutype')
 		
 

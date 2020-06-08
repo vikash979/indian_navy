@@ -56,10 +56,17 @@ class AckenowledgeSubmenuSerializer(serializers.ModelSerializer):
 class AckenowledgepublicationSubmenuSerializer(serializers.ModelSerializer):
 	#publication_naming 
 	#public_name = AckenowledgePublicationSerializer(many=True)
-	#public_name = serializers.SerializerMethodField()
+	#publication_files = serializers.SerializerMethodField()
+
 	class Meta:
 		model= ack_subpublicationmenu
 		fields= '__all__'
+
+	# def get_publication_files(self,obj):
+	# 	print("########",obj['id'])
+	# 	aa = ack_subpublicationmenu.objects.filter(id=obj['id']).values()
+	# 	dataa =  self.AckenowledgepublicationSubmenuSerializer(aa,many=True)
+	# 	return (dataa.data)
 	# def get_public_name(self,obj):
 	# 	print(":::::::::::::::",obj.id)
 	# 	submenu = ack_publicationname.objects.all()
@@ -67,7 +74,7 @@ class AckenowledgepublicationSubmenuSerializer(serializers.ModelSerializer):
 
 
 class AckenowledgeGuidelinesSubmenuSerializer(serializers.ModelSerializer):
-	guidelines_name = AckguideLineSerializer(many=True)
+	#guidelines_name = AckguideLineSerializer(many=True)
 	class Meta:
 		model= ack_subGuidelinesmenu
 		fields= '__all__'
@@ -92,7 +99,7 @@ class AckenowledgeNavyInstructionSerializer(serializers.ModelSerializer):
 		fields = '__all__'
 
 class AckNavyInstmenuSerializer(serializers.ModelSerializer):
-	navyinstruction_name = AckenowledgeNavyInstructionSerializer(many=True)
+	#navyinstruction_name = AckenowledgeNavyInstructionSerializer(many=True)
 	class Meta:
 		model= ack_subNavy_Instructionssmenu
 		fields= '__all__'
@@ -189,7 +196,7 @@ class  AckenowledgeSerializer(serializers.ModelSerializer):
 		return AckLibrarySerializer(submenu,many=True).data
 
 	def get_brsCount(self,obj):
-		submenu = BRsmenu.objects.filter(parent_id=obj.id).values().order_by("-id")[:4]
+		submenu = BRsmenu.objects.all().order_by("-id")[:4]
 		return BRsmenuSerializer(submenu,many=True).data
 
 

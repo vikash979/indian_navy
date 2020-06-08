@@ -13,7 +13,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.serializers import ModelSerializer
 from rest_framework import viewsets
-from users.models import CustomUser
+#from users.models import CustomUser
 # from . import serializers
 from django.template.loader import get_template
 

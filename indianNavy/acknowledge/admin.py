@@ -18,3 +18,4 @@ admin.site.register(ack_guidelinesname)
 admin.site.register(ack_Standardsname)
 admin.site.register(ack_Navyname)
 admin.site.register(ack_NavyInstructionname)
+

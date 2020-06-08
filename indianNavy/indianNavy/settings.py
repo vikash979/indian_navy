@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.0.8','localhost']
 
-AUTH_USER_MODEL = "users.CustomUser"
+#AUTH_USER_MODEL = "users.CustomUser"
+AUTH_USER_MODEL = "users.User"
 # Application definition
 
 INSTALLED_APPS = [
@@ -46,6 +47,7 @@ LOCAL_APPS = [
             'rest_framework',
             'socialSites',
             'othersites',
+            'rest_framework.authtoken',
 
             ]
 
@@ -92,7 +94,7 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blue_navy',
+        'NAME': 'navynip',
         'USER': 'postgres',
         'PASSWORD': 'sudha007',
         'HOST': 'localhost',

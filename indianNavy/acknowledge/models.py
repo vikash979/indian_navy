@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from users.models import CustomUser
+from users.models import User
 from django.conf import settings
 from datetime import date, datetime
 from django.contrib.contenttypes.fields import GenericForeignKey
@@ -68,13 +68,14 @@ class ack_submenu(models.Model):
 
     added_on = models.DateField(auto_now=True)
     updated_on = models.DateField(auto_now=True)
-    submenu_name =  models.CharField(max_length=200,unique=True)
+    submenu_name =  models.CharField(max_length=200)
     parent_ob  = models.ForeignKey("self",null=True, blank=True,related_name='children', on_delete=models.SET_NULL)
     menu_type = models.SmallIntegerField(choices=menu_choice, default=1)
     
     folder_type = models.SmallIntegerField(choices=folder_choice, default=2)
     folder_title =  models.CharField(max_length=200)
-    parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="ask_submenues" , limit_choices_to={'id': 9}, blank=True, on_delete=models.SET_NULL)
+    file = models.FileField(upload_to='policy/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['pdf','PDF'])])
+    parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="ask_submenues" , limit_choices_to={'id': 1}, blank=True, on_delete=models.SET_NULL)
     ##############################late
     
 
@@ -118,9 +119,9 @@ class ack_subpublicationmenu(models.Model):
     parent_ob  = models.ForeignKey("self",null=True, blank=True, on_delete=models.SET_NULL)
     menu_type = models.SmallIntegerField(choices=menu_choice, default=1)
     folder_type = models.SmallIntegerField(choices=folder_choice, default=2)
-    file = models.FileField(upload_to='publication/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['pdf','PDF','png','jpg','JPEG']),validate_image])
+    publicationfile = models.FileField(upload_to='publicattion/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['png','jpg','JPEG'])])
     folder_title =  models.CharField(max_length=200)
-    parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="ask_subpublicationmenues" , limit_choices_to={'id': 10}, blank=True, on_delete=models.SET_NULL)
+    parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="ask_subpublicationmenues" , limit_choices_to={'id': 2}, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.submenu_name
@@ -145,7 +146,7 @@ class ack_subGuidelinesmenu(models.Model):
     updated_on = models.DateField(auto_now=True)
     submenu_name =  models.CharField(max_length=200,unique=True)
     file = models.FileField(upload_to='guidelines/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['pdf','PDF','png','jpg','JPEG']),validate_image])
-    parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="ask_subguidelinesmenues" , limit_choices_to={'id': 11}, blank=True, on_delete=models.SET_NULL)
+    parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="ask_subguidelinesmenues" , limit_choices_to={'id': 3}, blank=True, on_delete=models.SET_NULL)
     guidelinefile = models.FileField(upload_to='guidelLines/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['pdf','PDF','png','jpg','JPEG']),validate_image])
 
     def __str__(self):
@@ -174,7 +175,7 @@ class ack_subStandardsmenu(models.Model):
     folder_title =  models.CharField(max_length=200)
     standardfile = models.FileField(upload_to='standards/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['pdf','PDF','png','jpg','JPEG']),validate_image])
    
-    parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="ask_substandardsmenues" , limit_choices_to={'id': 12}, blank=True, on_delete=models.SET_NULL)
+    parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="ask_substandardsmenues" , limit_choices_to={'id': 4}, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.submenu_name
@@ -198,7 +199,7 @@ class ack_subNavy_Orderssmenu(models.Model):
     file = models.FileField(upload_to='navy_ordersfile/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['pdf','PDF','png','jpg','JPEG']),validate_image])
     folder_title =  models.CharField(max_length=200)
     navyfile = models.FileField(upload_to='navy_orders/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['pdf','PDF','png','jpg','JPEG']),validate_image])
-    parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="ask_subnavy_ordersmenues" , limit_choices_to={'id': 13}, blank=True, on_delete=models.SET_NULL)
+    parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="ask_subnavy_ordersmenues" , limit_choices_to={'id': 5}, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.submenu_name
@@ -222,7 +223,7 @@ class ack_subNavy_Instructionssmenu(models.Model):
     folder_title =  models.CharField(max_length=200)
     navyinstructionfile = models.FileField(upload_to='navy_instruction/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['pdf','PDF','png','jpg','JPEG']),validate_image])
     
-    parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="ask_subnavy_instructionmenues" , limit_choices_to={'id': 14}, blank=True, on_delete=models.SET_NULL)
+    parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="ask_subnavy_instructionmenues" , limit_choices_to={'id': 6}, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.submenu_name
@@ -248,17 +249,32 @@ class ack_subNHQe_Librarylinesmenu(models.Model):
     folder_title =  models.CharField(max_length=200)
     navyinstructionfile = models.FileField(upload_to='elibrary/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['pdf','PDF','png','jpg','JPEG']),validate_image])
     
-    parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="ask_subnohqsmenues" , limit_choices_to={'id': 15}, blank=True, on_delete=models.SET_NULL)
+    parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="ask_subnohqsmenues" , limit_choices_to={'id': 7}, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.submenu_name
 
 
 class BRsmenu(models.Model):
+    menu_choice = (
+        (1, "One"),
+        (2, "Two"),
+    )
+    folder_choice = (
+        (1, "One"),
+        (2, "Two"),
+    )
     added_on = models.DateField(auto_now_add=True)
     updated_on = models.DateField(auto_now=True)
     submenu_name =  models.CharField(max_length=200,unique=True)
-    parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="brsmenues" , limit_choices_to={'id': 16}, blank=True, on_delete=models.SET_NULL)
+    parent_ob  = models.ForeignKey("self",null=True, blank=True, on_delete=models.SET_NULL)
+    menu_type = models.SmallIntegerField(choices=menu_choice, default=1)
+    folder_type = models.SmallIntegerField(choices=folder_choice, default=2)
+    file = models.FileField(upload_to='brsfiles/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['pdf','PDF','png','jpg','JPEG']),validate_image])
+    folder_title =  models.CharField(max_length=200)
+    navyinstructionfile = models.FileField(upload_to='brsfoldermenus/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['pdf','PDF','png','jpg','JPEG']),validate_image])
+    
+    parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="brsmenues" , limit_choices_to={'id': 8}, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.submenu_name

@@ -17,8 +17,30 @@ from django.template.loader import get_template
 from django.contrib.auth import authenticate,login,logout
 
 
+
+def login_api_required(login_url=None):
+    def function(func):
+        def wrapper(request):
+            if  not request.user.is_authenticated:
+                return HttpResponseRedirect("/application/login/")
+
+            return func(request)
+        return wrapper
+    return function
+
+
+def login_required_custom(login_url=None):
+    def function(func):
+        def wrapper(self, request, *args, **kwargs):
+            if not request.user.is_authenticated:
+                return HttpResponseRedirect("/application/login/")
+            return func(self, request, *args, **kwargs)
+        return wrapper
+    return function
+
 class headingViews(TemplateView):
 	template_name = "application/index.html"
+	@login_required_custom(login_url='/')
 	def get(self, request, id=None):
 
 
@@ -85,7 +107,7 @@ class subdirectoryViews(TemplateView):
 
 	def ob_data(self,ids,list_objj):
 
-		print("###################",list_objj)
+		
 		#list_obj=[list_objj]
 
 		#print("!!!!!!!!!!!",list_obj)
@@ -281,7 +303,7 @@ class WingCommanderAPI(APIView, PaginationHandlerMixin):
     serializer_class = serializers.wing_commanderSerializer
 
     def get(self, request, format=None, *args, **kwargs):
-        instance = wing_commander.objects.all()[:4]
+        instance = wing_commander.objects.all().order_by("id")[:8]
         page = self.paginate_queryset(instance)
         if page is not None:
             serializer = self.get_paginated_response(self.serializer_class(page,many=True).data)
@@ -339,8 +361,10 @@ class LoginViews(TemplateView):
 		context_data ={}
 		username = request.POST.get('username')
 		password = request.POST.get('password')
-		user = authenticate(email=username, password=password)
+		user = authenticate(username=username, password=password)
+		
 		if user is not None:
+
 			if user.is_active:
 				login(request, user)
 				request.session['fav_color'] = 'blue'

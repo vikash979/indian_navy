@@ -4,7 +4,7 @@ from .models import socialmedia_menu
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from users.models import CustomUser
+#from users.models import CustomUser
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
 from application.views import BasicPagination

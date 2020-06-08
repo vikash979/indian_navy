@@ -11,7 +11,7 @@
 
 
     </script>
-  <body onload="myfunctio();myFunctionsss()">
+  <body onload="myfunctio();myFunctionsss(); openPage('NHQ', this, 'orange')">
 
     <style>
 * {box-sizing: border-box}
@@ -37,7 +37,7 @@
 .tabcontent {
   color: white;
   display: none;
-  padding: 82px 20px;
+  padding: -40px 20px;
   height: 100%;
 }
 
@@ -58,7 +58,7 @@ borderStyle:solid}
 <script>
 
 function openPage(pageName,elmnt,color) {
-  alert(pageName)
+ // alert(pageName)
 
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
