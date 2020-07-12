@@ -113,3 +113,17 @@ class log_data(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     created_by =  models.ForeignKey(settings.AUTH_USER_MODEL, null=True,on_delete=models.SET_NULL)
     url_name = models.CharField(max_length=200)
+
+
+
+class Article(models.Model):
+    title = models.CharField(max_length=30)
+    body = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+
+    def shortenText(self):
+        return self.body[:100]

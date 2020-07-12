@@ -4,7 +4,7 @@ from django.views.generic import TemplateView , View
 from django.http import HttpResponse
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from application.models import application_menu, application_submenu,application_parent_menu, news, wing_commander, staff_image,publication, policy
+from application.models import application_menu, application_submenu,application_parent_menu, news, wing_commander, staff_image,publication, policy, Article
 from django.views.generic import TemplateView , View
 from django.conf import settings
 from django.http import HttpResponseRedirect
@@ -374,3 +374,12 @@ class LoginViews(TemplateView):
 				context_data['error'] = {"errors" : "Username or Password is not correct"}
 				return render(request, self.template_name, context_data)
 			return render(request, self.template_name, context_data)
+
+
+
+
+def index(request):
+	article = Article.objects.all()
+	context  = {"article":article}
+
+	return render(request,"index.html",context)

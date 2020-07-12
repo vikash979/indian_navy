@@ -22,6 +22,8 @@ urlpatterns = [
     re_path(r'^publication/$', views.MypublicationAPI.as_view(), name="publication"),
     re_path(r'^news_detail/$', views.MyNewsAPI.as_view(), name="news_detail"),
     re_path(r'^login/$', views.LoginViews.as_view(), name='login'),
+    re_path(r'^article/$', views.index, name='article'),
+    re_path(r'^logins/$', views.login_user, name='logins'),
 
     re_path(r'^application_list/(?P<id>[0-9]+)/$', views.ApplicationViewApi.as_view(), name="application_list"),
 ]
