@@ -18,20 +18,20 @@
      padding: 10px 15px;
 }
  .skyblue {
-     background-image:url('../images/main-slider-img1.jpg');
+     background-image:url('../images/banner/ai2.png');
 }
  .darkerskyblue {
-     background-image:url('../images/home_banner_4.jpg');
+     background-image:url('../images/banner/AI2.jpg');
 }
  .deepskyblue {
-     background-image:url('../images/home_banner_4.jpg');
+     background-image:url('../images/banner/AI4.png');
 }
 .skybluein {
-     background-image:url('../images/main-slider-img1.jpg');
+     background-image:url('../images/banner/banner2.png');
 }
 
 .knowledgebluein {
-     background-image:url('../images/knowledge/banner9.png');
+     background-image:url('../images/banner/DA.jpg');
 }
 
 
@@ -557,7 +557,7 @@
  .matchs-info {
      float: left;
      width: 100%;
-     background: #ffcb05;
+     background: #f0f0f0;
 }
  .about-us {
      float: left;

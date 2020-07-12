@@ -90,9 +90,23 @@ from django.core.exceptions import ValidationError
 
 def validate_image(image):
     file_size = image.file.size
-    limit_kb =1600
-    max_height = 50
-    max_width = 50
+    limit_kb =1600000000
+    max_height = 50000
+    max_width = 5000
+
+
+    
+
+    if (file_size > limit_kb * 50):
+        raise ValidationError("Max size of file is %s KB" % limit_kb)
+
+
+
+def newvalidate_image(image):
+    file_size = image.file.size
+    limit_kb =700
+    max_height = 100
+    max_width = 100
 
 
     
@@ -119,7 +133,9 @@ class ack_subpublicationmenu(models.Model):
     parent_ob  = models.ForeignKey("self",null=True, blank=True, on_delete=models.SET_NULL)
     menu_type = models.SmallIntegerField(choices=menu_choice, default=1)
     folder_type = models.SmallIntegerField(choices=folder_choice, default=2)
-    publicationfile = models.FileField(upload_to='publicattion/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['png','jpg','JPEG'])])
+    publicationicon = models.FileField(upload_to='publicattion/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['png','jpg','JPEG'])])
+    
+    publicationfile = models.FileField(upload_to='publicattion/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['png','jpg','JPEG','pdf','PDF'])])
     folder_title =  models.CharField(max_length=200)
     parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="ask_subpublicationmenues" , limit_choices_to={'id': 2}, blank=True, on_delete=models.SET_NULL)
 
@@ -145,7 +161,7 @@ class ack_subGuidelinesmenu(models.Model):
     added_on = models.DateField(auto_now_add=True)
     updated_on = models.DateField(auto_now=True)
     submenu_name =  models.CharField(max_length=200,unique=True)
-    file = models.FileField(upload_to='guidelines/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['pdf','PDF','png','jpg','JPEG']),validate_image])
+    file = models.FileField(upload_to='guidelines/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['png','jpg','JPEG']),newvalidate_image])
     parent = models.ForeignKey(acknoledge_menu,null=True, related_name ="ask_subguidelinesmenues" , limit_choices_to={'id': 3}, blank=True, on_delete=models.SET_NULL)
     guidelinefile = models.FileField(upload_to='guidelLines/',blank=True,null=True,validators=[FileExtensionValidator(allowed_extensions=['pdf','PDF','png','jpg','JPEG']),validate_image])
 

@@ -31,8 +31,10 @@ $(window).on('load',function(){
                           var obj_length = response[i]['ask_submenues'].length
                           $('#ack_men').append(`<div class="col-lg-4 col-sm-4 col-xs-4" data-aos="zoom-in-right"
                            data-aos-easing="ease-out-cubic"
-                           data-aos-duration="2000"><aside id="sidebar" class="left-bar"><div class="feature-matchs"><h4  style="border-bottom:1px dotted grey; background-color: #f39c12; color:#fff; font-weight:bold"> ${response[i]['menu_name']}</h4><div class="team-btw-match" ><div class="col-lg-12 col-sm-12 col-xs-12"><div class="col-lg-5 col-sm-12 col-xs-12">
-                           <h3>Total : ${obj_length}</h3></div><div class="col-lg-7 col-sm-12 col-xs-12"><img src="http://192.168.0.6:8088/static/images/completed icons/policy letter1.png" width="100%" height="80%" class="rounded-circle" alt="Cinque Terre" ></div></div><div class="col-lg-12 col-sm-12 col-xs-12" id="dashbdcount_${public_data}"></div></div><button onclick="megamyFunction('${response[i]['menu_name']}')" class="thbg-color" style="background: #800000; background-color: #800000;
+                           data-aos-duration="2000"><aside id="sidebar" class="left-bar">
+                           <div class="feature-matchs"><h4  style="border-bottom:1px dotted grey; background-color: #f39c12; color:#fff;
+                            font-weight:bold"> ${response[i]['menu_name']}</h4><div class="team-btw-match" ><div class="col-lg-12 col-sm-12 col-xs-12"><div class="col-lg-5 col-sm-12 col-xs-12">
+                           <h3>Total : ${obj_length}</h3></div><div class="col-lg-7 col-sm-12 col-xs-12">&nbsp;</div></div><div class="col-lg-12 col-sm-12 col-xs-12" id="dashbdcount_${public_data}"></div></div><button onclick="megamyFunction('${response[i]['menu_name']}')" class="thbg-color" style="background: #800000; background-color: #800000;
                                                     border: none;
                               color: white;
                               padding: 10px 20px;
@@ -68,24 +70,60 @@ $(window).on('load',function(){
                           {
                             $(dashboard).append(`<div class="col-lg-12 col-sm-12 col-xs-12" data-aos="flip-right"
                        data-aos-easing="ease-out-cubic"
-                       data-aos-duration="2000" style="padding-top:3%;" ><div class="col-lg-2 col-sm-2 col-xs-2"><i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
+                       data-aos-duration="2000" style="padding-top:3%; border-bottom:1px solid #8080802e"  ><div class="col-lg-2 col-sm-2 col-xs-2"><i class="fa fa-file-pdf-o grens" style="font-size:15px;color:#57cdfb; border: 1px solid #ddd;
                                                 border-radius: 4px;
                                                 padding: 5px;
-                                                width: auto; border-color: #f7b7c2;"></i> </div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" style=" color:#000; text-align: justify; overflow: hidden;
+                                                width: auto; border-color: #57cdfb; padding:10px; 10px  10px 10px"></i> </div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" style=" color:#000; text-align: justify; overflow: hidden;
                      text-overflow: ellipsis;
                      display: -webkit-box;
                      -webkit-line-clamp: 1; /* number of lines to show */
                      -webkit-box-orient: vertical;">${response[i]['ascsubmenu_count'][kk]['folder_title']}</a><p text-align="justify">${response[i]['ascsubmenu_count'][kk]['added_on']}</p></div></div>`)
-                                                                      
+                                               
+
+
+                                      ////////////////////////////////////////////index.page///////////
+
+
+                                      $('#ack_mens').append(`<div class="col-lg-12 col-sm-12 col-xs-12" data-aos="flip-right"
+                       data-aos-easing="ease-out-cubic"
+                       data-aos-duration="2000" style="padding-top:3%; border-bottom:1px solid #8080802e"  ><div class="col-lg-2 col-sm-2 col-xs-2"><i class="fa fa-file-pdf-o grens" style="font-size:15px;color:#57cdfb; border: 1px solid #ddd;
+                                                border-radius: 4px;
+                                                padding: 5px;
+                                                width: auto; border-color: #57cdfb; padding:10px; 10px  10px 10px"></i> </div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" style=" color:#000; text-align: justify; overflow: hidden;
+                     text-overflow: ellipsis;
+                     display: -webkit-box;
+                     -webkit-line-clamp: 1; /* number of lines to show */
+                     -webkit-box-orient: vertical;">${response[i]['ascsubmenu_count'][kk]['folder_title']}</a><p text-align="justify">${response[i]['ascsubmenu_count'][kk]['added_on']}</p></div></div>`)
+                                               
+
+
+
+
+                                                                   
                                             }
                                             else
                                             {
+
+
+                                              $('#ack_mens').append(`<div class="col-lg-12 col-sm-12 col-xs-12" data-aos="flip-right"
+                       data-aos-easing="ease-out-cubic"
+                       data-aos-duration="2000" style="padding-top:3%; border-bottom:1px solid #8080802e"  ><div class="col-lg-2 col-sm-2 col-xs-2"><i class="fa fa-file-pdf-o oranges" style="font-size:15px;color:#FF6347; border: 1px solid #ddd;
+                                                border-radius: 4px;
+                                                padding: 5px;
+                                                width: auto; border-color: #f7b7c2; padding:10px; 10px  10px 10px"></i>  </div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" style=" color:#000;  text-align: justify; overflow: hidden;
+                     text-overflow: ellipsis;
+                     display: -webkit-box;
+                     -webkit-line-clamp: 1; /* number of lines to show */
+                     -webkit-box-orient: vertical;">${response[i]['ascsubmenu_count'][kk]['folder_title']}</a><p text-align="justify">${response[i]['ascsubmenu_count'][kk]['added_on']}</p></div></div>`)
+                                     
+
+
                                               $(dashboard).append(`<div class="col-lg-12 col-sm-12 col-xs-12" data-aos="flip-right"
                        data-aos-easing="ease-out-cubic"
-                       data-aos-duration="2000" style="padding-top:3%;"  ><div class="col-lg-2 col-sm-2 col-xs-2"><i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
-                                                  border-radius: 4px;
-                                                  padding: 5px;
-                                                  width: auto; border-color: #f7b7c2;"></i> </div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" style=" color:#000;  text-align: justify; overflow: hidden;
+                       data-aos-duration="2000" style="padding-top:3%; border-bottom:1px solid #8080802e"  ><div class="col-lg-2 col-sm-2 col-xs-2"><i class="fa fa-file-pdf-o oranges" style="font-size:15px;color:#FF6347; border: 1px solid #ddd;
+                                                border-radius: 4px;
+                                                padding: 5px;
+                                                width: auto; border-color: #f7b7c2; padding:10px; 10px  10px 10px"></i>  </div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" style=" color:#000;  text-align: justify; overflow: hidden;
                      text-overflow: ellipsis;
                      display: -webkit-box;
                      -webkit-line-clamp: 1; /* number of lines to show */
@@ -126,7 +164,13 @@ $(window).on('load',function(){
                           //     cursor: pointer;" id="myBtn">Read more</button></aside></div>`)
                           $('#ack_men').append(`<div class="col-lg-4 col-sm-4 col-xs-4" data-aos="flip-left"
                      data-aos-easing="ease-out-cubic"
-                      data-aos-duration="2000"><aside id="sidebar" class="left-bar"><div class="feature-matchs"><h4  style="border-bottom:1px dotted grey; background-color: #bdc3c7; color:#fff; font-weight:bold"> ${response[i]['menu_name']}</h4><div class="team-btw-match" ><div class="col-lg-12 col-sm-12 col-xs-12"><div class="col-lg-5 col-sm-12 col-xs-12"><h3>Total : ${obj_length}</h3></div><div class="col-lg-7 col-sm-12 col-xs-12"><img src="http://192.168.0.6:8088/static/images/completed icons/publication1.png" width="100%" height="80%" class="rounded-circle" alt="Cinque Terre" ></div></div><div class="col-lg-12 col-sm-12 col-xs-12" id="dashbdcount_${public_data}"></div></div><button onclick="megamyFunction('${response[i]['menu_name']}')" class="thbg-color" style="background: #800000; background-color: #800000;
+                      data-aos-duration="2000"><aside id="sidebar" class="left-bar">
+                      <div class="feature-matchs">
+                      <h4  style="border-bottom:1px dotted grey; background-color: #008dd2; color:#fff; font-weight:bold">
+                       ${response[i]['menu_name']}</h4><div class="team-btw-match" ><div class="col-lg-12 col-sm-12 col-xs-12">
+                       <div class="col-lg-5 col-sm-12 col-xs-12">
+                       <h3>Total : ${obj_length}</h3></div><div class="col-lg-7 col-sm-12 col-xs-12">
+                       </div></div><div class="col-lg-12 col-sm-12 col-xs-12" id="dashbdcount_${public_data}"></div></div><button onclick="megamyFunction('${response[i]['menu_name']}')" class="thbg-color" style="background: #800000; background-color: #800000;
                               border: none;
                               color: white;
                               padding: 10px 20px;
@@ -141,31 +185,78 @@ $(window).on('load',function(){
                                 var dashboard = '#dashbdcount_'+public_data
                                 for (var kk = 0; kk<response[i]['ascpublicationsubmenu_count'].length;kk++)
                                   {
+                                    if (response[i]['ascpublicationsubmenu_count'][kk]['publicationfile'] != null)
+                                           {
+                                            var files = response[i]['ascpublicationsubmenu_count'][kk]['publicationfile'].split(".")
+                                            var image_file = files.length-1
+                                            images = files[image_file]
+                                            
+                                           }
                                      if (kk % 2 ==0)
                                 {
+                                 if ((images =='png') || (images =='PNG') || (images =='JPEG') || (images =='jpg'))
+                                            {
+
+                                              var img  = `<img class="img grens" src="http://192.168.0.6:8088${response[i]['ascpublicationsubmenu_count'][kk]['publicationfile']}" width="40px"; height="40px" style="padding:15px; 15px  15px 15px; color:#FF6347;border-radius: 100%; border: 1px solid #ddd;
+                              border-radius: 100%;
+                              padding: 5px;
+                              width: auto; border-color: #57cdfb; background-color:#8080802e"  >`
+
+                                            }
+                                            else
+                                            {
+                                              img = `&nbsp;`
+                                            }
+
                                   
-                                  $(dashboard).append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%;" >
-                                    <div class="col-lg-2 col-sm-2 col-xs-2"><i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
-                                                border-radius: 4px;
-                                                padding: 5px;
-                                                width: auto; border-color: #f7b7c2;"></i> </div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" style=" color:#000;  text-align: justify; overflow: hidden;
-                         text-overflow: ellipsis;
-                         display: -webkit-box;
-                         -webkit-line-clamp: 1; /* number of lines to show */
-                         -webkit-box-orient: vertical;">${response[i]['ascpublicationsubmenu_count'][kk]['folder_title']}</a><p text-align="justify">${response[i]['ascpublicationsubmenu_count'][kk]['added_on']}</p></div></div>`)
-                                       
-                                 // $(dashboard).append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%;" ><div class="col-lg-2 col-sm-2 col-xs-2"><img src="http://192.168.0.8:8088${response[i]['ask_subpublicationmenues'][kk]['file']}" width="20px"; height="20px" style="border-radius: 100%; background-color:#4874bf"  alt="Cinque Terre" > </div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#">${response[i]['ask_subpublicationmenues'][kk]['submenu_name']}</a><p text-align="justify">${response[i]['ascpublicationsubmenu_count'][kk]['added_on']}</p></div></div>`)
-                              
-                                 // $(dashboard).append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%;" ><div class="col-lg-3 col-sm-3 col-xs-3"><span style="border-bottom:1px dotted grey"><img src="http://192.168.0.8:8088/static/images/publication_red.png" style="border-radius: 60%;" class="rounded-circle" alt="Cinque Terre"  width="80%" height="80%"> </span></div><div class="col-lg-9 col-sm-9 col-xs-9" style="align:justify">${response[i]['ascpublicationsubmenu_count'][kk]['submenu_name']}</div></div>`)
+                                  $('#publicitiesdocument').append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%; border-bottom:1px solid #8080802e" >
+                                    <div class="col-lg-2 col-sm-2 col-xs-2">  ${img}
+                                     </div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" style=" color:#000;  text-align: justify; overflow: hidden;
+                             text-overflow: ellipsis;
+                             display: -webkit-box;
+                             -webkit-line-clamp: 1; /* number of lines to show */
+                             -webkit-box-orient: vertical;">${response[i]['ascpublicationsubmenu_count'][kk]['folder_title']}</a><p text-align="justify">${response[i]['ascpublicationsubmenu_count'][kk]['added_on']}</p></div></div>`)
+
+////////////////////////////////////////////////////End of home page//////////////////////
+                                   $(dashboard).append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%; border-bottom:1px solid #8080802e" >
+                                    <div class="col-lg-2 col-sm-2 col-xs-2">  ${img}
+                                     </div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" style=" color:#000;  text-align: justify; overflow: hidden;
+                             text-overflow: ellipsis;
+                             display: -webkit-box;
+                             -webkit-line-clamp: 1; /* number of lines to show */
+                             -webkit-box-orient: vertical;">${response[i]['ascpublicationsubmenu_count'][kk]['folder_title']}</a><p text-align="justify">${response[i]['ascpublicationsubmenu_count'][kk]['added_on']}</p></div></div>`)
+                                           
                               
                                 }
                                 else
                                 {
-                                   $(dashboard).append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%;" >
-                                    <div class="col-lg-2 col-sm-2 col-xs-2"><i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
-                                                border-radius: 4px;
-                                                padding: 5px;
-                                                width: auto; border-color: #f7b7c2;"></i> </div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" style=" color:#000;  text-align: justify; overflow: hidden;
+
+                                   if ((images =='png') || (images =='PNG') || (images =='JPEG') || (images =='jpg'))
+                                            {
+                                              var img  = `<img class="img oranges" src="http://192.168.0.6:8088${response[i]['ascpublicationsubmenu_count'][kk]['publicationfile']}" width="40px"; height="40px" style="padding:15px; 15px  15px 15px; color:#FF6347;border-radius: 100%; border: 1px solid #ddd;
+                              border-radius: 100%;
+                              padding: 5px;
+                              width: auto; border-color: #f7b7c2; background-color:#f7e5e58a"  >`
+
+                                            }
+                                            else
+                                            {
+                                              img = `&nbsp;`
+                                            }
+
+                                              $('#publicitiesdocument').append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%; border-bottom:1px solid #8080802e" >
+                                    <div class="col-lg-2 col-sm-2 col-xs-2">  ${img}
+                                     </div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" style=" color:#000;  text-align: justify; overflow: hidden;
+                             text-overflow: ellipsis;
+                             display: -webkit-box;
+                             -webkit-line-clamp: 1; /* number of lines to show */
+                             -webkit-box-orient: vertical;">${response[i]['ascpublicationsubmenu_count'][kk]['folder_title']}</a><p text-align="justify">${response[i]['ascpublicationsubmenu_count'][kk]['added_on']}</p></div></div>`)
+
+
+
+                                            ///////////////////////end of home page
+                                   $(dashboard).append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%; border-bottom:1px solid #8080802e;" >
+                                    <div class="col-lg-2 col-sm-2 col-xs-2">${img} </div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" style=" color:#000;  text-align: justify; overflow: hidden;
                                    text-overflow: ellipsis;
                                    display: -webkit-box;
                                    -webkit-line-clamp: 1; /* number of lines to show */
@@ -197,11 +288,10 @@ $(window).on('load',function(){
                            data-aos-easing="ease-in-cubic"
                            data-aos-duration="2000">
                            <aside id="sidebar" class="left-bar"><div class="feature-matchs">
-                           <h4 style="border-bottom:1px dotted grey; background-color: #4874bf; color:#fff; font-weight:bold">
+                           <h4 style="border-bottom:1px dotted grey; background-color: #75a537; color:#fff; font-weight:bold">
                             ${response[i]['menu_name']}</h4><div class="team-btw-match" ><div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="col-lg-5 col-sm-12 col-xs-12"><h3>Total : ${obj_length}</h3></div><div class="col-lg-7 col-sm-12 col-xs-12">
-                            <img src="http://192.168.0.6:8088/static/images/completed icons/guidline1.png"
-                             width="100%" height="80%" class="rounded-circle" alt="Cinque Terre" ></div></div><div class="col-lg-12 col-sm-12 col-xs-12" id="dashbdcount_${public_data}"></div></div><button onclick="megamyFunction('${response[i]['menu_name']}')" class="thbg-color" style="background: #800000; background-color: #800000;
+                            &nbsp; </div></div><div class="col-lg-12 col-sm-12 col-xs-12" id="dashbdcount_${public_data}"></div></div><button onclick="megamyFunction('${response[i]['menu_name']}')" class="thbg-color" style="background: #800000; background-color: #800000;
                                                     border: none;
                               color: white;
                               padding: 10px 20px;
@@ -216,13 +306,45 @@ $(window).on('load',function(){
                               var dashboard = '#dashbdcount_'+public_data
                               for (var kk = 0; kk<response[i]['ascguideleinessubmenu_count']['data'].length;kk++)
                               {
+
+                                  if (response[i]['ascguideleinessubmenu_count']['data'][kk]['file'] != null)
+                                           {
+
+                                            //alert(response[i]['ascguideleinessubmenu_count']['data'][kk]['file'])  
+
+
+                                            var files = response[i]['ascguideleinessubmenu_count']['data'][kk]['file'].split(".")
+                                            var image_file = files.length-1
+                                            images = files[image_file]
+                                            
+                                           }
+                                           else{
+                                            images = ''
+                                           }
+                                 // alert(JSON.stringify(response[i]['ascguideleinessubmenu_count']['data'][kk]['file']))
+
+
+
                                 if (kk % 2 ==0)
                                 {
-                                  $(dashboard).append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%;" >
-                                    <div class="col-lg-2 col-sm-2 col-xs-2"><i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
-                                                border-radius: 4px;
-                                                padding: 5px;
-                                                width: auto; border-color: #f7b7c2;"></i> </div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" style=" color:#000;  text-align: justify; overflow: hidden;
+
+                                  if ((images =='png') || (images =='PNG') || (images =='JPEG') || (images =='jpg'))
+                                            {
+
+                                              var img  = `<img class="img" src="http://192.168.0.6:8088${response[i]['ascguideleinessubmenu_count']['data'][kk]['file']}" width="40px"; height="40px" style="padding:15px; 15px  15px 15px; color:#FF6347;border-radius: 100%; border: 1px solid #ddd;
+                              border-radius: 100%;
+                              padding: 5px;
+                              width: auto; border-color: #57cdfb; background-color:#f7e5e58a"  >`
+
+                                            }
+                                            else
+                                            {
+                                              img = `&nbsp;`
+                                            }
+
+
+                                  $(dashboard).append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%; border-bottom:1px solid #8080802e" >
+                                    <div class="col-lg-2 col-sm-2 col-xs-2">${img}</div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" style=" color:#000;  text-align: justify; overflow: hidden;
                                  text-overflow: ellipsis;
                                  display: -webkit-box;
                                  -webkit-line-clamp: 1; /* number of lines to show */
@@ -232,11 +354,25 @@ $(window).on('load',function(){
                                     
                                 }
                                 else{
-                                  $(dashboard).append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%;" >
-                                    <div class="col-lg-2 col-sm-2 col-xs-2"><i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
-                                                border-radius: 4px;
-                                                padding: 5px;
-                                                width: auto; border-color: #f7b7c2;"></i> </div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" style=" color:#000;  text-align: justify; overflow: hidden;
+
+                                        if ((images =='png') || (images =='PNG') || (images =='JPEG') || (images =='jpg'))
+                                            {
+                                              var img  = `<img class="img" src="http://192.168.0.6:8088${response[i]['ascguideleinessubmenu_count']['data'][kk]['file']}" width="40px"; height="40px" style="padding:15px; 15px  15px 15px; color:#FF6347;border-radius: 100%; border: 1px solid #ddd;
+                              border-radius: 100%;
+                              padding: 5px;
+                              width: auto; border-color: #f7b7c2; background-color:#8080802e"  >`
+
+                                            }
+                                            else
+                                            {
+                                              img = `&nbsp;`
+                                            }
+
+
+
+                                  $(dashboard).append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%; border-bottom:1px solid #8080802e" >
+                                    <div class="col-lg-2 col-sm-2 col-xs-2">
+                                    ${img} </div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" style=" color:#000;  text-align: justify; overflow: hidden;
                                text-overflow: ellipsis;
                                display: -webkit-box;
                                -webkit-line-clamp: 1; /* number of lines to show */
@@ -344,7 +480,14 @@ $(window).on('load',function(){
 
                           $('#ack_men').append(`<div class="col-lg-4 col-sm-4 col-xs-4" data-aos="zoom-out-left"
                            data-aos-easing="ease-in-cubic"
-                           data-aos-duration="2000"><aside id="sidebar" class="left-bar"><div class="feature-matchs"><h4 style="border-bottom:1px dotted grey; background-color: #4874bf; color:#fff; font-weight:bold"> ${response[i]['menu_name']}</h4><div class="team-btw-match" ><div class="col-lg-12 col-sm-12 col-xs-12"><div class="col-lg-4 col-sm-4 col-xs-4"><h3>Tot : ${obj_length}</h3></div><div class="col-lg-8 col-sm-8 col-xs-8"><img src="http://192.168.0.6:8088/static/images/orders.png" width="200px" height="100px" class="rounded-circle" alt="Cinque Terre" ></div></div><div class="col-lg-12 col-sm-12 col-xs-12" id="dashbdcount_${public_data}"></div></div><button onclick="megamyFunction('${response[i]['menu_name']}')" class="thbg-color" style="background: #800000; background-color: #800000;
+                           data-aos-duration="2000"><aside id="sidebar" class="left-bar">
+                           <div class="feature-matchs">
+                           <h4 style="border-bottom:1px dotted grey;
+                            background-color: #4874bf; color:#fff; font-weight:bold"> ${response[i]['menu_name']}</h4>
+                            <div class="team-btw-match" ><div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-sm-4 col-xs-4"><h3>Tot : ${obj_length}</h3></div>
+                            <div class="col-lg-8 col-sm-8 col-xs-8">
+                            <img src="http://192.168.0.6:8088/static/images/orders.png" width="200px" height="100px" class="rounded-circle" alt="Cinque Terre" ></div></div><div class="col-lg-12 col-sm-12 col-xs-12" id="dashbdcount_${public_data}"></div></div><button onclick="megamyFunction('${response[i]['menu_name']}')" class="thbg-color" style="background: #800000; background-color: #800000;
                                                     border: none;
                               color: white;
                               padding: 10px 20px;
@@ -364,7 +507,8 @@ $(window).on('load',function(){
                            if (kk % 2 ==0)
                           {
 
-                            $(dashboard).append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%;" ><div class="col-lg-2 col-sm-2 col-xs-2"><img src="http://192.168.0.6:8088${response[i]['navy_ordersCount'][kk]['file']}" width="40px"; height="40px" style="color:#FF6347;border-radius: 100%; border: 1px solid #ddd;
+                            $(dashboard).append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%;" >
+                              <div class="col-lg-2 col-sm-2 col-xs-2"><img src="http://192.168.0.6:8088${response[i]['navy_ordersCount'][kk]['file']}" width="40px"; height="40px" style="color:#FF6347;border-radius: 100%; border: 1px solid #ddd;
                               border-radius: 100%;
                               padding: 5px;
                               width: auto; border-color: #f7b7c2; background-color:#4874bf"  alt="Cinque Terre" > </div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" style=" text-align: justify; overflow: hidden;
