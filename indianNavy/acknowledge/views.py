@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from .models import ack_subStandardsmenu, ack_subGuidelinesmenu,ack_subNavy_Instructionssmenu, ack_subpublicationmenu, ack_publicationname, acknoledge_menu,acknowledge_parent_menu,ack_submenu, ack_policyname, ack_policypolicyfile, ack_publicationfile
+from .models import ack_subStandardsmenu, ack_subGuidelinesmenu, graphDetail, ack_subNavy_Instructionssmenu,graphDetailUsed,  ack_subpublicationmenu, ack_publicationname, acknoledge_menu,acknowledge_parent_menu,ack_submenu, ack_policyname, ack_policypolicyfile, ack_publicationfile
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -17,6 +17,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.views.generic import TemplateView , View
 from django.shortcuts import render, redirect
+from users.models import User
 
 pagination_ob = settings.PAGINATION_SIZE
 
@@ -149,6 +150,7 @@ class AckpolicyAPI(APIView):
 	def get(self,request, id):
 		
 		if request.GET.get('menubar') == 'Policy Letters':
+
 			submenu = ack_submenu.objects.filter(parent_ob_id=id,folder_type=2).values()
 			
 			serializer = serializers.AckenowledgeSubmenuSerializer(submenu,many=True)
@@ -170,9 +172,15 @@ class AckpolicyAPI(APIView):
 
 		#print(":::::::::",serializer.data)
 		return Response(serializer.data)
+
+
 # class AckpolicypubAPI(APIView):
 
 # 	def get(self,request)
+
+
+
+
 
 
 
@@ -213,9 +221,17 @@ class acknowledgeViews(TemplateView):
 		context_data = {}
 		#print("@@@",id)
 		#policy_data = ack_submenu.objects.all()
-		
+		menu_id = graphDetail.objects.get(menu_detail=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id).id
+		print("##########@@@@@",menu_id)
+		graph_obj = graphDetailUsed.objects.create(menu_detail_id=menu_id, menu_user=User.objects.get(username=request.user.username))
+
+		#graphuser = graphDetailUsed.objects.create(menu_detail_id=menu_id, menu_user=User.objects.get(username=request.user.username))
 		if request.GET.get('menutype') =='Policy Letters' :
+			
 			policy_data = ack_submenu.objects.filter(parent_ob_id=None, parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
+			
+			
+			#userdata = graphDetailUser.objects.create(menu_detail=)
 			#policy_data = ack_submenu.objects.all()
 
 			
@@ -229,18 +245,18 @@ class acknowledgeViews(TemplateView):
 			policy_data = ack_subpublicationmenu.objects.filter(parent_ob_id=None,parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
 			#menuobj= request.GET.get('array').split(",")
 
-			policy_obj = ack_publicationname.objects.all().order_by("-id")
+			policy_obj = ack_subpublicationmenu.objects.all().order_by("-id")
 		elif request.GET.get('menutype') =='Guidelines' :
 			policy_data = ack_subGuidelinesmenu.objects.filter(parent_ob_id=None,parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
 			#menuobj= request.GET.get('array').split(",")
 
-			#policy_obj = ack_publicationname.objects.all().order_by("-id")
+			policy_obj = ack_subGuidelinesmenu.objects.all().order_by("-id")
 		elif request.GET.get('menutype') =='Standards' :
 			policy_data = ack_subStandardsmenu.objects.filter(parent_ob_id=None,parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
-
+			policy_obj = ack_subStandardsmenu.objects.all().order_by("-id")
 		elif request.GET.get('menutype') =='Navy_Instructions' :
 			policy_data = ack_subNavy_Instructionssmenu.objects.filter(parent_ob_id=None,parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
-			
+			policy_obj = ack_subNavy_Instructionssmenu.objects.all().order_by("-id")
 
 		else:
 			policy_obj = ack_policyname.objects.all().values().order_by("-id")

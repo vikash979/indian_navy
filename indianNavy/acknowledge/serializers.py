@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ack_NavyInstructionname, ack_Navyname, ack_Standardsname, ack_guidelinesname, ack_publicationname , BRsmenu, ack_subGuidelinesmenu, ack_subpublicationmenu,acknoledge_menu,acknowledge_parent_menu,ack_submenu,ack_policyname,ack_policypolicyfile, ack_subStandardsmenu, ack_subNavy_Orderssmenu, ack_subNavy_Instructionssmenu ,ack_subNHQe_Librarylinesmenu
+from .models import ack_NavyInstructionname, ack_Navyname,graphDetail,  ack_Standardsname,graphDetailUsed,  ack_guidelinesname, ack_publicationname , BRsmenu, ack_subGuidelinesmenu, ack_subpublicationmenu,acknoledge_menu,acknowledge_parent_menu,ack_submenu,ack_policyname,ack_policypolicyfile, ack_subStandardsmenu, ack_subNavy_Orderssmenu, ack_subNavy_Instructionssmenu ,ack_subNHQe_Librarylinesmenu
 
 
 
@@ -118,7 +118,18 @@ class BRsmenuSerializer(serializers.ModelSerializer):
 		fields= '__all__'
 
 
+class graphDetailUsedSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = graphDetailUsed
+		fields = ['menu_detail']
 
+class graphDetailUserSerializer(serializers.ModelSerializer):
+	graph_detail = graphDetailUsedSerializer(many=True)
+	
+
+	class Meta:
+		model = graphDetail
+		fields = ['menu_detail','graph_detail']
 
 
 class  AckenowledgeSerializer(serializers.ModelSerializer):
@@ -141,6 +152,9 @@ class  AckenowledgeSerializer(serializers.ModelSerializer):
 	ask_libCount = serializers.SerializerMethodField()
 	brsmenues = BRsmenuSerializer(many=True)
 	brsCount = serializers.SerializerMethodField()
+
+	ask_submenudetail = graphDetailUserSerializer(many=True)
+
 
 	class Meta:
 		model = acknoledge_menu

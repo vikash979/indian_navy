@@ -27,6 +27,8 @@ urlpatterns = [
 	re_path(r'^ack_publicationdetail/$', views.AxknowledgePublicAPI.as_view(), name="ack_publicationdetail"),
 	re_path(r'^policyView/(?P<id>[0-9]+)/$', views.AckpolicyAPI.as_view(), name="policyView"),
 	#path('pie-chart/', views.pie_chart, name='pie-chart'),
+	###################userupdate############################
+	
 
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

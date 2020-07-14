@@ -14,18 +14,65 @@ $(window).on('load',function(){
                     policy_count = []
                     publication_name = []
                     publication_count = []
+                    graph_lenght = []
                     for(var i=0;i<response.length;i++){
                       //alert(JSON.stringify(response))
                       var public_data = i+1
                       
                       arr.push(response[i]['menu_name'])
                       
+                     // alert(JSON.stringify(response[i]['ask_submenudetail']))
 
+//////////////////////////////////////////////////////////////Graph/////////////////////////////////////////////////////
+
+                          for (var graph_id = 0; graph_id<response[i]['ask_submenudetail'].length;graph_id++)
+
+                          {
+                            //alert(JSON.stringify(response[i]['ask_submenudetail'][graph_id]))
+                            if (response[i]['ask_submenudetail'][graph_id]['menu_detail'] == '1')
+                            {
+                             graph_lenght.push(response[i]['ask_submenudetail'][graph_id]['graph_detail'].length)
+                            }
+                            if (response[i]['ask_submenudetail'][graph_id]['menu_detail'] == '2')
+                            {
+                             graph_lenght.push(response[i]['ask_submenudetail'][graph_id]['graph_detail'].length)
+                            }
+                            if (response[i]['ask_submenudetail'][graph_id]['menu_detail'] == '3')
+                            {
+                             graph_lenght.push(response[i]['ask_submenudetail'][graph_id]['graph_detail'].length)
+                            }
+                             if (response[i]['ask_submenudetail'][graph_id]['menu_detail'] == '4')
+                            {
+                             graph_lenght.push(response[i]['ask_submenudetail'][graph_id]['graph_detail'].length)
+                            }
+                            if (response[i]['ask_submenudetail'][graph_id]['menu_detail'] == '5')
+                            {
+                             graph_lenght.push(response[i]['ask_submenudetail'][graph_id]['graph_detail'].length)
+                            }
+                            if (response[i]['ask_submenudetail'][graph_id]['menu_detail'] == '6')
+                            {
+                             graph_lenght.push(response[i]['ask_submenudetail'][graph_id]['graph_detail'].length)
+                            }
+                            if (response[i]['ask_submenudetail'][graph_id]['menu_detail'] == '7')
+                            {
+                             graph_lenght.push(response[i]['ask_submenudetail'][graph_id]['graph_detail'].length)
+                            }
+                            if (response[i]['ask_submenudetail'][graph_id]['menu_detail'] == '8')
+                            {
+                             graph_lenght.push(response[i]['ask_submenudetail'][graph_id]['graph_detail'].length)
+                            }
+
+
+
+                          }
+
+                      //////////////////////////////////////////////////////////////////////////////////////////
                       
                         $('#ack_bar').append(` <li class="col-sm-2" style="color:#000" ><a href="${response[i]['url_link']}" style="color:#000;">${response[i]['menu_name']}</a><br/><hr>
                         </li>` )
                         if (response[i]['menu_name'] =='Policy Letters')
                         {
+
                           arrCount.push(response[i]['ask_submenues'].length)
 
                           var obj_length = response[i]['ask_submenues'].length
@@ -47,22 +94,7 @@ $(window).on('load',function(){
                           if (obj_length > 0)
                         {
                           var dashboard = '#dashbdcount_'+public_data
-                            //$('#myUL').empty()
-                             // for (var polkk = 0; polkk<response[i]['ask_submenues'].length;polkk++)
-
-                             // {
-                               
-                               
-                             //   plocy_size =  response[i]['ask_submenues'][polkk]['policy_name'].length
-                             //   if (plocy_size > 0)
-                             //   {
-                             //    policy_count.push(response[i]['ask_submenues'][polkk]['policy_name'].length)
-                             //    //for (var poli_size = 0;poli_size<plocy_size;poli_size++ )
-                             //    //{
-                             //      policy_name.push(response[i]['ask_submenues'][polkk]['policy_name'][0]['policy_name'])
-                             //    //}
-                             //   }
-                             // }
+                           
                         for (var kk = 0; kk<response[i]['ascsubmenu_count'].length;kk++)
                         {
                             
@@ -84,7 +116,7 @@ $(window).on('load',function(){
                                       ////////////////////////////////////////////index.page///////////
 
 
-                                      $('#ack_mens').append(`<div class="col-lg-12 col-sm-12 col-xs-12" data-aos="flip-right"
+                                      $('#ack_menspoliciy').append(`<div class="col-lg-12 col-sm-12 col-xs-12" data-aos="flip-right"
                        data-aos-easing="ease-out-cubic"
                        data-aos-duration="2000" style="padding-top:3%; border-bottom:1px solid #8080802e"  ><div class="col-lg-2 col-sm-2 col-xs-2"><i class="fa fa-file-pdf-o grens" style="font-size:15px;color:#57cdfb; border: 1px solid #ddd;
                                                 border-radius: 4px;
@@ -105,7 +137,7 @@ $(window).on('load',function(){
                                             {
 
 
-                                              $('#ack_mens').append(`<div class="col-lg-12 col-sm-12 col-xs-12" data-aos="flip-right"
+                                              $('#ack_menspoliciy').append(`<div class="col-lg-12 col-sm-12 col-xs-12" data-aos="flip-right"
                        data-aos-easing="ease-out-cubic"
                        data-aos-duration="2000" style="padding-top:3%; border-bottom:1px solid #8080802e"  ><div class="col-lg-2 col-sm-2 col-xs-2"><i class="fa fa-file-pdf-o oranges" style="font-size:15px;color:#FF6347; border: 1px solid #ddd;
                                                 border-radius: 4px;
@@ -185,6 +217,7 @@ $(window).on('load',function(){
                                 var dashboard = '#dashbdcount_'+public_data
                                 for (var kk = 0; kk<response[i]['ascpublicationsubmenu_count'].length;kk++)
                                   {
+
                                     if (response[i]['ascpublicationsubmenu_count'][kk]['publicationfile'] != null)
                                            {
                                             var files = response[i]['ascpublicationsubmenu_count'][kk]['publicationfile'].split(".")
@@ -282,6 +315,7 @@ $(window).on('load',function(){
 
                      if (response[i]['menu_name'] =='Guidelines')
                         {
+
                           var obj_length = response[i]['ascguideleinessubmenu_count']['menu']
                           arrCount.push(response[i]['ask_subguidelinesmenues'].length)
                           $('#ack_men').append(`<div class="col-lg-4 col-sm-4 col-xs-4" data-aos="zoom-out-down"
@@ -724,45 +758,7 @@ $(window).on('load',function(){
                        
                         }
 
-//alert(JSON.stringify(response[i]['ask_submenues']))
 
-                      
-          //             $('#myUL').append(`<li><span class="box">Green Tea</span>
-          //   <ul class="nested">
-          //     <li>Sencha</li>
-          //     <li>Gyokuro</li>
-          //     <li>Matcha</li>
-          //     <li>Pi Lo Chun</li>
-          //   </ul>
-          // </li>`)
-    //                   if (response[i]['ask_submenues'].length > 0)
-    //                   {
-    //                     //alert(response[i]['ask_submenues'].length)
-    //                    for (var j=0; j<response[i]['ask_submenues'].length;j++)
-    //                    {
-    //                     $('#policy_name').append(`<tr><td><i class="fa fa-file-pdf-o" style="font-size:18px;color:red"></i>${response[i]['ask_submenues'][j]['submenu_name']}</td><td></td><td>${response[i]['ask_submenues'][j]['added_on']}</td></tr>`)
-                        
-    //                     $('#myULl').append(`<li><input type="checkbox" id="aa_${j}" class="box" onclick="dsd(this.id,this.className)" >${response[i]['ask_submenues'][j]['submenu_name']}
-    // <ul class="nested" id="nested_${j}"></li>`)
-    //                     //alert(JSON.stringify(response[i]['ask_submenues'][j]['policy_name']))
-    //                     if (response[i]['ask_submenues'][j]['policy_name'].length> 0)
-    //                     {
-    //                        var nestedid = "#nested_"+j
-    //                       for (var k=0; k<response[i]['ask_submenues'][j]['policy_name'].length;k++)
-    //                       {
-                           
-    //                       $(nestedid).append(`<li><input type="checkbox" id="bb_${k}" class="box" onclick="dsd(this.id,this.className)" >${response[i]['ask_submenues'][j]['policy_name'][k]['policy_name']}
-    // <ul class="nested" id="nested_${k}"></li>`)
-    //                     } 
-    //                       }
-                          
-    
-  
-    //                   // var aaaa = "aa_"+j
-
-
-    //                    }
-    //                   }
 
                     }
                    // alert(policy_name)
@@ -770,25 +766,237 @@ $(window).on('load',function(){
                     // var arr = [];
                     //var arrCount = []
 
-                    var policydataa  = policy_name
-                   var policylabels  = policy_count 
+                   //  var policydataa  = policy_name
+                   // var policylabels  = policy_count 
+                   //alert(JSON.stringify(policy_count))
+                   //alert(JSON.stringify(graph_lenght))
 
                    var dataa  = arr
-                   var labels  = arrCount
+                   var labels  = graph_lenght
 
-                    Highcharts.chart('ccontainer', {
+
+var data = graph_lenght;
+var categories = arr;
+
+// var chart = new Highcharts.Chart({
+//    chart: {
+//     renderTo: 'ccontainer',
+//     margin: 100,
+//     type: 'column',
+//     options3d: {
+//       enabled: true,
+//       alpha: 10,
+//       beta: 30,
+//       depth: 250,
+//       viewDistance: 5,
+//       fitToPlot: false,
+//       frame: {
+//         bottom: {
+//           size: 1,
+//           color: 'rgba(0,0,0,0.02)'
+//         },
+//         back: {
+//           size: 1,
+//           color: 'rgba(0,0,0,0.04)'
+//         },
+//         side: {
+//           size: 1,
+//           color: 'rgba(0,0,0,0.06)'
+//         }
+//       }
+//     }
+//   },
+//     title: {
+//         text: 'Chart rotation demo'
+//     },
+//     subtitle: {
+//         text: 'Test options by dragging the sliders below'
+//     },
+//     plotOptions: {
+//         column: {
+//             depth: 25
+//         }
+//     },
+//     series: [{
+//         data: graph_lenght
+//     }]
+// });
+
+// function showValues() {
+//     $('#alpha-value').html(chart.options.chart.options3d.alpha);
+//     $('#beta-value').html(chart.options.chart.options3d.beta);
+//     $('#depth-value').html(chart.options.chart.options3d.depth);
+// }
+
+// // Activate the sliders
+// $('#sliders input').on('input change', function () {
+//     chart.options.chart.options3d[this.id] = parseFloat(this.value);
+//     showValues();
+//     chart.redraw(false);
+// });
+
+// showValues();
+/////////////////////////////////////////////////////////
+// Set up the chart
+var chart = new Highcharts.Chart({
+  chart: {
+    renderTo: 'ccontainer',
+    shadow: {
+            color: 'rgba(0, 0, 0, 0.1)',
+            offsetX: 1,
+            offsetY: 1,
+            opacity: '0.1',
+            width: 10
+        },
+    margin: 100,
+    type: 'column',
+    options3d: {
+      enabled: true,
+      alpha: 10,
+      beta: 30,
+      depth: 250,
+      viewDistance: 5,
+      fitToPlot: false,
+      frame: {
+        bottom: {
+          size: 1,
+          color: 'rgba(0,0,0,0.02)'
+        },
+        back: {
+          size: 1,
+          color: 'rgba(0,0,0,0.04)'
+        },
+        side: {
+          size: 1,
+          color: 'rgba(0,0,0,0.06)'
+        }
+      }
+    }
+  },
+  title: {
+    text: 'Traffic f this page'
+  },
+  
+  subtitle: {
+    text: 'Click and drag the plot area to rotate in space'
+  },
+   plotOptions: {
+        line: {
+            marker: {
+                enabled: true
+            }
+        }
+    },
+  yAxis: {
+    min: 0,
+    max: 4,
+    categories: categories.map(title => title )
+  },
+  xAxis: {
+    min: 0,
+    max: 4,
+    categories: categories.map(title => title )
+  },
+  zAxis: {
+    min: 0,
+    max: 4,
+    categories: categories.map(title => title )
+  },
+  legend: {
+    enabled: false
+  },
+  series: [{
+    name: 'User Visited',
+    colorByPoint: true,
+    data: data
+  }]
+});
+
+///////////////////////////////////////////////////
+
+Highcharts.chart('ccontainer3', {
+        chart: {
+            type: 'column',
+            options3d: {
+                enabled: true,
+                alpha: 20,
+                beta: 30,
+                depth: 200,
+                viewDistance: 5,
+                frame: {
+                    bottom: {
+                        size: 1,
+                        color: 'rgba(0,0,0,0.05)'
+                    }
+                }
+            }
+        },
+        title: {
+            text: 'a 3D Scatter Chart'
+        },
+        subtitle: {
+            text: 'with categories on the Z-Axis'
+        },
+        yAxis: {
+            min: 0,
+            max: 10
+        },
+        xAxis: {
+            min: 0,
+            max: 10,
+            gridLineWidth: 1
+        },
+        zAxis: {
+            min: 0,
+            max: 3,
+            categories: arr,
+            labels: {
+                y: 5,
+                rotation: 18
+            }
+        },
+        series: [{
+            name: 'users Visited',
+            data:graph_lenght
+        }]
+    });
+
+                   //alert(JSON.stringify(arr))  ccontainer
+
+                    Highcharts.chart('ccontainerr', {
+
+                      plotOptions: {
+        series: {
+            shadow: true,
+        },
+        animation: {
+                duration: 2000
+            },
+
+    },
                        chart: {
                           type: 'column'
                         },
+                                backgroundColor: {
+            linearGradient: [0, 0, 500, 500],
+            stops: [
+                [0, 'rgb(255, 255, 255)'],
+                [1, 'rgb(240, 240, 255)']
+            ]
+        },
+        borderWidth: 2,
+        plotBackgroundColor: 'rgba(255, 255, 255, .9)',
+        plotShadow: true,
+        plotBorderWidth: 1,
                         title: {
-                          text: 'Km'
+                          text: 'users'
                       },
                        xAxis: {
                         categories:arr
                         },
                         series: [{
-          name: 'KM',
-          data: arrCount,
+          name: 'users',
+          data: graph_lenght,
           color: 'green'
           }]
 

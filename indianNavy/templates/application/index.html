@@ -214,9 +214,10 @@ window.onclick = function(event) {
                                {% if request.user.is_authenticated %}
                                  
                                  <div class="dropdown">
-                                    <a onclick="myFunction()" class="dropbtn">{{user.email}}</a>
-                                <div id="myDropdown" class="dropdown-content">
-                                  <a href="#home">Loout</a>
+                                    <a onclick="myFunction()" class="dropbtn">{{user.name}}</a>
+
+                                <div id="myDropdown" class="dropdown-content"><input type="hidden" id="userId" value="{{user.name}}">
+                                  <a href="#home">Logout</a>
                                  
                                 </div>
                         </div>
@@ -673,7 +674,7 @@ window.onclick = function(event) {
                 <div class="col-lg-4 col-sm-4 col-xs-12">
                   <aside id="sidebar" class="left-bar">
                      <div class="banner-sidebar">
-                       <span id="ack_mens"><h4 style="font-weight:bold;background-color: #000066;color:#fff"><img src="{% static 'images/publication.png' %}" width="10%" height="10%">Recent Artcle</h4></span>
+                       <span id="ack_menspoliciy"><h4 style="font-weight:bold;background-color: #000066;color:#fff"><img src="{% static 'images/publication.png' %}" width="10%" height="10%">Recent Artcle</h4></span>
 
                         <table><tbody id="public_obj"><tr><td></td></tr></tbody>
                               <tr><td><button onclick="myFunction()" class="thbg-color" style="background: #800000; background-color: #800000;

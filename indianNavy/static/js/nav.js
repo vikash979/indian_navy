@@ -75,6 +75,7 @@ $(window).on('load',function(){
                   dataType: "json",
                   //data:{"parent_id":"parent_id"},
                    success: function(response){
+                    
                       for(var i=0;i<response.results.length;i++){
                         if(i % 2 == 0){
                            $('#publication').append(`<tr style="border-bottom:1px dotted grey"><td style="border-bottom:1px dotted grey; padding-right:10px;"><img src="http://192.168.0.6:8088/static/images/man.png" class="rounded-circle" alt="Cinque Terre" width="50" height="50"> </td><td style="border-bottom:1px dotted grey; color:#000" width="100%"><span style=" text-align: justify; overflow: hidden;

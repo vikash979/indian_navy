@@ -147,7 +147,7 @@ window.onclick = function(event) {
                                {% if request.user.is_authenticated %}
                                  
                                  <div class="dropdown">
-  <a onclick="myFunction()" class="dropbtn">{{user.email}}</a>
+  <a onclick="myFunction()" class="dropbtn">{{user.name}}<input type="hidden" id="userId" value="{{user.name}}"></a>
   <div id="myDropdown" class="dropdown-content">
     <a href="#home">Loout</a>
    

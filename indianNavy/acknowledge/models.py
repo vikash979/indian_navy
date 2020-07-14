@@ -82,8 +82,25 @@ class ack_submenu(models.Model):
 
     def __str__(self):
         return self.submenu_name
+
+
     class Meta:
         ordering = ['-id']
+
+
+class graphDetail(models.Model):
+    added_on = models.DateField(auto_now=True)
+    updated_on = models.DateField(auto_now=True)
+    menu_detail =models.ForeignKey(acknoledge_menu,null=True, related_name ="ask_submenudetail" , blank=True, on_delete=models.SET_NULL)
+#    menu_user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True,on_delete=models.SET_NULL)
+
+
+class graphDetailUsed(models.Model):
+    added_on = models.DateField(auto_now=True)
+    updated_on = models.DateField(auto_now=True)
+    menu_detail =models.ForeignKey(graphDetail,null=True, related_name ="graph_detail" , blank=True, on_delete=models.SET_NULL)
+    menu_user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True,on_delete=models.SET_NULL)
+
 
 
 from django.core.exceptions import ValidationError
