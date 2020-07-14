@@ -838,6 +838,18 @@ var categories = arr;
 // showValues();
 /////////////////////////////////////////////////////////
 // Set up the chart
+
+Highcharts.setOptions({
+        colors: ['#811010', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
+        plotOptions: {
+            column: {
+                colorByPoint: true
+            }
+        }
+
+    });
+
+
 var chart = new Highcharts.Chart({
   chart: {
     renderTo: 'ccontainer',
@@ -848,6 +860,9 @@ var chart = new Highcharts.Chart({
             opacity: '0.1',
             width: 10
         },
+         credits: {
+    enabled: false
+  },
     margin: 100,
     type: 'column',
     options3d: {
@@ -889,17 +904,17 @@ var chart = new Highcharts.Chart({
     },
   yAxis: {
     min: 0,
-    max: 4,
+    //max: 4,
     categories: categories.map(title => title )
   },
   xAxis: {
     min: 0,
-    max: 4,
+   // max: 4,
     categories: categories.map(title => title )
   },
   zAxis: {
     min: 0,
-    max: 4,
+    //max: 4,
     categories: categories.map(title => title )
   },
   legend: {
@@ -907,7 +922,7 @@ var chart = new Highcharts.Chart({
   },
   series: [{
     name: 'User Visited',
-    colorByPoint: true,
+    //colorByPoint: true,
     data: data
   }]
 });

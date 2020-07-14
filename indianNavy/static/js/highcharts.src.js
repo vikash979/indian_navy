@@ -26734,7 +26734,7 @@
                         .addClass('highcharts-credits')
                         .on('click', function () {
                         if (creds.href) {
-                            win.location.href = creds.href;
+                            //win.location.href = creds.href; ///////////////////vikash
                         }
                     })
                         .attr({
