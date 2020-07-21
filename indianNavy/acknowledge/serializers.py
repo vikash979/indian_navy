@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ack_NavyInstructionname, ack_Navyname,graphDetail,  ack_Standardsname,graphDetailUsed,  ack_guidelinesname, ack_publicationname , BRsmenu, ack_subGuidelinesmenu, ack_subpublicationmenu,acknoledge_menu,acknowledge_parent_menu,ack_submenu,ack_policyname,ack_policypolicyfile, ack_subStandardsmenu, ack_subNavy_Orderssmenu, ack_subNavy_Instructionssmenu ,ack_subNHQe_Librarylinesmenu
+from .models import ack_NavyInstructionname, ack_Navyname,graphDetail, ack_publicationname,   ack_Standardsname,graphDetailUsed,  ack_guidelinesname , BRsmenu, ack_subGuidelinesmenu, ack_subpublicationmenu,acknoledge_menu,acknowledge_parent_menu,ack_submenu,ack_policyname,ack_policypolicyfile, ack_subStandardsmenu, ack_subNavy_Orderssmenu, ack_subNavy_Instructionssmenu ,ack_subNHQe_Librarylinesmenu, ack_subMenuPolicyFile
 
 
 
@@ -15,11 +15,7 @@ class AckenowledgePolicynameSerializer(serializers.ModelSerializer):
 		model = ack_policyname
 		fields = '__all__'
 
-class AckenowledgePublicationSerializer(serializers.ModelSerializer):
-	#ask_policyfile = AckenowledgepolicypolicyfileSerializer(many=True)
-	class Meta:
-		model = ack_publicationname
-		fields = '__all__'
+
 
 class AckenowledgeNavyOrdersSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -45,32 +41,30 @@ class AckStandardSerializer(serializers.ModelSerializer):
 		
 
 
-
+class ack_subMenuPolicyFileSubmenuSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = ack_subMenuPolicyFile
+		fields = '__all__'
 
 class AckenowledgeSubmenuSerializer(serializers.ModelSerializer):
-	#policy_name = AckenowledgePolicynameSerializer(many=True)
+	#ack_submenu_children = ack_subMenuPolicyFileSubmenuSerializer(many=True)
 	class Meta:
 		model= ack_submenu
 		fields= '__all__'
 
 class AckenowledgepublicationSubmenuSerializer(serializers.ModelSerializer):
-	#publication_naming 
-	#public_name = AckenowledgePublicationSerializer(many=True)
-	#publication_files = serializers.SerializerMethodField()
+
 
 	class Meta:
 		model= ack_subpublicationmenu
 		fields= '__all__'
 
-	# def get_publication_files(self,obj):
-	# 	print("########",obj['id'])
-	# 	aa = ack_subpublicationmenu.objects.filter(id=obj['id']).values()
-	# 	dataa =  self.AckenowledgepublicationSubmenuSerializer(aa,many=True)
-	# 	return (dataa.data)
-	# def get_public_name(self,obj):
-	# 	print(":::::::::::::::",obj.id)
-	# 	submenu = ack_publicationname.objects.all()
-	# 	return AckenowledgePublicationSerializer(submenu, many=True).data
+
+class AckenowledgePublicationMenuSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = ack_publicationname
+		fields = '__all__'
 
 
 class AckenowledgeGuidelinesSubmenuSerializer(serializers.ModelSerializer):
@@ -80,7 +74,7 @@ class AckenowledgeGuidelinesSubmenuSerializer(serializers.ModelSerializer):
 		fields= '__all__'
 
 class AckenowledgeStandardsSerializer(serializers.ModelSerializer):
-	standards_name = AckStandardSerializer(many=True)
+	#standards_name = AckStandardSerializer(many=True)
 	class Meta:
 		model= ack_subStandardsmenu
 		fields= '__all__'
@@ -116,6 +110,12 @@ class BRsmenuSerializer(serializers.ModelSerializer):
 	class Meta:
 		model= BRsmenu
 		fields= '__all__'
+
+
+class publicationMenuSerializer(serializers.ModelSerializer):
+	class Meta:
+		models = ack_publicationname
+		fields = '__all__'
 
 
 class graphDetailUsedSerializer(serializers.ModelSerializer):

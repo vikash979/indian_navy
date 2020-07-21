@@ -37,6 +37,8 @@
    <link rel="stylesheet" href="{% static 'css/3dslider.css' %}" />
    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+   
    <style>
                           ul, #myULtag {
                             list-style-type: none;
@@ -364,7 +366,9 @@ window.onclick = function(event) {
          </div>
       </section>
 
-      <section id="contant" class="contant" >
+      <section id="contant" class="contant" style=" background:#deeef5; " data-aos="flip-left" data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000">
           <script>
 
 
@@ -397,10 +401,7 @@ window.onclick = function(event) {
               <div class="col-lg-4 col-sm-4 col-xs-4">
                 <aside id="sidebar" class="left-bar">
                   <input type="hidden" name="" id="ackdetail" value="{{menu_bar}}">
-                  <div id="fontSizeWrapper">
-  <label for="fontSize">Font size</label>
-  <input type="range" value="1" id="fontSize" step="0.5" min="0.5" max="5" />
-</div>
+                
 <style>
   
 
@@ -468,6 +469,20 @@ $.ajax({
   }
 
   </script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <style>
+    .blu
+    {
+     
+      border-bottom: 1px solid #cfeceb;
+    }
+    .greens
+    {
+      border-bottom: 1px solid #8080802e;
+    }
+
+  
+  </style>
                <!--    <ul id="myULtag" >
                    <li >
                     </li>
@@ -496,7 +511,7 @@ $.ajax({
                     });
                   }
 
-                   function megafolder(idd,cls)
+                   function megafolder(idd)
 
                           {
                             var ackdetail =  $('#ackdetail').val()
@@ -532,58 +547,118 @@ $.ajax({
                                   dataType: "json",
                                   data:{"menubar":ackdetail},
                                   success: function(response){
-                                    //alert(JSON.stringify(response))
+                                   
+
+                                    
                                     $('#ackid').empty()
-                                    if(response.length > 0)
+                                   var total = response['policy'].length + response['obj'].length
+                                    
+                                      $('#totallength').html( "Total: " + total)
+                                    if((response['policy'].length > 0) || (response['obj'].length > 0))
                                     {
                                       
-                                      $('#totallength').html(response.length)
-                                      if ((ackdetail == 'Policy Letters') || (ackdetail == 'Publications') || (ackdetail == 'Navy_Instructions') || (ackdetail == 'Guidelines') || (ackdetail == 'Standards') )
+                                      
+                                      if ((ackdetail == 'Policy Letters') || (ackdetail == 'Publications') || (ackdetail == 'Navy_Instructions') || (ackdetail == 'Guidelines') || (ackdetail == 'Standards')  || (ackdetail == 'Navy Orders') )
                                       {$('#ackid').empty()
-
-                                        for (var i =0; i<response.length;i++)
+                                    for (var i =0; i<response['policy'].length;i++)
                                         {
-                                        
-                                          
-                                          $('#ackid').append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%;" ><div class="col-lg-2 col-sm-2 col-xs-2"><a href="#" id="image_tag_${response[i]['id']}"><i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
-                                          border-radius: 4px;
-                                          padding: 5px;
-                                          width: auto; border-color: #f7b7c2;"></i> </a></div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" id="fold_${response[i]['id']}" target="_blank">${response[i]['folder_title']}</a></div></div>`)
+
+                                          $('#ackid').append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%; " id="divId_${response['policy'][i]['id']}" ><div class="col-lg-2 col-sm-2 col-xs-2"><a href="#" id="image_tag_${response['policy'][i]['id']}"><i class='fas fa-folder' style='font-size:48px;color:yellow; border: 1px solid #ddd;
+                                            border-radius: 4px;
+                                            padding: 5px;
+                                          width: auto; border-color: #f7b7c2;'></i> </a></div><div class="col-lg-6 col-sm-6 col-xs-6" style="align:justify"><a href="#" id="fold_${response['policy'][i]['id']}" target="_blank">${response['policy'][i]['folder_title']}</a></div><div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify"><img src="http://192.168.0.6:8088/static/images/downloads_icon.png" height="50px"></div><div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify">${response['policy'][i]['added_on'] }</div></div>`)
+                                            if (i % 2 == 0)
+                                          {
+
+                                            
+                                            
+                                            var pubId = `#divId_${response['policy'][i]['id']}`
+                                            //var elem = document.querySelector('#'+pubId);
+                                            //elem.style.border-bottom='1px solid grey'
+                                            $(pubId).addClass('greens');
+                                          }
+                                          else
+                                          {
+                                            var pubId = `#divId_${response['policy'][i]['id']}`
+                                            //var elem = document.querySelector('#'+pubId);
+                                            //elem.style.border-bottom='1px solid grey'
+                                            $(pubId).addClass('blu');
+
+                                          }
+
                                           if (ackdetail == 'Policy Letters')
                                           {
-                                            var links = '#image_tag_'+response[i]['id']
-                                            var foldid = "#fold_"+response[i]['id']
-                                            hrf = "http://192.168.0.8:8088"+response[i]['file']
+                                            var links = '#image_tag_'+response['policy'][i]['id']
+                                            var foldid = "#fold_"+response['policy'][i]['id']
+                                            hrf = "http://192.168.0.6:8088"+response['policy'][i]['file']
                                             $(links).attr("href",hrf );
                                             $(foldid).attr("href",hrf );
 
                                           }
+
                                           if (ackdetail == 'Publications')
                                           {
-                                            var links = '#image_tag_'+response[i]['id']
+                                             var links = '#image_tag_'+response['policy'][i]['id']
                                             //alert(response[i]['file'])
-                                            $(links).html(`<img src="http://192.168.0.8:8088${response[i]['publicationfile']}">`)
+                                            // $(links).html(`<img src="http://192.168.0.6:8088${response['policy'][i]['publicationfile']}" width="50px; height="50px">`)
+                                            $(links).html(`<i class='fas fa-folder' style='font-size:48px;color:yellow'></i>`)
                                           }
                                           if (ackdetail == 'Navy_Instructions')
                                           {
-                                            var links = '#image_tag_'+response[i]['id']
+                                            var links = '#image_tag_'+response['policy'][i]['id']
                                             //alert(response[i]['file'])
-                                            $(links).html(`<img src="http://192.168.0.8:8088${response[i]['file']}">`)
+                                            $(links).html(`<img src="http://192.168.0.6:8088${response[i]['file']}">`)
                                           }
 
                                            if (ackdetail == 'Guidelines')
                                           {
-                                            var links = '#image_tag_'+response[i]['id']
+                                            var links = '#image_tag_'+response['policy'][i]['id']
+
                                             //alert(response[i]['file'])
-                                            $(links).html(`<img src="http://192.168.0.8:8088${response[i]['file']}">`)
+                                            //$(links).html(`<img src="http://192.168.0.6:8088${response[i]['file']}">`)
+                                            $(links).html(`<i class='fas fa-folder' style='font-size:48px;color:yellow'></i>`)
                                           }
+
                                           if (ackdetail == 'Standards')
                                           {
-                                            var links = '#image_tag_'+response[i]['id']
+                                            var links = '#image_tag_'+response['policy'][i]['id']
                                             //alert(response[i]['file'])
-                                            $(links).html(`<img src="http://192.168.0.8:8088${response[i]['file']}">`)
+                                            //$(links).html(`<img src="http://192.168.0.6:8088${response[i]['file']}">`)
+                                            $(links).html(`<i class='fas fa-folder' style='font-size:48px;color:yellow'></i>`)
                                           }
+                                          
+                                          
                                         }
+
+                                       for (var ii =0; ii<response['obj'].length;ii++)
+                                        {
+
+                                              $('#ackid').append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%; " id="divId_${response['obj'][ii]['id']}" ><div class="col-lg-2 col-sm-2 col-xs-2"><a href="#" id="image_tag_${response['obj'][ii]['id']}"><i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
+                                          border-radius: 4px;
+                                          padding: 5px;
+                                          width: auto; border-color: #f7b7c2;"></i> </a></div><div class="col-lg-6 col-sm-6 col-xs-6" style="align:justify"><a href="#" id="fold_${response['obj'][ii]['id']}" target="_blank">${response['obj'][ii]['folder_title']}</a></div><div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify"></div><div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify">${response['obj'][ii]['added_on']}</div></div>`)
+                                            if (ii % 2 == 0)
+                                          {
+
+                                            
+                                            
+                                            var pubId = `#divId_${response['obj'][ii]['id']}`
+                                            //var elem = document.querySelector('#'+pubId);
+                                            //elem.style.border-bottom='1px solid grey'
+                                            $(pubId).addClass('greens');
+                                          }
+                                          else
+                                          {
+                                            var pubId = `#divId_${response['obj'][ii]['id']}`
+                                            //var elem = document.querySelector('#'+pubId);
+                                            //elem.style.border-bottom='1px solid grey'
+                                            $(pubId).addClass('blu');
+
+                                          }
+                                          
+                                        }
+
+                                        
                                       }
                                       
                                     }
@@ -631,6 +706,7 @@ $.ajax({
                                   dataType: "json",
                                   data:{"menubar":ackdetail},
                                   success: function(response){
+
                                    
                                     if(response.length > 0)
                                     {
@@ -659,53 +735,111 @@ $.ajax({
                                   dataType: "json",
                                   data:{"menubar":ackdetail},
                                   success: function(response){
+                                   // alert(JSON.stringify(response['policy']))
                                     $('#ackid').empty()
-                                    if(response.length > 0)
+                                     var total = response['policy'].length + response['obj'].length
+                                    
+                                      $('#totallength').html( "Total: " + total)
+                                    if((response['policy'].length > 0) || (response['obj'].length > 0))
                                     {
-                                      //alert(JSON.stringify(response))
-                                      $('#totallength').html(response.length)
-                                      if ((ackdetail == 'Policy Letters') || (ackdetail == 'Publications') || (ackdetail == 'Navy_Instructions') || (ackdetail == 'Guidelines') || (ackdetail == 'Standards') )
+                                    
+                                     
+                                      if ((ackdetail == 'Policy Letters') || (ackdetail == 'Publications') || (ackdetail == 'Navy_Instructions') || (ackdetail == 'Guidelines') || (ackdetail == 'Standards') || (ackdetail == 'Navy Orders') )
                                       {$('#ackid').empty()
+                                     
 
-                                        for (var i =0; i<response.length;i++)
+                                        for (var i =0; i<response['policy'].length;i++)
                                         {
                                           
-                                          $('#ackid').append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%;" ><div class="col-lg-2 col-sm-2 col-xs-2"><a href="#" id="image_tag_${response[i]['id']}"><i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
-                                          border-radius: 4px;
-                                          padding: 5px;
-                                          width: auto; border-color: #f7b7c2;"></i> </a></div><div class="col-lg-10 col-sm-10 col-xs-10" style="align:justify"><a href="#" id="fold_${response[i]['id']}" target="_blank">${response[i]['folder_title']}</a></div></div>`)
+                                           $('#ackid').append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%; " id="divId_${response['policy'][i]['id']}" ><div class="col-lg-2 col-sm-2 col-xs-2"><a href="#" id="image_tag_${response['policy'][i]['id']}"><i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
+                                            border-radius: 4px;
+                                            padding: 5px;
+                                          width: auto; border-color: #f7b7c2;"></i> </a></div><div class="col-lg-6 col-sm-6 col-xs-6" style="align:justify"><a href="#" id="fold_${response['policy'][i]['id']}" target="_blank">${response['policy'][i]['folder_title']}</a></div><div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify"><img src="http://192.168.0.6:8088/static/images/downloads_icon.png" height="50px"></div><div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify">${response['policy'][i]['added_on'] }</div></div>`)
+                                            if (i % 2 == 0)
+                                          {
+
+                                            
+                                            
+                                            var pubId = `#divId_${response['policy'][i]['id']}`
+                                            //var elem = document.querySelector('#'+pubId);
+                                            //elem.style.border-bottom='1px solid grey'
+                                            $(pubId).addClass('greens');
+                                          }
+                                          else
+                                          {
+                                            var pubId = `#divId_${response['policy'][i]['id']}`
+                                            //var elem = document.querySelector('#'+pubId);
+                                            //elem.style.border-bottom='1px solid grey'
+                                            $(pubId).addClass('blu');
+
+                                          }
                                           if (ackdetail == 'Policy Letters')
                                           {
-                                            var links = '#image_tag_'+response[i]['id']
-                                            var foldid = "#fold_"+response[i]['id']
-                                            hrf = "http://192.168.0.8:8088"+response[i]['file']
+                                            var links = '#image_tag_'+response['policy'][i]['id']
+                                            var foldid = "#fold_"+response['policy'][i]['id']
+                                            hrf = "http://192.168.0.6:8088"+response['policy'][i]['file']
                                             $(links).attr("href",hrf );
                                             $(foldid).attr("href",hrf );
 
                                           }
                                           if (ackdetail == 'Publications')
                                           {
-                                            var links = '#image_tag_'+response[i]['id']
+                                            var links = '#image_tag_'+response['policy'][i]['id']
+                                            
                                             //alert(response[i]['file'])
-                                            $(links).html(`<img src="http://192.168.0.8:8088${response[i]['publicationfile']}">`)
+                                            // $(links).html(`<img src="http://192.168.0.6:8088${response[i]['publicationfile']}">`)
+                                            $(links).html(`<i class='fas fa-folder' style='font-size:48px;color:yellow'></i>`)
                                           }
                                           if (ackdetail == 'Navy_Instructions')
                                           {
                                             var links = '#image_tag_'+response[i]['id']
                                             //alert(response[i]['file'])
-                                            $(links).html(`<img src="http://192.168.0.8:8088${response[i]['file']}">`)
+                                            $(links).html(`<img src="http://192.168.0.6:8088${response[i]['file']}">`)
                                           }
                                            if (ackdetail == 'Guidelines')
                                           {
-                                            var links = '#image_tag_'+response[i]['id']
-                                            //alert(response[i]['file'])
-                                            $(links).html(`<img src="http://192.168.0.8:8088${response[i]['file']}">`)
+                                            var links = '#image_tag_'+response['policy'][i]['id']
+
+                                           
+                                            $(links).html(`<i class='fas fa-folder' style='font-size:48px;color:yellow'></i>`)
                                           }
                                           if (ackdetail == 'Standards')
                                           {
-                                            var links = '#image_tag_'+response[i]['id']
-                                            //alert(response[i]['file'])
-                                            $(links).html(`<img src="http://192.168.0.8:8088${response[i]['file']}">`)
+                                            var links = '#image_tag_'+response['policy'][i]['id']
+                                            
+                                            $(links).html(`<i class='fas fa-folder' style='font-size:48px;color:yellow'></i>`)
+                                          }
+
+                                           if (ackdetail == 'Navy Orders')
+                                          {
+                                            var links = '#image_tag_'+response['policy'][i]['id']
+                                            
+                                            $(links).html(`<i class='fas fa-folder' style='font-size:48px;color:yellow'></i>`)
+                                          }
+                                        }
+                                        for (var ii =0; ii<response['obj'].length;ii++)
+                                        {
+                                           $('#ackid').append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%; " id="divId_${response['obj'][ii]['id']}" ><div class="col-lg-2 col-sm-2 col-xs-2"><a href="#" id="image_tag_${response['obj'][ii]['id']}"><i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
+                                          border-radius: 4px;
+                                          padding: 5px;
+                                          width: auto; border-color: #f7b7c2;"></i> </a></div><div class="col-lg-6 col-sm-6 col-xs-6" style="align:justify"><a href="#" id="fold_${response['obj'][ii]['id']}" target="_blank">${response['obj'][ii]['folder_title']}</a></div><div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify"></div><div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify">${response['obj'][ii]['added_on']}</div></div>`)
+                                            if (ii % 2 == 0)
+                                          {
+
+                                            
+                                            
+                                            var pubId = `#divId_${response['obj'][ii]['id']}`
+                                            //var elem = document.querySelector('#'+pubId);
+                                            //elem.style.border-bottom='1px solid grey'
+                                            $(pubId).addClass('greens');
+                                          }
+                                          else
+                                          {
+                                            var pubId = `#divId_${response['obj'][ii]['id']}`
+                                            //var elem = document.querySelector('#'+pubId);
+                                            //elem.style.border-bottom='1px solid grey'
+                                            $(pubId).addClass('blu');
+
                                           }
                                         }
                                       }
@@ -740,20 +874,35 @@ $('li').has('ul').click(function(event){
                           /*font-family: Open Sans", sans-serif, Arial, Helvetica"*/
                           font-family: -apple-system,BlinkMacSystemFont,open_sanslight,"Helvetica Neue",Helvetica,Arial,sans-serif !important
                         }
-
+                          input[type=text] {
+                          float: right;
+                          padding: 6px;
+                          margin-top: 8px;
+                          margin-right: 16px;
+                          border: none;
+                          font-size: 17px;
+                          border: 1px solid #000;
+                        }
                       </style>
-                        <h4 style="border-bottom:1px dotted grey; background-color: #f39c12; color:#fff; font-weight:bold; " class="fnt"> {{menu_bar}}</h4>
+                      <script>
+                        function file_data()
+                        {
+                          alert("ok")
+                        }
+
+                      </script>
+                        <h4 style="border-bottom:1px dotted grey; background-color: #f39c12; color:#fff; font-weight:bold; " class="fnt"> {{menu_bar}}</h4><input type="text" onchange="file_data()" placeholder="Search..">
                         <div class="team-btw-match">
                           <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="col-lg-4 col-sm-4 col-xs-4"><h3> <span id="totallength"></span></h3>
                             </div>
                             <div class="col-lg-8 col-sm-8 col-xs-8">
                               {% if menu_bar == 'Publications' %}
-                              <img src="http://192.168.0.8:8088/static/images/publications.jpg" width="200px" height="100px" class="rounded-circle" alt="Cinque Terre" >
+                              <img src="http://192.168.0.6:8088/static/images/publications.jpg" width="200px" height="100px" class="rounded-circle" alt="Cinque Terre" >
                               {% elif  menu_bar == 'Policy Letters' %}
-                              <img src="http://192.168.0.8:8088/static/images/policy_red.png" class="rounded-circle" alt="Cinque Terre" >
+                              <img src="http://192.168.0.6:8088/static/images/policy_red.png" class="rounded-circle" alt="Cinque Terre" >
                               {% elif  menu_bar == 'Guidelines' %}
-                              <img src="http://192.168.0.8:8088/static/images/guideleines.png" width="200px" height="100px" class="rounded-circle" alt="Cinque Terre" >
+                              <img src="http://192.168.0.6:8088/static/images/guideleines.png" width="200px" height="100px" class="rounded-circle" alt="Cinque Terre" >
                               {% endif %}
                             </div>
                           </div>
@@ -772,7 +921,7 @@ $('li').has('ul').click(function(event){
                             <div class="col-lg-12 col-sm-12 col-xs-12 {% if forloop.counter|divisibleby:2 %}evens{% else %}odd{% endif %}" style="padding-top:3%; " ><div class="col-lg-2 col-sm-2 col-xs-2"><i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
                               border-radius: 4px;
                               padding: 5px;
-                              width: auto; border-color: #f7b7c2;"></i> </div><div class="col-lg-6 col-sm-6 col-xs-6" style="align:justify"><a href="#">{{manu_bar}}</a></div> <div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify"><a href="#">{% if forloop.counter|divisibleby:2 %}<img src="http://192.168.0.8:8088/static/images/downloads_icon.png" height="50px">{% else %}<img src="http://192.168.0.8:8088/static/images/downloads.png" height="50px"> {% endif %}</a></div><div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify">{{manu_bar.added_on | date:"m-d-Y"}}</div></div>
+                              width: auto; border-color: #f7b7c2;"></i> </div><div class="col-lg-6 col-sm-6 col-xs-6" style="align:justify"><a href="#">{{manu_bar}}</a></div> <div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify"><a href="#">{% if forloop.counter|divisibleby:2 %}<img src="http://192.168.0.6:8088/static/images/downloads_icon.png" height="50px">{% else %}<img src="http://192.168.0.6:8088/static/images/downloads.png" height="50px"> {% endif %}</a></div><div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify">{{manu_bar.added_on | date:"m-d-Y"}}</div></div>
 
                             {% endfor %}
                             {% if policy.has_other_pages == True %}

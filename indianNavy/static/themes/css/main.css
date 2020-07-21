@@ -462,7 +462,7 @@ section.navbar{
 /* title style for h4 tag
 ----------------------------------------------------------------------------- */
 h4.title{
-	background: url(../images/line_bar.png) 0 8px repeat-x;
+	/*background: url(../images/line_bar.png) 0 8px repeat-x;*/
 	padding-bottom:5px;
 	margin-bottom:15px;
 	overflow:hidden;
@@ -491,7 +491,8 @@ h4.title .right{
 	background: url(../images/arrow-p.png) #eee no-repeat center center;	
 }
 h4.title .pull-right{
-	background-color:#fff;
+	/*background-color:#fff;*/
+	background-color: #f4e7d78f
 	padding-left:10px;	
 }
 h4.title .left,h4.title .right{

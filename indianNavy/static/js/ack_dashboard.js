@@ -227,10 +227,10 @@ $(window).on('load',function(){
                                            }
                                      if (kk % 2 ==0)
                                 {
-                                 if ((images =='png') || (images =='PNG') || (images =='JPEG') || (images =='jpg'))
+                                 if ((images =='png') || (images =='PNG') || (images =='JPEG') || (images =='jpg') || (images =='jpeg') )
                                             {
 
-                                              var img  = `<img class="img grens" src="http://192.168.0.6:8088${response[i]['ascpublicationsubmenu_count'][kk]['publicationfile']}" width="40px"; height="40px" style="padding:15px; 15px  15px 15px; color:#FF6347;border-radius: 100%; border: 1px solid #ddd;
+                                              var img  = `<img class="img grens" src="${response[i]['ascpublicationsubmenu_count'][kk]['publicationfile']}" width="40px"; height="40px" style="padding:15px; 15px  15px 15px; color:#FF6347;border-radius: 100%; border: 1px solid #ddd;
                               border-radius: 100%;
                               padding: 5px;
                               width: auto; border-color: #57cdfb; background-color:#8080802e"  >`
@@ -240,6 +240,7 @@ $(window).on('load',function(){
                                             {
                                               img = `&nbsp;`
                                             }
+                                          
 
                                   
                                   $('#publicitiesdocument').append(`<div class="col-lg-12 col-sm-12 col-xs-12" style="padding-top:3%; border-bottom:1px solid #8080802e" >
@@ -264,9 +265,9 @@ $(window).on('load',function(){
                                 else
                                 {
 
-                                   if ((images =='png') || (images =='PNG') || (images =='JPEG') || (images =='jpg'))
+                                   if ((images =='png') || (images =='PNG') || (images =='JPEG') || (images =='jpeg') || (images =='jpg'))
                                             {
-                                              var img  = `<img class="img oranges" src="http://192.168.0.6:8088${response[i]['ascpublicationsubmenu_count'][kk]['publicationfile']}" width="40px"; height="40px" style="padding:15px; 15px  15px 15px; color:#FF6347;border-radius: 100%; border: 1px solid #ddd;
+                                              var img  = `<img class="img oranges" src="${response[i]['ascpublicationsubmenu_count'][kk]['publicationfile']}" width="40px"; height="40px" style="padding:15px; 15px  15px 15px; color:#FF6347;border-radius: 100%; border: 1px solid #ddd;
                               border-radius: 100%;
                               padding: 5px;
                               width: auto; border-color: #f7b7c2; background-color:#f7e5e58a"  >`
@@ -778,66 +779,7 @@ $(window).on('load',function(){
 var data = graph_lenght;
 var categories = arr;
 
-// var chart = new Highcharts.Chart({
-//    chart: {
-//     renderTo: 'ccontainer',
-//     margin: 100,
-//     type: 'column',
-//     options3d: {
-//       enabled: true,
-//       alpha: 10,
-//       beta: 30,
-//       depth: 250,
-//       viewDistance: 5,
-//       fitToPlot: false,
-//       frame: {
-//         bottom: {
-//           size: 1,
-//           color: 'rgba(0,0,0,0.02)'
-//         },
-//         back: {
-//           size: 1,
-//           color: 'rgba(0,0,0,0.04)'
-//         },
-//         side: {
-//           size: 1,
-//           color: 'rgba(0,0,0,0.06)'
-//         }
-//       }
-//     }
-//   },
-//     title: {
-//         text: 'Chart rotation demo'
-//     },
-//     subtitle: {
-//         text: 'Test options by dragging the sliders below'
-//     },
-//     plotOptions: {
-//         column: {
-//             depth: 25
-//         }
-//     },
-//     series: [{
-//         data: graph_lenght
-//     }]
-// });
-
-// function showValues() {
-//     $('#alpha-value').html(chart.options.chart.options3d.alpha);
-//     $('#beta-value').html(chart.options.chart.options3d.beta);
-//     $('#depth-value').html(chart.options.chart.options3d.depth);
-// }
-
-// // Activate the sliders
-// $('#sliders input').on('input change', function () {
-//     chart.options.chart.options3d[this.id] = parseFloat(this.value);
-//     showValues();
-//     chart.redraw(false);
-// });
-
-// showValues();
-/////////////////////////////////////////////////////////
-// Set up the chart
+/////////////////////////////////////////////////////
 
 Highcharts.setOptions({
         colors: ['#811010', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
@@ -889,11 +831,11 @@ var chart = new Highcharts.Chart({
     }
   },
   title: {
-    text: 'Traffic f this page'
+    text: 'Traffic of this page'
   },
   
   subtitle: {
-    text: 'Click and drag the plot area to rotate in space'
+    text: ''
   },
    plotOptions: {
         line: {
@@ -904,18 +846,22 @@ var chart = new Highcharts.Chart({
     },
   yAxis: {
     min: 0,
+        title: {
+        text: 'users Visited'
+    }
     //max: 4,
-    categories: categories.map(title => title )
+    //categories: categories.map(title => title )
   },
   xAxis: {
     min: 0,
    // max: 4,
-    categories: categories.map(title => title )
+    categories: categories.map(title => title ),
+    
   },
   zAxis: {
     min: 0,
     //max: 4,
-    categories: categories.map(title => title )
+    //categories: categories.map(title => title )
   },
   legend: {
     enabled: false

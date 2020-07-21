@@ -14,6 +14,38 @@
    {% block title %}{% endblock %}
    <meta name="keywords" content="">
    <meta name="description" content="">
+
+   <style>
+
+
+    .primary-nav {
+    text-align: center;
+    border-radius: 4px;
+    overflow: hidden; /* [1] */
+}
+
+        .primary-nav a {
+            padding: 1em;
+            background-color: #BADA55;
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .primary-nav a:hover {
+            background-color: #A3C43B;
+        }
+
+
+@import url({% static 'fonts/text_fonts/candal.css'%});
+@import url({% static 'fonts/text_fonts/dafoe.css'%});
+@import url({% static 'fonts/text_fonts/monton.css'%});
+@import url({% static 'fonts/text_fonts/righteous.css'%});
+
+@import url({% static 'fonts/text_fonts/titillium.css'%});
+
+@import url({% static 'fonts/text_fonts/marker.css'%});
+   </style>
    <meta name="author" content="">
    <!-- Site Icons -->
    <link rel="shortcut icon" href="" type="image/x-icon" />
@@ -31,6 +63,7 @@
    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
    <!-- Custom CSS -->
    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+   
    <!-- font family -->
    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
    <!-- end font family -->
@@ -146,7 +179,7 @@ window.onclick = function(event) {
     <!-------------------------------------------slider-------------------->  
 
       <!-- LOADER -->
-      <div id="preloader">
+     <div id="preloader">
          <img class="preloader" src="{% static 'images/loading-img.gif'%}" alt="">
       </div>
       <!-- END LOADER -->
@@ -181,9 +214,10 @@ window.onclick = function(event) {
                                {% if request.user.is_authenticated %}
                                  
                                  <div class="dropdown">
-                                    <a onclick="myFunction()" class="dropbtn">{{user.email}}</a>
-                                <div id="myDropdown" class="dropdown-content">
-                                  <a href="#home">Loout</a>
+                                    <a onclick="myFunction()" class="dropbtn">{{user.name}}</a>
+
+                                <div id="myDropdown" class="dropdown-content"><input type="hidden" id="userId" value="{{user.name}}">
+                                  <a href="#home">Logout</a>
                                  
                                 </div>
                         </div>
@@ -232,360 +266,30 @@ window.onclick = function(event) {
       </section>
       
 
-      <section id="contant" class="contant" style="background:#deeef5; " data-aos="flip-left" data-aos="flip-left"
-     data-aos-easing="ease-out-cubic"
-     data-aos-duration="2000">
-         <div class="container" data-aos="fade-down-right" >
-            <div class="row">
-               <div class="col-lg-6 col-sm-6 col-xs-6" data-aos="fade-left" style="border:1px solid grey; box-shadow: 0px 3px 14px #a39c9c;
-border-top-left-radius: 30px; background-image: url({% static 'images/prod_bg.jpg' %}); " >
-                <!-- <div class="col-lg-12 col-sm-12 col-xs-12" > -->
-                  <div class="main-heading-holder" style="border-right-radius: : 5px solid red; ">
-                       <div class="main-heading sytle-2" data-aos="fade-down-right" data-aos-easing="linear" style="border-bottom: 1px solid #fff">
-                          <h2 style="color:#fff;">Quick Links</h2>
-                          
-                       </div>
-                      </div>
+    
+       <!-------------------------------------------------------->
 
-                        <table class="table table-bordered journeyTable">
-                          <tr><td>
-                                  
-                                  
-                      <div class="col-lg-4 col-sm-4 col-xs-4"  
-                        data-aos-easing="linear" data-aos="flip-left">
-                        <aside id="sidebar" class="left-bar">
-                         <div class="feature-matchs urlImg">
-                            <center style="padding-top:5%" onmouseover="myfunti('ddd_1')" onmouseout="normalImg('ddd_1')" data-aos="flip-left"
-                             data-aos-easing="ease-out-cubic"
-                             data-aos-duration="2000"> <img class="dd" id="dd_1" src="{% static 'images/settings1.png' %}" width="50%" height
-                              ="50%"> <img class="ddd" id="ddd_1"  style="display:none " src="{% static 'images/savings21.png' %}" width="50%" height
-                              ="50%" > 
-                            </center>
-                            <center>
-                              <span style=" font-weight: bold">CNS Forum</span>
-                            </center>
-                            
-                          </div>
-                        </aside>
-                    </div>
-                     <div class="col-lg-4 col-sm-4 col-xs-4" >
-                        <aside id="sidebar" class="left-bar">
-                         <div class="feature-matchs urlImg">
-                          <center style="padding-top:5%" onmouseover="myfunti('ddd_2')" onmouseout="normalImg('ddd_2')"> <img class="dd" id="dd_2" src="{% static 'images/settings1.png' %}" width="50%" height
-                        ="50%" data-aos="flip-right"
-                           data-aos-easing="ease-out-cubic"
-                           data-aos-duration="2000"> <img class="ddd" id="ddd_2"  style="display:none " src="{% static 'images/savings21.png' %}" width="50%" height
-                        ="50%" > </center>
-                        <center>
-                        <span style=" font-weight: bold">e-Seva</span>
-                        </center>
-                            
-                          </div>
-                        </aside>
-                    </div>
-                    <div class="col-lg-4 col-sm-4 col-xs-4" data-aos="zoom-out-down"
-                       data-aos-easing="ease-out-cubic"
-                       data-aos-duration="2000">
-                        <aside id="sidebar" class="left-bar">
-                         <div class="feature-matchs urlImg" align="center">
-                          <center style="padding-top:5%" onmouseover="myfunti('ddd_3')" onmouseout="normalImg('ddd_3')"> <img class="dd" id="dd_3" src="{% static 'images/settings1.png' %}" width="50%" height
-                        ="50%" data-aos="zoom-in-right"
-                           data-aos-easing="ease-out-cubic"
-                           data-aos-duration="2000"> <img class="ddd" id="ddd_3"  style="display:none " src="{% static 'images/savings21.png' %}" width="50%" height
-                        ="50%" > </center>
-                        <center>
-                        <span style="font-weight: bold">eOffice</span>
-                        </center>
-                         
-                            
-                          </div>
-                        </aside>
-                    </div>
-                    <div class="col-lg-4 col-sm-4 col-xs-4">
-                        <aside id="sidebar" class="left-bar">
-                         <div class="feature-matchs urlImg">
-                                <center style="padding-top:5%" onmouseover="myfunti('ddd_4')" onmouseout="normalImg('ddd_4')"> <img class="dd" id="dd_4" src="{% static 'images/settings1.png' %}" width="50%" height
-                              ="50%"> <img class="ddd" id="ddd_4"  style="display:none " src="{% static 'images/savings21.png' %}" width="50%" height
-                              ="50%" > </center>
-                            <center>
-                        <span style=" font-weight: bold">Covid-19</span>
-                        </center>
-                          </div>
-                        </aside>
-                    </div>
-                    <div class="col-lg-4 col-sm-4 col-xs-4">
-                        <aside id="sidebar" class="left-bar">
-                         <div class="feature-matchs urlImg">
-                                <center style="padding-top:5%" onmouseover="myfunti('ddd_4')" onmouseout="normalImg('ddd_4')"> <img class="dd" id="dd_4" src="{% static 'images/settings1.png' %}" width="50%" height
-                              ="50%"> <img class="ddd" id="ddd_4"  style="display:none " src="{% static 'images/savings21.png' %}" width="50%" height
-                              ="50%" > </center>
-                            <center>
-                        <span style=" font-weight: bold">NIC Application</span>
-                        </center>
-                          </div>
-                        </aside>
-                    </div>
-                    <div class="col-lg-4 col-sm-4 col-xs-4">
-                        <aside id="sidebar" class="left-bar">
-                         <div class="feature-matchs urlImg">
-                                <center style="padding-top:5%" onmouseover="myfunti('ddd_4')" onmouseout="normalImg('ddd_4')"> <img class="dd" id="dd_4" src="{% static 'images/settings1.png' %}" width="50%" height
-                              ="50%"> <img class="ddd" id="ddd_4"  style="display:none " src="{% static 'images/savings21.png' %}" width="50%" height
-                              ="50%" > </center>
-                            <center>
-                        <span style=" font-weight: bold">Download Center</span>
-                        </center>
-                          </div>
-                        </aside>
-                    </div>
-                  </td></tr></table>
-                <!-- </div> -->
-                
-                 <!--  <aside id="sidebar" class="left-bar" style="background-image: url('{% static "images/award_bg.jpg" %}')" data-aos="zoom-in-up">
-                     <div class="feature-matchs">
-                        <h4 style="border-bottom:1px dotted grey; background-color: #000066; color:#fff; font-weight:bold"><img src= "{% static 'images/enew.png' %}" width="15px" height
-                        ="10px"> CNS Forum</h4>
-                        <div class="team-btw-match">
-
-
-                            <table>
-                            <tr><td><input type="text" name=""  placeholder="Email"> </td></tr>
-                            <tr><td><input type="text" name=""  Placeholder="Password"></td></tr>
-                            <tr><td><input type="text" name=""  Placeholder="Address"></td></tr>
-                            <tr><td><input type="text" name=""  Placeholder="Zip"></td></tr>
-                            
-                            <tr><td><button onclick="myFunction()" class="thbg-color" style="background: #800000; background-color: #800000;
-                              border: none;
-                              color: white;
-                              padding: 10px 20px;
-                              text-align: center;
-                              text-decoration: none;
-                              display: inline-block;
-                              font-size: 16px;
-                              margin: 0px 2px;
-                              cursor: pointer;" id="myBtn">Read more</button></td></tr></table>
-                              <br/><br/>
-
-
-                        </div>
-                     </div>
-                  </aside> -->
-
-
-
-                  <!-- <aside id="sidebar" class="left-bar" data-aos="zoom-out-right" >
-                     <div class="feature-matchs">
-                       <h4 style="border-bottom:1px dotted grey; background-color: #000066; color:#fff; font-weight:bold"><img src= "{% static 'images/enew.png' %}" width="15px" height
-                        ="10px"> Latest Event </h4>
-                        <div class="team-btw-match">
-
-
-                            <table>
-                            
-                            <tr  style="border-bottom-color: coral; border-bottom:1px dotted grey;"><td><div class="col-lg-2 col-sm-2 col-xs-2"><i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
-                              border-radius: 4px;
-                              padding: 5px;
-                              width: auto; border-color: #f7b7c2;"></i> </div></td><td style="color:#ffcb05"><div class="col-lg-12">policy will help organizations .<br/> </div><hr/></td></tr>
-                              <tr  style="border-bottom-color: coral; border-bottom:1px dotted grey;"><td><div class="col-lg-2 col-sm-2 col-xs-2"><i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
-                              border-radius: 4px;
-                              padding: 5px;
-                              width: auto; border-color: #f7b7c2;"></i> </div></td><td style="color:#ffcb05"><div class="col-lg-12">policy will help organizations .<br/> </div><hr/></td></tr>
-                                                        
-                            <tr><td colspan="2"><button onclick="myFunction()" class="thbg-color" style="background: #800000; background-color: #800000;
-                              border: none;
-                              color: white;
-                              padding: 10px 20px;
-                              text-align: center;
-                              text-decoration: none;
-                              display: inline-block;
-                              font-size: 16px;
-                              margin: 0px 2px;
-                              cursor: pointer;" id="myBtn">Read more</button></td></tr></table>
-                              <br/>
-
-
-                        </div>
-                  </aside> -->
-
-               </div>
-               <!-- <div class="col-lg-3 col-sm-4 col-xs-12">
-                  <aside id="sidebar" class="left-bar">
-                     <div class="banner-sidebar">
-                        <img class="img-responsive" src="{% static 'images/img-05.jpg' %}" alt="#" />
-                        <h3>Lorem Ipsum is simply dummy text.<br/>
-                        Lorem Ipsum is simply dummy text<br/><br/><br/>
-
-                     </div>
-                  </aside>
-
-                  <aside id="sidebar" class="left-bar">
-                     <div class="feature-matchs">
-                        <h4 style="border-bottom:1px dotted grey; background-color: #000066; color:#fff; font-weight:bold"><img src= "{% static 'images/enew.png' %}" width="20%" height
-                        ="20%"> Defence NEWS</h4>
-                        <div class="team-btw-match">
-
-
-                          <p style="border-bottom:1px dotted grey ">Home is where the heart is..</p>
-                          <p>Home is where the heart is..</p>
-                          <p>Home is where the heart is..</p>
-                          <p>Home is where the heart is..</p><p>Home is where the heart is..</p>
-                          <p>Home is where the heart is..</p>
-                         
-
-                        </div>
-                     </div>
-                  </aside>
-
-               </div> -->
-
-               <div class="col-lg-6 col-sm-6 col-xs-6" style=" 
-                        ">
-                  <div class="news-post-holder" data-aos="fade-up"
-                    data-aos-duration="3000" style="box-shadow: 0px 3px 14px #a39c9c;background-image: url({% static 'images/prod_bg2.jpg' %});border-top-right-radius: 30px;
-                    ">
-                    
-                     <div class="news-post-widget" id="post_widget_data" data-aos="zoom-in-down" style="box-shadow: 0px 3px 14px #a39c9c; 
-                        border-top-right-radius: 30px; ;border-top-right-radius: 30px;  " >
-
-
-                            <button class="tablink" onclick="openPage('NHQ', this, 'orange')" id="defaultOpen">NHQ</button>
-                            <button class="tablink" onclick="openPage('ENC', this, 'orange')" >ENC</button>
-                            <button class="tablink" onclick="openPage('SNC', this, 'orange')">SNC</button>
-                            <button class="tablink" onclick="openPage('WNC', this, 'orange')">WNC</button>
-                            <button class="tablink"  onclick="openPage('ANC', this, 'orange')">ANC</button>
-                             <table class="table table-bordered journeyTable" >
-                        
-                          <tr style="border-top-right-radius: 30px"><td>
-   
-
-                            <div id="NHQ" class="tabcontent">
-                              <div class="col-lg-12 col-sm-12 col-xs-12"> <h3>NHQ e-General Message</h3></div>
-                               
-                              <ul class="nav nav-tabs">
-                              <!-- <li class="active"><a data-toggle="tab" href="#home">Home</a></li> -->
-                              <li class="active"><a data-toggle="tab" href="#home" style="border-radius: 50px">CNS</a></li>
-                              <li><a data-toggle="tab" href="#menu2" style="border-radius: 50px">IG</a></li>
-                              <li><a data-toggle="tab" href="#menu3" >DNG</a></li>
-                              </ul>
-
-                              <div class="tab-content" data-aos="fade-right"
-                                 data-aos-offset="300"
-                                 data-aos-easing="ease-in-sine">
-                                <div id="home" class="tab-pane fade in active">
-                                  <!-- <h3>CNS</h3> -->
-                                 <table style="background-color: #f0f0f0" id="nhqemsg">
-                                    
-                                                    
-                                                 
-                                  </table>
-                                </div>
-       
-                                <div id="menu2" class="tab-pane fade" data-aos="fade-left"
-                                 data-aos-offset="300"
-                                 data-aos-easing="ease-in-sine">
-                                  
-                                  <table style="background-color: #f0f0f0" id="menu2nhw">
-                                    
-                                                    
-                                                 
-                                  </table>
-                                </div>
-      
-
-                                <div id="menu3" class="tab-pane fade" data-aos="flip-left"
-                                 data-aos-easing="ease-out-cubic"
-                                 data-aos-duration="2000">
-                                  
-                                  f
-                                 
-                                </div>
-     
-                              </div>
-
-                            </div>
-                            <div id="WNC" class="tabcontent">
-                               <h3>WNC  e-General Message </h3>
-                               <style>
-                                .bs-example{
-                                    margin: 20px;
-                                  }
-                                </style>
-
-
-                               <p>Some news this fine day!</p>
-                            </div>
-
-                            <div id="ENC" class="tabcontent">
-                              <div class="col-lg-12 col-sm-12 col-xs-12"> <h3>ENC e-General Message</h3></div>
-             
-                                  <ul class="nav nav-tabs">
-                                    <!-- <li class="active"><a data-toggle="tab" href="#home">Home</a></li> -->
-                                    <li class="active"><a data-toggle="tab" href="#homeeg" style="border-radius: 50px">EG</a></li>
-                                    <li><a data-toggle="tab" href="#menu2vng" style="border-radius: 50px">VNG</a></li>
-                                    <li><a data-toggle="tab" href="#menu3fotna" >FOTNA</a></li>
-                                  </ul>
-
-                                  <div class="tab-content">
-                                    <div id="homeeg" class="tab-pane fade in active">
-                                      <!-- <h3>CNS</h3> -->
-                                     <table style="background-color: #800000" id="menu2eg">
-                                        
-                                                        
-                                                     
-                                      </table>
-                                    </div>
-               
-                                    <div id="menu2vng" class="tab-pane fade">
-                                      
-                                      <table style="background-color: #f0f0f0" id="menu2nhwvng">
-                                        
-                                                        
-                                                     
-                                      </table>
-                                    </div>
-              
-
-                                    <div id="menu3fotna" class="tab-pane fade">
-                                      
-                                      <table style="background-color: #f0f0f0" id="menu2nhwfotna">
-                                        
-                                                        
-                                                     
-                                      </table>
-                                     
-                                    </div>
-             
-                                  </div>
-                              </div>
-
-                            <div id="SNC" class="tabcontent">
-                             <h3>SNC e-General Message</h3>
-                             <p>Get in touch, or swing by for a cup of coffee.</p>
-                            </div>
-
-                            <div id="ANC" class="tabcontent">
-                             <h3>ANC e-General Message</h3>
-                             <p>Who we are and what we do.</p>
-                            </div>
-                         
-
-                      </div>
-                       </td></tr>
-                        </table>
-                        
-                  </div>
-                  <style>
+ <style>
                     .urlImg
                     {
-                      border-bottom:1px dotted grey; background-color: #ADD8E6; color:#000; font-weight:bold;
+                      /*border-bottom:1px dotted grey; */
+                      /*background-color: #009BD4;*/
+                       color:#000; font-weight:bold;
+                       /*border:1px solid dotted grey;*/
+
 
                     }
                     .urlImg:hover {
-                        background-color: #000066;
-                        -webkit-transform: scale(1.2);
-                        color:#fff;
-                  -ms-transform: scale(1.2);
-                  transform: scale(1.2);
+                        background-color: #fff;
+                        -webkit-transform: scale(1.1);
+                        color:#000;
+                  -ms-transform: scale(1.1);
+                  transform: scale(1.1);
                   transition: 1s ease;
+                 /* border:1px solid dotted grey;*/
+                   top: 0;
+                  /* visibility: visible;*/
+    /*position: absolute;*/
 
                       }
                     </style>
@@ -621,88 +325,6 @@ border-top-left-radius: 30px; background-image: url({% static 'images/prod_bg.jp
 
                       }
                     </script>
-                 <!--  <div class="col-lg-12 col-sm-12 col-xs-12">
-                     <div class="main-heading-holder">
-                       <div class="main-heading sytle-2" data-aos="fade-down-right" data-aos-easing="linear">
-                          <h2>Quick Links</h2>
-                          
-                       </div>
-                      </div>
-
-                    <div class="col-lg-6 col-sm-6 col-xs-6" style="width: 50%;height:80%;"  data-aos-easing="linear" data-aos="flip-left">
-                        <aside id="sidebar" class="left-bar">
-                         <div class="feature-matchs urlImg">
-                            <center style="padding-top:5%" onmouseover="myfunti('ddd_1')" onmouseout="normalImg('ddd_1')" data-aos="flip-left"
-                             data-aos-easing="ease-out-cubic"
-                             data-aos-duration="2000"> <img class="dd" id="dd_1" src="{% static 'images/settings1.png' %}" width="50%" height
-                              ="50%"> <img class="ddd" id="ddd_1"  style="display:none " src="{% static 'images/savings21.png' %}" width="50%" height
-                              ="50%" > 
-                            </center>
-                            <center>
-                              <span style=" font-weight: bold">Esewa</span>
-                            </center>
-                            
-                          </div>
-                        </aside>
-                    </div>
-                     <div class="col-lg-6 col-sm-6 col-xs-6" style="width: 50%;height:80%;">
-                        <aside id="sidebar" class="left-bar">
-                         <div class="feature-matchs urlImg">
-                          <center style="padding-top:5%" onmouseover="myfunti('ddd_2')" onmouseout="normalImg('ddd_2')"> <img class="dd" id="dd_2" src="{% static 'images/settings1.png' %}" width="50%" height
-                        ="50%" data-aos="flip-right"
-                           data-aos-easing="ease-out-cubic"
-                           data-aos-duration="2000"> <img class="ddd" id="ddd_2"  style="display:none " src="{% static 'images/savings21.png' %}" width="50%" height
-                        ="50%" > </center>
-                        <center>
-                        <span style=" font-weight: bold">Eoffice</span>
-                        </center>
-                            
-                          </div>
-                        </aside>
-                    </div>
-                    <div class="col-lg-6 col-sm-6 col-xs-6" style="width: 50%;height:80%;" data-aos="zoom-out-down"
-                       data-aos-easing="ease-out-cubic"
-                       data-aos-duration="2000">
-                        <aside id="sidebar" class="left-bar">
-                         <div class="feature-matchs urlImg" align="center">
-                          <center style="padding-top:5%" onmouseover="myfunti('ddd_3')" onmouseout="normalImg('ddd_3')"> <img class="dd" id="dd_3" src="{% static 'images/settings1.png' %}" width="50%" height
-                        ="50%" data-aos="zoom-in-right"
-                           data-aos-easing="ease-out-cubic"
-                           data-aos-duration="2000"> <img class="ddd" id="ddd_3"  style="display:none " src="{% static 'images/savings21.png' %}" width="50%" height
-                        ="50%" > </center>
-                        <center>
-                        <span style="font-weight: bold">Publication</span>
-                        </center>
-                         
-                            
-                          </div>
-                        </aside>
-                    </div>
-                    <div class="col-lg-6 col-sm-6 col-xs-6" style="width: 50%;height:80%;">
-                        <aside id="sidebar" class="left-bar">
-                         <div class="feature-matchs urlImg">
-                                <center style="padding-top:5%" onmouseover="myfunti('ddd_4')" onmouseout="normalImg('ddd_4')"> <img class="dd" id="dd_4" src="{% static 'images/settings1.png' %}" width="50%" height
-                              ="50%"> <img class="ddd" id="ddd_4"  style="display:none " src="{% static 'images/savings21.png' %}" width="50%" height
-                              ="50%" > </center>
-                            <center>
-                        <span style=" font-weight: bold">CNS Forum</span>
-                        </center>
-                          </div>
-                        </aside>
-                    </div>
-
-                    
-                  </div> -->
-                  
-                  
-
-               </div>
-            </div>
-         </div>
-      </section>
-       <!-------------------------------------------------------->
-
-
    
       <script>
       var myvar;
@@ -735,6 +357,312 @@ border-top-left-radius: 30px; background-image: url({% static 'images/prod_bg.jp
 
                   <!------------------------------------------------------------------------>
 
+<section id="contant" class="contant" style="background:#deeef5; " data-aos="flip-left" data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-6 col-sm-6 col-xs-12">
+                  <aside id="sidebar" class="left-bar" style="background-image: url({% static 'images/prod_bg2.jpg' %});border-top-left-radius: 30px;box-shadow: 10px 10px 5px grey;">
+                     <div class="banner-sidebar" >
+                      <div class="main-heading-holder" style="">
+                       <div class="main-heading sytle-2" data-aos="fade-down-right" data-aos-easing="linear" style="border-bottom: 1px solid #fff">
+                        <style>
+                          
+                        </style>
+                          <h2 style="color:#fff;text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;  text-shadow: 2px 2px grey;" >Quick Links</h2>
+                          
+                          
+                       </div>
+                       <div class="col-lg-12 col-sm-12 col-xs-12">
+                           <!--  <table class="table table-bordered journeyTable" style="">
+                          <tr><td> -->
+                                  
+                                  
+                      <div class="col-lg-4 col-sm-6 col-xs-12"  
+                        data-aos-easing="linear" data-aos="flip-left">
+                        <aside id="sidebar" class="left-bar"  style="border-radius: 25px;box-shadow:2px  2px;">
+                         <div class="feature-matchs urlImg"  style="border-radius: 25px;box-shadow:2px  2px;">
+                            <center style="padding-top:5%" onmouseover="myfunti('ddd_1')" onmouseout="normalImg('ddd_1')" data-aos="flip-left"
+                             data-aos-easing="ease-out-cubic"
+                             data-aos-duration="2000"> <img class="dd" id="dd_1" src="{% static 'images/quick_icons/application.png' %}" width="50%" height
+                              ="50%"> <img class="ddd" id="ddd_1"  style="display:none " src="{% static 'images/quick_icons/application2.png' %}" width="50%" height
+                              ="50%" > 
+                            </center>
+                            <center>
+                              <span style=" font-weight: bold">CNS Forum</span>
+                            </center>
+                            
+                          </div>
+                        </aside>
+                      </div>
+                      <div class="col-lg-4 col-sm-6 col-xs-12" >
+                        <aside id="sidebar" class="left-bar"  style="border-radius: 25px;box-shadow:2px  2px;">
+                         <div class="feature-matchs urlImg"  style="border-radius: 25px;box-shadow:2px  2px;">
+                          <center style="padding-top:5%" onmouseover="myfunti('ddd_2')" onmouseout="normalImg('ddd_2')"> <img class="dd" id="dd_2" src="{% static 'images/quick_icons/covid-192.png' %}" width="50%" height
+                          ="50%" data-aos="flip-right"
+                           data-aos-easing="ease-out-cubic"
+                           data-aos-duration="2000"> <img class="ddd" id="ddd_2"  style="display:none " src="{% static 'images/quick_icons/covid-191.png' %}" width="50%" height
+                          ="50%" > </center>
+                          <center>
+                          <span style=" font-weight: bold">Covid-19</span>
+                          </center>
+                            
+                          </div>
+                        </aside>
+                      </div>
+                      <div class="col-lg-4 col-sm-6 col-xs-12" data-aos="zoom-out-down"
+                         data-aos-easing="ease-out-cubic"
+                         data-aos-duration="2000" >
+                          <aside id="sidebar" class="left-bar" style="border-radius: 25px;box-shadow:2px  2px;">
+                           <div class="feature-matchs urlImg" align="center" style="border-radius: 25px;box-shadow:2px  2px;">
+                            <center style="padding-top:5%" onmouseover="myfunti('ddd_3')" onmouseout="normalImg('ddd_3')"> <img class="dd" id="dd_3" src="{% static 'images/quick_icons/2Skyblue.png' %}" width="50%" height
+                            ="50%" data-aos="zoom-in-right"
+                             data-aos-easing="ease-out-cubic"
+                             data-aos-duration="2000"> <img class="ddd" id="ddd_3"  style="display:none " src="{% static 'images/quick_icons/2NavyBlue.png' %}" width="50%" height
+                            ="50%" > </center>
+                            <center>
+                            <span style="font-weight: bold">eOffice</span>
+                            </center>
+                           
+                              
+                            </div>
+                          </aside>
+                      </div>
+                      <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <aside id="sidebar" class="left-bar" style="border-radius: 25px;box-shadow:2px  2px;">
+                         <div class="feature-matchs urlImg" style="border-radius: 25px;box-shadow:2px  2px;">
+                                <center style="padding-top:5%" onmouseover="myfunti('ddd_6')" onmouseout="normalImg('ddd_6')"> <img class="dd" id="dd_6" src="{% static 'images/quick_icons/download2.png' %}" width="50%" height
+                              ="50%"> <img class="ddd" id="ddd_6"  style="display:none " src="{% static 'images/quick_icons/download.png' %}" width="50%" height
+                              ="50%" > </center>
+                            <center>
+                        <span style=" font-weight: bold">Download Center</span>
+                        </center>
+                          </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12" >
+                        <aside id="sidebar" class="left-bar" style="border-radius: 25px;box-shadow:2px  2px;">
+                         <div class="feature-matchs urlImg" style="border-radius: 25px;box-shadow:2px  2px;">
+                                <center style="padding-top:5%" onmouseover="myfunti('ddd_4')" onmouseout="normalImg('ddd_4')"> <img class="dd" id="dd_4" src="{% static 'images/quick_icons/e-message1.png' %}" width="50%" height
+                              ="50%"> <img class="ddd" id="ddd_4"  style="display:none " src="{% static 'images/quick_icons/e-message2.png' %}" width="50%" height
+                              ="50%" > </center>
+                            <center>
+                        <span style=" font-weight: bold">e-Seva</span>
+                        </center>
+                          </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <aside id="sidebar" class="left-bar" style="border-radius: 25px;box-shadow:2px  2px;">
+                         <div class="feature-matchs urlImg" style="border-radius: 25px;box-shadow:2px  2px;">
+                                <center style="padding-top:5%" onmouseover="myfunti('ddd_5')" onmouseout="normalImg('ddd_5')"> <img class="dd" id="dd_5" src="{% static 'images/quick_icons/publication2.png' %}" width="50%" height
+                              ="50%"> <img class="ddd" id="ddd_5"  style="display:none " src="{% static 'images/quick_icons/publication1.png' %}" width="50%" height
+                              ="50%" > </center>
+                            <center>
+                        <span style=" font-weight: bold">NIC Application</span>
+                        </center>
+                          </div>
+                        </aside>
+                    </div>
+                    
+                    <div class="col-lg-4 col-sm-6 col-xs-12"  
+                        data-aos-easing="linear" data-aos="flip-left">
+                        <aside id="sidebar" class="left-bar" style="border-radius: 25px;box-shadow:2px  2px;">
+                         <div class="feature-matchs urlImg" style="border-radius: 25px;box-shadow:2px  2px;">
+                            <center style="padding-top:5%" onmouseover="myfunti('ddd_7')" onmouseout="normalImg('ddd_7')" data-aos="flip-left"
+                             data-aos-easing="ease-out-cubic"
+                             data-aos-duration="2000"> <img class="dd" id="dd_7" src="{% static 'images/quick_icons/policy1.png' %}" width="50%" height
+                              ="50%"> <img class="ddd" id="ddd_7"  style="display:none " src="{% static 'images/quick_icons/policy2.png' %}" width="50%" height
+                              ="50%" > 
+                            </center>
+                            <center>
+                              <span style=" font-weight: bold">Policy</span>
+                            </center>
+                            
+                          </div>
+                        </aside>
+                      </div>
+                      <div class="col-lg-4 col-sm-6 col-xs-12"  
+                        data-aos-easing="linear" data-aos="flip-left">
+                        <aside id="sidebar" class="left-bar" style="border-radius: 25px;box-shadow:2px  2px;">
+                         <div class="feature-matchs urlImg" style="border-radius: 25px;box-shadow:2px  2px;">
+                            <center style="padding-top:5%" onmouseover="myfunti('ddd_8')" onmouseout="normalImg('ddd_8')" data-aos="flip-left"
+                             data-aos-easing="ease-out-cubic"
+                             data-aos-duration="2000"> <img class="dd" id="dd_8" src="{% static 'images/quick_icons/publication2.png' %}" width="50%" height
+                              ="50%"> <img class="ddd" id="ddd_8"  style="display:none " src="{% static 'images/quick_icons/publication1.png' %}" width="50%" height
+                              ="50%" > 
+                            </center>
+                            <center>
+                              <span style=" font-weight: bold">Publication</span>
+                            </center>
+                            
+                          </div>
+                        </aside>
+                      </div>
+                      <div class="col-lg-4 col-sm-6 col-xs-12"  
+                        data-aos-easing="linear" data-aos="flip-left">
+                        <aside id="sidebar" class="left-bar" style="border-radius: 25px;box-shadow:2px  2px;">
+                         <div class="feature-matchs urlImg" style="border-radius: 25px;box-shadow:2px  2px;">
+                            <center style="padding-top:5%" onmouseover="myfunti('ddd_9')" onmouseout="normalImg('ddd_9')" data-aos="flip-left"
+                             data-aos-easing="ease-out-cubic"
+                             data-aos-duration="2000"> <img class="dd" id="dd_9" src="{% static 'images/quick_icons/e-seva2.png' %}" width="50%" height
+                              ="50%"> <img class="ddd" id="ddd_9"  style="display:none " src="{% static 'images/savings21.png' %}" width="50%" height
+                              ="50%" > 
+                            </center>
+                            <center>
+                              <span style=" font-weight: bold">E-Message</span>
+                            </center>
+                            
+                          </div>
+                        </aside>
+                      </div>
+
+                      
+                  <!-- </td></tr></table> -->
+                 <!--  <br/>
+                  <br/> -->
+                          </div>
+                      </div>
+
+                      
+                            
+                     </div>
+                  </aside>
+
+               </div>
+
+               <div class="col-lg-6 col-sm-6 col-xs-12" data-aos="zoom-in-down"  data-aos-easing="ease-in-cubic"
+     data-aos-duration="2000">
+                  <aside id="sidebar" class="left-bar" style="background-image: url({% static 'images/prod_bgs2.jpg' %});border-top-right-radius: 30px;box-shadow: 10px 10px 5px grey;">
+                     <div class="banner-sidebar" >
+                      <div class="main-heading-holder" style="">
+                        <div class="main-heading sytle-2" data-aos="fade-down-right" data-aos-easing="linear" style="border-bottom: 1px solid #fff">
+                        <style>
+                          
+                        </style>
+                          <h2 style="color:#fff;text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;  text-shadow: 2px 2px grey;" > E-General Message</h2>
+                          
+                          
+                       </div>
+                       
+                      <div class="col-lg-12 col-sm-12 col-xs-12">
+                        
+                           
+                            <div class="news-post-widget table table-bordered journeyTable" id="post_widget_data " data-aos="zoom-in-down" style="box-shadow: 0px 3px 14px #a39c9c; 
+                          border-top-left-radius: 30px; border-top-right-radius: 30px;  " >
+                          <button class="tablink tabs__item "  data-aos="zoom-in-up" style="box-shadow: 0px 3px 14px #a39c9c; 
+                          border-top-left-radius: 30px; border-top-left-radius: 30px;  " onclick="openPage('NHQ', this, 'orange')" id="defaultOpen">NHQ</button>
+                          <button class="tablink tabs__link"  data-aos="zoom-in-left" onclick="openPage('ENC', this, 'orange')" >ENC</button>
+                          <button class="tablink tabs__link"  data-aos="zoom-in-right" onclick="openPage('SNC', this, 'orange')">SNC</button>
+
+                          <button class="tablink tabs__link"  data-aos="zoom-in-right" onclick="openPage('WNC', this, 'orange')">WNC</button>
+                          <button class="tablink tabs__link"  data-aos="zoom-in-right" onclick="openPage('ANC', this, 'orange')" style="box-shadow: 0px 3px 14px #a39c9c; 
+                          border-top-right-radius: 30px; border-top-right-radius: 30px;  ">ANC</button>
+
+
+                          
+                         
+                          <div id="NHQ" class="tabcontent">
+                                <div class="col-lg-12 col-sm-12 col-xs-12" > <h3>NHQ e-General Message</h3></div>
+
+
+
+                                <button class="tablinks tabs__item "  data-aos="zoom-in-up"  onclick="openPagee('NHQQ', this, 'orange')" id="defaultOpens">CNS</button>
+                            <button class="tablinks tabs__link"  data-aos="zoom-in-left" onclick="openPagee('ENCC', this, 'orange')" >ENC</button>
+                            <button class="tablinks tabs__link"  data-aos="zoom-in-right" onclick="openPagee('SNCC', this, 'orange')">SNC</button>
+                            <button class="tablink"  data-aos="zoom-out-in" onclick="openPagee('WNCC', this, 'orange')">WNC</button>
+                           
+
+                            <div id="NHQQ" class=" col-lg-12 col-sm-12 col-xs-12 tabcontents">
+                              kjkjk
+
+                             
+
+                            </div>
+                             
+
+                          </div>
+                          <div id="WNC" class="tabcontent">
+                                 <h3>WNC  e-General Message </h3>
+                                 <style>
+                                  .bs-example{
+                                      margin: 20px;
+                                    }
+                                  </style>
+
+
+                                 <p>Some news this fine day!</p>
+                          </div>
+                          <div id="ENC" class="tabcontent">
+                            <div class="col-lg-12 col-sm-12 col-xs-12"> <h3>ENC e-General Message</h3></div>
+                            <ul class="nav nav-tabs">
+                                      <!-- <li class="active"><a data-toggle="tab" href="#home">Home</a></li> -->
+                                      <li class="active"><a data-toggle="tab" href="#homeeg" style="border-radius: 50px">EG</a></li>
+                                      <li><a data-toggle="tab" href="#menu2vng" style="border-radius: 50px">VNG</a></li>
+                                      <li><a data-toggle="tab" href="#menu3fotna" >FOTNA</a></li>
+                            </ul>
+                            <div class="tab-content">
+                              <div id="homeeg" class="tab-pane fade in active">
+                                        <!-- <h3>CNS</h3> -->
+                                       <table style="background-color: #800000" id="menu2eg">
+                                          
+                                                          
+                                                       
+                                        </table>
+                                      </div>
+                 
+                                      <div id="menu2vng" class="tab-pane fade">
+                                        
+                                        <table style="background-color: #f0f0f0" id="menu2nhwvng">
+                                          
+                                                          
+                                                       
+                                        </table>
+                                      </div>
+                
+
+                                      <div id="menu3fotna" class="tab-pane fade">
+                                        
+                                        <table style="background-color: #f0f0f0" id="menu2nhwfotna">
+                                          
+                                                          
+                                                       
+                                        </table>
+                                       
+                                      </div>
+
+                            </div>
+                          </div>
+                          <div id="SNC" class="tabcontent">
+                               <h3>SNC e-General Message</h3>
+                               <p>Get in touch, or swing by for a cup of coffee.</p>
+                          </div>
+
+                          <div id="ANC" class="tabcontent">
+                           <h3>ANC e-General Message</h3>
+                           <p>Who we are and what we do.</p>
+                          </div>
+
+                      </div>
+                          
+                          </div>
+                      </div>
+
+                      
+                            
+                     </div>
+                  </aside>
+
+               </div>
+
+                
+               
+               
+
+            </div>
+         </div>
+      </section>
 
                   
 
@@ -742,12 +670,13 @@ border-top-left-radius: 30px; background-image: url({% static 'images/prod_bg.jp
       <section id="contant" class="contant" style="padding:5px 25px;">
          <div class="container">
             <div class="row">
-               <div class="col-lg-4 col-sm-4 col-xs-12">
+
+                <div class="col-lg-4 col-sm-4 col-xs-12">
                   <aside id="sidebar" class="left-bar">
                      <div class="banner-sidebar">
-                       <span id="publication" ><h4 style="border-bottom:1px dotted grey; background-color: #000066; color:#fff; font-weight:bold"><img src= "{% static 'images/publication.png' %}" width="10%" height
-                        ="10%%"> Recent Artcle</h4></span>  <hr>
-                            <table><tbody id="public_obj"><tr><td></td></tr></tbody>
+                       <span id="ack_menspoliciy"><h4 style="font-weight:bold;background-color: #000066;color:#fff"><img src="{% static 'images/publication.png' %}" width="10%" height="10%">Recent Artcle</h4></span>
+
+                        <table><tbody id="public_obj"><tr><td></td></tr></tbody>
                               <tr><td><button onclick="myFunction()" class="thbg-color" style="background: #800000; background-color: #800000;
                                 border: none;
                                 color: white;
@@ -758,52 +687,72 @@ border-top-left-radius: 30px; background-image: url({% static 'images/prod_bg.jp
                                 font-size: 16px;
                                 margin: 0px 2px;
                                 cursor: pointer;" id="myBtn">Read more</button></td></tr></table>
+
+                      
                      </div>
                   </aside>
 
                </div>
 
-               <div class="col-lg-4 col-sm-4 col-xs-12" data-aos="flip-left"  data-aos-easing="ease-in-cubic"
-     data-aos-duration="2000">
+
+               <div class="col-lg-4 col-sm-4 col-xs-12">
                   <aside id="sidebar" class="left-bar">
                      <div class="banner-sidebar">
-                       <span id="publicities"><h4 style="font-weight:bold;background-color: #000066; color:#fff"><img src="{% static 'images/policy.jpeg' %}" width="15%" height="15%">Recent Document</h4> </span>  <hr>
-                          <table style="border-bottom:1px dotted grey"><tbody id="public_objs"><tr style="border-bottom:1px solid black;"><td></td></tr></tbody><tr><td><button onclick="myFunction()" class="thbg-color" style="background: #800000; background-color: #800000;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 0px 2px;
-  cursor: pointer;" id="myBtn">Read more</button></td></tr></table>
+                      <span id="publicitiesdocument"><h4 style="font-weight:bold;background-color: #000066;color:#fff"><img src="{% static 'images/policy.jpeg' %}" width="15%" height="15%">Recent Document</h4></span>
+
+                        <table><tbody id="public_obj"><tr><td></td></tr></tbody>
+                              <tr><td><button onclick="myFunction()" class="thbg-color" style="background: #800000; background-color: #800000;
+                                border: none;
+                                color: white;
+                                padding: 10px 20px;
+                                text-align: center;
+                                text-decoration: none;
+                                display: inline-block;
+                                font-size: 16px;
+                                margin: 0px 2px;
+                                cursor: pointer;" id="myBtn">Read more</button></td></tr></table>
+
+
+                     
+                          <!-- <span id="latest_new"><marquee scrolldelay="100" direction="up" onmouseout="this.setAttribute('scrollamount', 2, 0);" onmouseover="this.setAttribute('scrollamount', 0, 0); "><table ><tbody id="lastest_obj"></tbody></tbody></table></marquee></span>   <hr>
+                          <br/> -->
                      </div>
                   </aside>
 
                </div>
 
-                <div class="col-lg-4 col-sm-4 col-xs-12">
+               <div class="col-lg-4 col-sm-4 col-xs-12">
                   <aside id="sidebar" class="left-bar">
                      <div class="banner-sidebar">
                        <span id="LatestNews"><h4 style="font-weight:bold;background-color: #000066;color:#fff"><img src="{% static 'images/discussion.png' %}" width="15%" height="15%">Recent Discussions</h4></span>
 
-                       <table><tr><td><span ><center style="background-color: #fadadd; border-radius: 10px; width:30%; margin-top: 2%">Punjab News</center></span><span><h3>Coronavirus | Punjab extends lockdown by two weeks, with limited relief </h3></span>
+                       <table><tr><td><span ><center style="background-color: #fadadd; border-radius: 10px; width:30%; margin-top: 2%">Punjab News</center></span><span style=""><h3 style=" overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 1; /* number of lines to show */
+   -webkit-box-orient: vertical;">Coronavirus | Punjab extends lockdown by two weeks, with limited relief </h3></span>
                         <br/>
                         <span style="padding-left:5%">Comments : </span> &nbsp;&nbsp;&nbsp; <span style="padding-left:5%">Views: 30 April 2020</span></td></tr>
-                      <tr><td><span ><center style="margin-top: 2%; background-color: #fadadd; border-radius: 10px; width:30%">Punjab News</center></span><span><h3>Coronavirus | Punjab extends lockdown by two weeks, with limited relief </h3></span>
+                      <tr><td><span ><center style="margin-top: 2%; background-color: #fadadd; border-radius: 10px; width:30%">Punjab News</center></span><span><h3 style=" overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 1; /* number of lines to show */
+   -webkit-box-orient: vertical;">Coronavirus | Punjab extends lockdown by two weeks, with limited relief </h3></span>
                         <br/>
                         <span style="padding-left:5%">Comments : </span> &nbsp;&nbsp;&nbsp; <span style="padding-left:5%">Views: 30 April 2020</span></td></tr>
-                        <tr><td><span ><center style="margin-top: 2%; background-color: #fadadd; border-radius: 10px; width:30%">Punjab News</center></span><span><h3>Coronavirus | Punjab extends lockdown by two weeks, with limited relief </h3></span>
+                        <tr><td><span ><center style="margin-top: 2%; background-color: #fadadd; border-radius: 10px; width:30%">Punjab News</center></span><span><h3 style=" overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 1; /* number of lines to show */
+   -webkit-box-orient: vertical;">Coronavirus | Punjab extends lockdown by two weeks, with limited relief </h3></span>
                         <br/>
-                        <span style="padding-left:5%">Comments : </span> &nbsp;&nbsp;&nbsp; <span style="padding-left:5%">Views: 30 April 2020</span></td></tr>
+                        <span style="padding-left:5%">Comments : </span> &nbsp;&nbsp;&nbsp; <span style="padding-left:5%">Views: 30 April 2020</span>
+                        <br/><br></td></tr>
 
-                        <tr><td><span ><center style="margin-top: 2%; background-color: #fadadd; border-radius: 10px; width:30%">Punjab News</center></span><span><h3>Coronavirus | Punjab extends lockdown by two weeks, with limited relief </h3></span>
+                        
+                       <!--  <tr><td><span ><center style="margin-top: 2%; background-color: #fadadd; border-radius: 10px; width:30%">Punjab News</center></span><span><h3>Coronavirus | Punjab extends lockdown by two weeks, with limited relief </h3></span>
                         <br/>
-                        <span style="padding-left:5%">Comments : </span> &nbsp;&nbsp;&nbsp; <span style="padding-left:5%">Views: 30 April 2020</span></td></tr>
-                        <tr><td><span ><center style="margin-top: 2%; background-color: #fadadd; border-radius: 10px; width:30%">Punjab News</center></span><span><h3>Coronavirus | Punjab extends lockdown by two weeks, with limited relief </h3></span>
-                        <br/>
-                        <span style="padding-left:5%">Comments : </span> &nbsp;&nbsp;&nbsp; <span style="padding-left:5%">Views: 30 April 2020</span></td></tr>
+                        <span style="padding-left:5%">Comments : </span> &nbsp;&nbsp;&nbsp; <span style="padding-left:5%">Views: 30 April 2020</span></td></tr> -->
 
                       </table>
                           <!-- <span id="latest_new"><marquee scrolldelay="100" direction="up" onmouseout="this.setAttribute('scrollamount', 2, 0);" onmouseover="this.setAttribute('scrollamount', 0, 0); "><table ><tbody id="lastest_obj"></tbody></tbody></table></marquee></span>   <hr>
@@ -812,6 +761,13 @@ border-top-left-radius: 30px; background-image: url({% static 'images/prod_bg.jp
                   </aside>
 
                </div>
+
+
+               
+
+            
+
+               
                
                <!-- <div class="col-lg-4 col-sm-4 col-xs-12">
                   <aside id="sidebar" class="left-bar">
@@ -827,6 +783,78 @@ border-top-left-radius: 30px; background-image: url({% static 'images/prod_bg.jp
             </div>
          </div>
       </section>
+       <style>
+
+    .img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+   border-radius: 50%;
+  background-color:#8080802e
+  padding: 5px;
+ 
+}
+
+.img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+
+    .grens
+    {
+       border-radius: 50%;
+  background-color:#eaf2ec
+    }
+    .oranges
+    {
+      border-radius: 50%;
+  background-color:#f7e5e58a
+
+    }
+.dropbtn {
+  
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {color: #ddd;}
+
+.show {display: block;}
+
+
+
+/*------------------------------------------*/
+
+
+</style>
       <style>
         .btn_gallery {
           display: inline-block;
@@ -848,12 +876,11 @@ border-top-left-radius: 30px; background-image: url({% static 'images/prod_bg.jp
 
       </style>
     <section id="contant" class="contant" style="padding:5px 25px;" >
-         <div class="container" data-aos="fade-left">
-            <div class="row">
+         
                <div class="col-lg-12 col-sm-12 col-xs-12">
                 <div class="main-heading-holder">
                <div class="main-heading sytle-2" data-aos="fade-down-right" data-aos-easing="linear">
-                  <h2>Gallery</h2>
+                  <h2 style="">Gallery</h2>
                   
                </div>
             </div>
@@ -889,40 +916,42 @@ border-top-left-radius: 30px; background-image: url({% static 'images/prod_bg.jp
              </div>
            </div>
          </section>
+        
    <div class="matchs-info" data-aos="zoom-in-right" data-aos-easing="linear" >
         <!-- <div class="col-md-12" > -->
 
-          <div id="team-slider" data-aos="fade-down-right" data-aos-easing="linear" data-aos="flip-left">
+          <div id="team-slider" data-aos="fade-down-right" data-aos-easing="linear"data-aos="flip-left">
              
              <!-- <div class="container" id="defence_zone"> 
              </div> -->
-             <div class="team-holder theme-padding">
-         <div class="container" data-aos="zoom-out-down" style="background-image: url('{% static "images/bk.jpg" %}');" >
+            <div class="team-holder theme-padding">
+              <div class="container" data-aos="zoom-out-down" style="background-image: url('{% static "images/bk.jpg" %}');" >
             
            
-      <h4 class="title">
-                           <span class="pull-left" data-aos="zoom-in-up"><span class="text" data-aos="zoom-in-down"><span class="line" data-aos="flip-right">Know Your  <strong data-aos="zoom-in-right">Officers</strong></span></span></span>
-                           <span class="pull-right">
-                              <a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
-                           </span>
-                        </h4>
-            <div id="myCarousel" class="myCarousel carousel slide" data-aos="flip-left" >
-               <div class="carousel-inner" >
-                  <div class="active item" id="firstthumbnail">
-                     
-                  </div>
-                  <div class="item" id="seconditem">
-                               
-                              </div>
-               </div>
+                <h4 class="title">
+                  <span class="pull-left" data-aos="zoom-in-up"><span class="text" data-aos="zoom-in-down"><span class="line" data-aos="flip-right">Know Your  <strong data-aos="zoom-in-right">Officers</strong></span></span></span>
+                   <span class="pull-right">
+                      <a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+                 </span>
+                </h4>
+                <div id="myCarousel" class="myCarousel carousel slide" data-aos="flip-left" >
+                   <div class="carousel-inner" >
+                      <div class="active item" id="firstthumbnail">
+                         
+                      </div>
+                      <div class="item" id="seconditem">
+                                   
+                      </div>
+                   </div>
+                </div>
+              </div>
             </div>
-         </div>
-      </div>
           </div>
 
 
 
         </div>
+      
       <!-- </div> -->
 
 

@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from .models import ack_subStandardsmenu, ack_subGuidelinesmenu, graphDetail, ack_subNavy_Instructionssmenu,graphDetailUsed,  ack_subpublicationmenu, ack_publicationname, acknoledge_menu,acknowledge_parent_menu,ack_submenu, ack_policyname, ack_policypolicyfile, ack_publicationfile
+from .models import ack_subStandardsmenu, ack_Navyname, ack_subNavy_Orderssmenu, ack_subGuidelinesmenu,ack_Standardsname,  graphDetail,ack_guidelinesname,  ack_subMenuPolicyFile, ack_subNavy_Instructionssmenu,graphDetailUsed,  ack_subpublicationmenu, ack_publicationname, acknoledge_menu,acknowledge_parent_menu,ack_submenu, ack_policyname, ack_policypolicyfile, ack_publicationfile
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -44,6 +44,11 @@ class policyViewApi(APIView):
 
 		except ack_policyname.DoesNotExist:
 			return Http404
+
+	def sub_child(self,id,lists=None):
+		
+		policy = ack_publicationname.objects.filter(parent_ob_id__in=id).count()
+		
 	def get_all_children(self,id,menubar,lists=None):
 		
 		policy_name =  menubar.objects.filter(id=id ).values()
@@ -57,10 +62,17 @@ class policyViewApi(APIView):
 			else:
 				polilistss= lists
 				polilistss.append(pli['id'])
-			policy_names =  menubar.objects.filter(parent_ob_id=pli['id'] ).values()
+			#policy_names =  menubar.objects.filter(parent_ob_id=pli['id'] ).values()
+			policy_data =  menubar.objects.filter(parent_ob_id=pli['id'] ).values('id')
 			
-			for policy_obj in policy_names:
-		 		self.get_all_children(policy_obj['id'],menubar,lists=polilistss)
+			
+			for policy_obj in policy_data:
+				
+				self.get_all_children(policy_obj['id'],menubar,lists=polilistss)
+
+
+		 		
+
 		
 		
 		return polilistss
@@ -72,28 +84,64 @@ class policyViewApi(APIView):
 		if request.GET.get('menubar') == 'Publications':
 			policy_name =  ack_subpublicationmenu.objects.filter(parent_id=id).values()
 			policy_Id = self.get_all_children(id,ack_subpublicationmenu)
+			subpolicy = self.sub_child(policy_Id)
+			
 
-			policy_name =  ack_subpublicationmenu.objects.filter(id__in=policy_Id)
+			#policy_name =  ack_subpublicationmenu.objects.filter(id__in=policy_Id)
+			policy_name =  ack_subpublicationmenu.objects.filter(parent_ob_id__in=id)
+			
 			
 			serializer = serializers.AckenowledgepublicationSubmenuSerializer(policy_name,many=True)
+			data_record = {"policy": serializer.data}
+			policy_file = ack_publicationname.objects.filter(parent_ob_id=id)
+			data_obj = serializers.AckenowledgePublicationMenuSerializer(policy_file, many=True)
+			data_record['obj']  = data_obj.data
+			
+
 		elif request.GET.get('menubar') == 'Navy_Instructions':
 			policy_Id = self.get_all_children(id,ack_subNavy_Instructionssmenu)
 			
 			policy_name =  ack_subNavy_Instructionssmenu.objects.filter(id__in=policy_Id)
 			
 			serializer = serializers.AckNavyInstmenuSerializer(policy_name,many=True)
+
+
+
 		elif request.GET.get('menubar') == 'Guidelines':
 			policy_Id = self.get_all_children(id,ack_subGuidelinesmenu)
-			policy_name =  ack_subGuidelinesmenu.objects.filter(id__in=policy_Id)
+			#policy_name =  ack_subGuidelinesmenu.objects.filter(id__in=policy_Id) #ack_guidelinesname
+			policy_name =  ack_subGuidelinesmenu.objects.filter(parent_ob_id__in=id)
 			serializer = serializers.AckenowledgeGuidelinesSubmenuSerializer(policy_name,many=True)
+			data_record = {"policy": serializer.data}
+			policy_file = ack_guidelinesname.objects.filter(parent_ob_id=id)
+			data_obj = serializers.AckguideLineSerializer(policy_file, many=True)
+			data_record['obj']  = data_obj.data
+
+
+
+		elif request.GET.get('menubar') == 'Navy Orders':
+			policy_Id = self.get_all_children(id,ack_subNavy_Orderssmenu)
+			#policy_name =  ack_subGuidelinesmenu.objects.filter(id__in=policy_Id) #ack_guidelinesname
+			policy_name =  ack_subNavy_Orderssmenu.objects.filter(parent_ob_id__in=id)
+			serializer = serializers.Ack_subNavy_OrderssmenuSerializer(policy_name,many=True)
+			data_record = {"policy": serializer.data}
+			policy_file = ack_Navyname.objects.filter(parent_ob_id=id)
+			data_obj = serializers.AckenowledgeNavyOrdersSerializer(policy_file, many=True)
+			data_record['obj']  = data_obj.data
 
 			
 		elif request.GET.get('menubar') == 'Standards':
 			policy_Id = self.get_all_children(id,ack_subStandardsmenu)
-			policy_name =  ack_subStandardsmenu.objects.filter(id__in=policy_Id)
+			#policy_name =  ack_subStandardsmenu.objects.filter(id__in=policy_Id)
+			policy_name =  ack_subStandardsmenu.objects.filter(parent_ob_id__in=id)
 			serializer = serializers.AckenowledgeStandardsSerializer(policy_name,many=True)
+			data_record = {"policy": serializer.data}
+			policy_file = ack_Standardsname.objects.filter(parent_ob_id=id)
+			data_obj = serializers.AckStandardSerializer(policy_file, many=True)
+			data_record['obj']  = data_obj.data
 			
 		else:
+
 			
 			policy_name =  ack_submenu.objects.filter(id=id ).values()# | ack_submenu.objects.filter(parent_ob_id=id ).values()
 			policy =[]
@@ -101,11 +149,20 @@ class policyViewApi(APIView):
 			policyId =  self.get_all_children(id,ack_submenu)
 			
 			policy_name =  ack_submenu.objects.filter(id__in=policyId )
+			policy_file = ack_subMenuPolicyFile.objects.filter(parent_ob_id=id)
+			#print("::::::::::::::",policy_file.values())
 
 
 			
 			serializer = serializers.AckenowledgeSubmenuSerializer(policy_name,many=True)
-		return Response(serializer.data)
+			data_record = {"policy": serializer.data}
+			data_obj = serializers.ack_subMenuPolicyFileSubmenuSerializer(policy_file, many=True)
+			
+			data_record['obj']  = data_obj.data
+			#print("@@@@@@@@@@@@@@@@@@@@:::::::::::::::",data_record)
+			
+			
+		return Response(data_record)
 
 class policynewViewApi(APIView):
 	def get(self,request,id,sm_id):
@@ -166,6 +223,11 @@ class AckpolicyAPI(APIView):
 		elif request.GET.get('menubar') == 'Standards':
 			submenu = ack_subStandardsmenu.objects.filter(parent_ob_id=id,folder_type=2)
 			serializer = serializers.AckenowledgeStandardsSerializer(submenu,many=True)
+			
+		elif request.GET.get('menubar') == 'Navy Orders':
+			submenu = ack_subNavy_Orderssmenu.objects.filter(parent_ob_id=id,folder_type=2)
+			serializer = serializers.Ack_subNavy_OrderssmenuSerializer(submenu,many=True)
+
 		else:
 			submenu = ack_subpublicationmenu.objects.filter(parent_ob_id=id)
 			serializer = serializers.AckenowledgepublicationSubmenuSerializer(submenu,many=True)
@@ -222,7 +284,7 @@ class acknowledgeViews(TemplateView):
 		#print("@@@",id)
 		#policy_data = ack_submenu.objects.all()
 		menu_id = graphDetail.objects.get(menu_detail=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id).id
-		print("##########@@@@@",menu_id)
+		
 		graph_obj = graphDetailUsed.objects.create(menu_detail_id=menu_id, menu_user=User.objects.get(username=request.user.username))
 
 		#graphuser = graphDetailUsed.objects.create(menu_detail_id=menu_id, menu_user=User.objects.get(username=request.user.username))
@@ -231,15 +293,9 @@ class acknowledgeViews(TemplateView):
 			policy_data = ack_submenu.objects.filter(parent_ob_id=None, parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
 			
 			
-			#userdata = graphDetailUser.objects.create(menu_detail=)
-			#policy_data = ack_submenu.objects.all()
-
-			
 			
 
-			#menuobj= request.GET.get('array').split(",")
-
-			policy_obj = ack_submenu.objects.all()
+			policy_obj = ack_submenu.objects.filter(parent_ob__isnull=False)
 			#context_data['idd'] = int(request.GET.get('array'))
 		elif request.GET.get('menutype') =='Publications' :
 			policy_data = ack_subpublicationmenu.objects.filter(parent_ob_id=None,parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
@@ -257,6 +313,10 @@ class acknowledgeViews(TemplateView):
 		elif request.GET.get('menutype') =='Navy_Instructions' :
 			policy_data = ack_subNavy_Instructionssmenu.objects.filter(parent_ob_id=None,parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
 			policy_obj = ack_subNavy_Instructionssmenu.objects.all().order_by("-id")
+
+		elif request.GET.get('menutype') =='Navy Orders' :
+			policy_data = ack_subNavy_Orderssmenu.objects.filter(parent_ob_id=None,parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
+			policy_obj = ack_subNavy_Orderssmenu.objects.all().order_by("-id")
 
 		else:
 			policy_obj = ack_policyname.objects.all().values().order_by("-id")
