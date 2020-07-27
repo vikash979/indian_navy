@@ -42,8 +42,8 @@
      background-image: none;
 }
  div.full-slider .carousel .item {
-     height: 100vh;
-     min-height: 100vh;
+     height: 70vh;
+     min-height: 70vh;
      width: 100%;
 }
  .carousel .icon-container {
@@ -493,6 +493,7 @@
 }
  .full-slider {
      position: relative;
+    /* margin-top: 20px;*/
 }
  div.full-slider .carousel-indicators {
      bottom: 145px;
@@ -1802,7 +1803,31 @@ body section#contant .post-info span h4 {
      border-bottom: none;
 }
 /** responsive **/
+
+@media(max-width: 1000px)
+{
+
+     
+}
  @media (max-width:768px) {
+
+
+/*-----------------------------------------*/
+
+
+
+
+
+/*----------------------------------------------*/
+
+
+
+
+
+
+
+
+
      .header-top .right_top_section {
          display: none;
     }

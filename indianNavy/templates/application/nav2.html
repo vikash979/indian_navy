@@ -2,9 +2,7 @@
 <div class="heading-slider">
 	<div class="header-bottom">
 	                  <div class="row">
-	                     <div class="col-md-12">
-
-	                        <div class="full">
+	                      <div class="full">
 	                           <div class="main-menu-section">
 	                              <div class="menu">
 	                                 <nav class="navbar navbar-inverse">
@@ -19,39 +17,39 @@
 	                                    </div>
 	                                    <div class="collapse navbar-collapse js-navbar-collapse" style="">
 	                                       <ul class="nav navbar-nav">
-	                                          <li class="{% if request.resolver_match.url_name == 'applicationheasing' %}active{% endif %}" ><a href="index.html">Home</a>
+	                                          <li class="{% if request.resolver_match.url_name == 'applicationheasing' %}active{% endif %}" ><a href="index.html"><img src="{% static 'images/icon/home.png' %}" alt=""></br>&nbsp;&nbsp;&nbsp;&nbsp;Home</a>
 
     
 	                                          </li>
 
 	                                          <li class="dropdown mega-dropdown">
-	                                             <a href="match" class="dropdown-toggle" data-toggle="dropdown">Application<span class="caret"></span></a>
+	                                             <a href="match" class="dropdown-toggle" data-toggle="dropdown"><img src="{% static 'images/icon/Social Site2.png' %}" alt=""></br>Application<span class="caret"></span></a>
 	                                             <ul class="dropdown-menu mega-dropdown-menu" id="menu_bar"> 
 	                                             </ul>
 	                                          </li>
 
-	                                          <li class="dropdown mega-dropdown {% if request.resolver_match.url_name == 'ackpolicy' %}active{% endif %}"><a href="/acknowledge/ack_menudetail/" class="dropdown-toggle" data-toggle="dropdown">KM<span class="caret"></span></a>
+	                                          <li class="dropdown mega-dropdown {% if request.resolver_match.url_name == 'ackpolicy_detail' or request.resolver_match.url_name == 'ackpolicy' %}active{% endif %}"><a href="/acknowledge/ackpolicy_detail/" class="dropdown-toggle" ><img src="{% static 'images/icon/services.png' %}" alt=""></br>Knowledge<span class="caret"></span></a>
 	                                          	<ul class="dropdown-menu mega-dropdown-menu" id="ack_bar">
 	                                          	</ul>
 
 	                                          </li>
-	                                          <li class="dropdown mega-dropdown"><a href="match" class="dropdown-toggle" data-toggle="dropdown">Social Sites<span class="caret"></span></a>
+	                                          <li class="dropdown mega-dropdown"><a href="match" class="dropdown-toggle" data-toggle="dropdown">&nbsp;<img src="{% static 'images/icon/dashoboard.png' %}" alt=""></br>Social Sites<span class="caret"></span></a>
 	                                          	<ul class="dropdown-menu mega-dropdown-menu" id="socialmenu_bar">
 	                                          	</ul>
 	                                          </li>
-	                                          <li class="dropdown mega-dropdown"><a href="match" class="dropdown-toggle" data-toggle="dropdown">Other Sites<span class="caret"></span></a>
+	                                          <li class="dropdown mega-dropdown"><a href="match" class="dropdown-toggle" data-toggle="dropdown">&nbsp;<img src="{% static 'images/icon/social.png' %}" alt=""><br/>Other Sites<span class="caret"></span></a>
 	                                          	<ul class="dropdown-menu mega-dropdown-menu" id="othersiters_bar"> 
 	                                             </ul>
 	                                          </li>
-	                                          <li><a href="contact.html">Services</a></li>
+	                                          <li><a href="contact.html"><img src="{% static 'images/icon/other_sites.png' %}" alt=""><br/>Services</a></li>
 	                                          
-	                                          <li><a href="contact.html">Information</a></li>
-	                                          <li><a href="contact.html">Help</a></li>
+	                                          <li><a href="contact.html"><img src="{% static 'images/information21.png' %}" alt=""></br>Information</a></li>
+	                                          <li><a href="contact.html"><img src="{% static 'images/icon/help.png' %}" alt=""></br>&nbsp;&nbsp;&nbsp;&nbsp;Help</a></li>
 	                                       </ul>
 	                                    </div>
 	                                    <!-- /.nav-collapse -->
 	                                 </nav>
-	                                 <div class="search-bar">
+	                                 <!-- <div class="search-bar">
 	                                    <div id="imaginary_container">
 	                                       <div class="input-group stylish-input-group">
 	                                          <input type="text" class="form-control"  placeholder="Search" >
@@ -60,11 +58,10 @@
 	                                          </span>
 	                                       </div>
 	                                    </div>
-	                                 </div>
+	                                 </div> -->
 	                              </div>
 	                           </div>
 	                        </div>
-	                     </div>
 	                  </div>
 	 </div>
  </div>

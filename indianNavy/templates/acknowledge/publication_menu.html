@@ -188,9 +188,9 @@ window.onclick = function(event) {
          <img class="preloader" src="{% static 'images/loading-img.gif'%}" alt="">
       </div>
       <!-- END LOADER -->
-      <section id="top">
-         <header>
-            <div class="container">
+     <section id="top" style="background-color: #0e55b6;">
+      
+            <div class="container" >
                <div class="header-top">
                   <div class="row">
                      <div class="col-md-6">
@@ -207,21 +207,17 @@ window.onclick = function(event) {
                      <div class="col-md-6">
                         <div class="right_top_section">
 
-                           <ul class="social-icons pull-left">
-                              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                              <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
-                              <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                           </ul>
+                           
 
                         
 
                                {% if request.user.is_authenticated %}
                                  
                                  <div class="dropdown">
-                                    <a onclick="myFunction()" class="dropbtn">{{user.name}}<input type="hidden" id="userId" value="{{user.name}}"></a>
-                                <div id="myDropdown" class="dropdown-content">
-                                  <a href="#home">Loout</a>
+                                    <a onclick="myFunction()" class="dropbtn">{{user.name}}</a>
+
+                                <div id="myDropdown" class="dropdown-content"><input type="hidden" id="userId" value="{{user.name}}">
+                                  <a href="#home">Logout</a>
                                  
                                 </div>
                         </div>
@@ -241,11 +237,20 @@ window.onclick = function(event) {
                      </div>
                   </div>
                </div>
-                {% include 'application/nav.html' %}
+                
             </div>
-         </header>
-         <div class="full-slider">
-          {% include 'application/knowledgeslider.html' %}
+         </section>
+          <section id="top" style="background-color: #fff;">
+            <div class="container" >
+              {% include 'application/nav.html' %}
+              
+            </div>
+
+          </section>
+
+      <section id="top">
+      <div class="full-slider">
+          {% include 'application/slider.html' %}
 
             <!-- /.carousel -->
             <div class="news">
@@ -267,7 +272,7 @@ window.onclick = function(event) {
                </div>
             </div>
          </div>
-      </section>
+       </section>
       
 
     
