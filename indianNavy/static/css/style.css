@@ -1,0 +1,51 @@
+.tabulation-2 .nav-pills .nav-item .nav-link.active {
+  background: #fff;
+  border-radius: 4px;
+  color: #000000;
+  font-weight: 600;
+  border: 1px solid rgba(0, 0, 0, 0.1); }
+  .tabulation-2 .nav-pills .nav-item .nav-link span {
+    color: #00bdaa; }
+  .tabulation-2 .nav-pills .nav-item .nav-link.active {
+    color: #fff;
+    background: #00bdaa;
+    border: 1px solid #00bdaa; }
+    .tabulation-2 .nav-pills .nav-item .nav-link.active span {
+      color: #fff; }
+
+.tabulation-2 .tab-content {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05); }
+
+.tabulation .nav-pills .nav-item {
+  margin-bottom: 10px; }
+  .tabulation .nav-pills .nav-item .nav-link {
+    background: #fff;
+    border-radius: 4px;
+    color: #000000;
+    font-weight: 600;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    line-height: 30px; }
+    .tabulation .nav-pills .nav-item .nav-link span {
+      color: #00bdaa;
+      font-size: 30px; }
+    .tabulation .nav-pills .nav-item .nav-link.active {
+      color: #fff;
+      background: #00bdaa;
+      border: 1px solid #00bdaa; }
+      .tabulation .nav-pills .nav-item .nav-link.active span {
+        color: #fff; }
+
+.tabulation .tab-content {
+  background: #fff;
+  padding: 0; }
+  .tabulation .tab-content .img {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px; }
+  .tabulation .tab-content h3 {
+    font-weight: 600; }
+    .tabulation .tab-content h3 a {
+      color: #000000; }

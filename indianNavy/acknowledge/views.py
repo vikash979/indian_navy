@@ -278,6 +278,22 @@ class acknowledgeViews(TemplateView):
 
 class acknowledgeViews(TemplateView):
 	template_name = "acknowledge/policy.html"
+
+	def get_all_child(self, menubar,menutype,mainfile,lists=None):
+		policy_name =  menubar.objects.filter(parent_ob_id=None).values('id')
+		#print(menutype,"!!!!!!!!!!!!!", policy_name)
+		policylist = []
+		for pli in policy_name:
+			
+			policy_data =  mainfile.objects.filter(parent_ob_id=pli['id'] ).values()
+			
+			for obj in policy_data:
+				policylist.append(obj)
+		return policylist
+
+
+
+		
 	def get(self, request, id=None):
 		
 		context_data = {}
@@ -295,28 +311,41 @@ class acknowledgeViews(TemplateView):
 			
 			
 
-			policy_obj = ack_submenu.objects.filter(parent_ob__isnull=False)
+			policy_obj = ack_submenu.objects.filter(parent_ob_id=None)
+			policy_Id = self.get_all_child(ack_submenu,request.GET.get('menutype'),ack_subMenuPolicyFile)
 			#context_data['idd'] = int(request.GET.get('array'))
+			
 		elif request.GET.get('menutype') =='Publications' :
 			policy_data = ack_subpublicationmenu.objects.filter(parent_ob_id=None,parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
 			#menuobj= request.GET.get('array').split(",")
 
 			policy_obj = ack_subpublicationmenu.objects.all().order_by("-id")
+			policy_Id = self.get_all_child(ack_subpublicationmenu,request.GET.get('menutype'),ack_publicationname)
 		elif request.GET.get('menutype') =='Guidelines' :
 			policy_data = ack_subGuidelinesmenu.objects.filter(parent_ob_id=None,parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
 			#menuobj= request.GET.get('array').split(",")
 
 			policy_obj = ack_subGuidelinesmenu.objects.all().order_by("-id")
+			policy_Id = self.get_all_child(ack_subGuidelinesmenu,request.GET.get('menutype'),ack_guidelinesname)
+
 		elif request.GET.get('menutype') =='Standards' :
 			policy_data = ack_subStandardsmenu.objects.filter(parent_ob_id=None,parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
 			policy_obj = ack_subStandardsmenu.objects.all().order_by("-id")
+
+			policy_Id = self.get_all_child(ack_subStandardsmenu,request.GET.get('menutype'),ack_Standardsname)
+
+
 		elif request.GET.get('menutype') =='Navy_Instructions' :
 			policy_data = ack_subNavy_Instructionssmenu.objects.filter(parent_ob_id=None,parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
 			policy_obj = ack_subNavy_Instructionssmenu.objects.all().order_by("-id")
 
+			policy_Id = self.get_all_child(ack_subNavy_Instructionssmenu,request.GET.get('menutype'),ack_Standardsname)
+
 		elif request.GET.get('menutype') =='Navy Orders' :
 			policy_data = ack_subNavy_Orderssmenu.objects.filter(parent_ob_id=None,parent_id=acknoledge_menu.objects.get(menu_name=request.GET.get('menutype')).id)
 			policy_obj = ack_subNavy_Orderssmenu.objects.all().order_by("-id")
+
+			policy_Id = self.get_all_child(ack_subNavy_Orderssmenu,request.GET.get('menutype'),ack_Navyname)
 
 		else:
 			policy_obj = ack_policyname.objects.all().values().order_by("-id")
