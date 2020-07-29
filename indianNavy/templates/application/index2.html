@@ -184,9 +184,9 @@ window.onclick = function(event) {
       </div>
       <!-- END LOADER -->
       
-      <section id="top">
-         <header>
-            <div class="container">
+      <section id="top" style="background-color: #0e55b6;">
+      
+            <div class="container" >
                <div class="header-top">
                   <div class="row">
                      <div class="col-md-6">
@@ -233,10 +233,19 @@ window.onclick = function(event) {
                      </div>
                   </div>
                </div>
-                {% include 'application/nav.html' %}
+                
             </div>
-         </header>
-         <div class="full-slider">
+         </section>
+          <section id="top" style="background-color: #fff;">
+            <div class="container" >
+              {% include 'application/nav.html' %}
+
+            </div>
+
+          </section>
+
+      <section id="top">
+      <div class="full-slider">
           {% include 'application/slider.html' %}
 
             <!-- /.carousel -->
@@ -259,7 +268,7 @@ window.onclick = function(event) {
                </div>
             </div>
          </div>
-      </section>
+       </section>
       
 
     
@@ -747,7 +756,7 @@ window.onclick = function(event) {
                   
 
 
-      <section id="contant" class="contant" style="padding:5px 25px; background-color: ##d2ddb0;;" data-aos="fade-right" data-aos-duration="3000" data-aos-duration="1500">
+      <section id="contant" class="contant" style="padding:5px 25px; background-color: #d2ddb0;;" data-aos="fade-right" data-aos-duration="3000" data-aos-duration="1500">
          <div class="container">
             <div class="row">
 
@@ -958,45 +967,50 @@ window.onclick = function(event) {
     <section id="contant" class="contant" style="padding:5px 25px; background:#deeef5; " data-aos="flip-left" data-aos="flip-left"
      data-aos-easing="ease-out-cubic"
      data-aos-duration="2000">
+     <div class="container">
+
          
                <div class="col-lg-12 col-sm-12 col-xs-12">
-                <div class="main-heading-holder">
-               <div class="main-heading sytle-2" data-aos="fade-down-right" data-aos-easing="linear">
-                  <h2 style="">Gallery</h2>
-                  
-               </div>
-            </div>
+                  <div class="main-heading-holder">
+                     <div class="main-heading sytle-2" data-aos="fade-down-right" data-aos-easing="linear">
+                        <h2 style="">Gallery</h2>
+                        
+                     </div>
+                  </div>
+
+
                 
-                <div class="col-lg-4 col-sm-4 col-xs-4" >
-                  <img class="fadein" src="{% static 'images/gallery_thumb4.png' %}">
-                   <div class="galleryContent" data-aos="flip-right"
-     data-aos-easing="ease-out-cubic"
-     data-aos-duration="2000">                                 
-                        <a class="btn_gallery" href="https://eoffice.gov.in/efile.php" data-aos="flip-left"
-     data-aos-easing="ease-out-cubic"
-     data-aos-duration="2000">CNS Message</a>
+                      <div class="col-lg-4 col-sm-4 col-xs-4" >
+                        <img class="fadein" src="{% static 'images/gallery_thumb4.png' %}">
+                         <div class="galleryContent" data-aos="flip-right"
+                              data-aos-easing="ease-out-cubic"
+                              data-aos-duration="2000">                                 
+                              <a class="btn_gallery" href="https://eoffice.gov.in/efile.php" data-aos="flip-left"
+                                data-aos-easing="ease-out-cubic"
+                                data-aos-duration="2000">CNS Message</a>
+                           </div>
+                      </div>
+                      <div class="col-lg-4 col-sm-4 col-xs-4">
+                        <img class="fadein" src="{% static 'images/gallery_thumb3.png' %}">
+                          <div class="galleryContent" data-aos="zoom-in-up"
+                              data-aos-easing="ease-in-cubic"
+                              data-aos-duration="2000">                                 
+                              <a class="btn_gallery" href="https://eoffice.gov.in/efile.php" >Videos</a>
+                           </div>
+                      </div>
+                      <div class="col-lg-4 col-sm-4 col-xs-4">
+                        <img class="fadein" src="{% static 'images/gallery_thumb2.png' %}">
+                          <div class="galleryContent" data-aos="zoom-out-down"
+                              data-aos-easing="ease-right-cubic"
+                              data-aos-duration="2000">                                 
+                                <a class="btn_gallery" href="https://eoffice.gov.in/efile.php">Photos</a>
+                           </div>
+                      </div>
+                      
                      </div>
-                </div>
-                <div class="col-lg-4 col-sm-4 col-xs-4">
-                  <img class="fadein" src="{% static 'images/gallery_thumb3.png' %}">
-                  <div class="galleryContent" data-aos="zoom-in-up"
-     data-aos-easing="ease-in-cubic"
-     data-aos-duration="2000">                                 
-                        <a class="btn_gallery" href="https://eoffice.gov.in/efile.php" >Videos</a>
-                     </div>
-                </div>
-                <div class="col-lg-4 col-sm-4 col-xs-4">
-                  <img class="fadein" src="{% static 'images/gallery_thumb2.png' %}">
-                  <div class="galleryContent" data-aos="zoom-out-down"
-     data-aos-easing="ease-right-cubic"
-     data-aos-duration="2000">                                 
-                        <a class="btn_gallery" href="https://eoffice.gov.in/efile.php">Photos</a>
-                     </div>
-                </div>
-                
-               </div>
-             </div>
-           </div>
+                   </div>
+             <!-- </div>
+           </div> -->
          </section>
         
    <div class="matchs-info" data-aos="zoom-in-right" data-aos-easing="linear"  data-aos="flip-left" data-aos="flip-left"
@@ -1008,7 +1022,7 @@ window.onclick = function(event) {
              
              <!-- <div class="container" id="defence_zone"> 
              </div> -->
-            <div class="team-holder theme-padding" style="background-color: #faf6e3">
+            <div class="team-holder theme-padding" style="background-color: #fcf7bb">
               <div class="container" data-aos="zoom-out-down" style="" >
                 <div class="main-heading-holder">
                <div class="main-heading sytle-2" data-aos="fade-down-right" data-aos-easing="linear">

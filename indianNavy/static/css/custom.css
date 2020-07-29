@@ -401,7 +401,7 @@
  div.menu .dropdown-menu {
      height: 400px;
      width: 147.2%;
-     top: 120px;
+     top: 95px;
 }
  div.menu .dropdown-menu {
      border: none;
@@ -414,6 +414,7 @@
 }
  .navbar.navbar-inverse .navbar-collapse ul.nav.navbar-nav li a:hover, .navbar.navbar-inverse .navbar-collapse ul.nav.navbar-nav li a:focus {
      color: #ffcb05;
+     background-color: orange
 }
 /** search bar **/
  .stylish-input-group .form-control{
