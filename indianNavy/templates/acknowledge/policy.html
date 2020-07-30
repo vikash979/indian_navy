@@ -371,62 +371,53 @@ window.onclick = function(event) {
          </div>
        </section>
 
-      <section id="contant" class="contant" >
-          <script>
-
-
-
-
-            function selectAll(){
-				var items=document.getElementsByName('megafols');
-				for(var i=0; i<items.length; i++){
-					if(items[i].type=='checkbox')
-						items[i].checked=true;
-				}
-			}
-			
-			function UnSelectAll(){
-				var items=document.getElementsByName('megafols');
-				for(var i=0; i<items.length; i++){
-					if(items[i].type=='checkbox')
-						items[i].checked=false;
-				}
-			}	
-
-            
-          </script>
+      <section id="contant" class="contant"  data-aos="flip-left" data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000">
+         
+         
 
             
 
   
-         <div class="container">
+         <div class="container"   >
             <div class="row" id="ack_mens">
               <div class="col-lg-4 col-sm-4 col-xs-4">
-                <aside id="sidebar" class="left-bar">
+                <aside id="sidebar" class="left-bar" style="background-color: #f0f0f0">
                   <input type="hidden" name="" id="ackdetail" value="{{menu_bar}}">
                 
-<style>
-  
 
-  </style>
+            <style>
+            .even
+            {
+              border-bottom: 1px solid grey;
+              background-color: #d0f2f23d;
+            }
+            .odd
+            {
+              border-bottom: 1px dotted black;
+              background-color: #e0f7e082;
+            }
+            </style>
+
+            <ul class="tree" style="background-color: #f0f0f0">
+             {% for manu_bar in sub_menu %}
 
 
-<ul class="tree">
- {% for manu_bar in sub_menu %}
+              
+              
+              <li  class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}" data-aos="zoom-out-up"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000" >
+                <input type="checkbox" id="c_{{manu_bar.id}}" onclick="megafolder(this.id); " />
+                <label class="tree_label"  for="c_{{manu_bar.id}}"><span style=" font-family: Times New Roman, cursive, serif; color:#000; ">{{manu_bar.submenu_name}}</span></label>
+                <ul class="nested" id="nested_{{manu_bar.id}}" >
+                
+                </ul>
+              </li>
 
-
-  
-  
-  <li >
-    <input type="checkbox" id="c_{{manu_bar.id}}" onclick="megafolder(this.id); " />
-    <label class="tree_label"  for="c_{{manu_bar.id}}"><span style="border-bottom:1px dotted black; font-family: Times New Roman, cursive, serif; color:#000; ">{{manu_bar.submenu_name}}</span></label>
-    <ul class="nested" id="nested_{{manu_bar.id}}" >
-    
-    </ul>
-  </li>
-
-  {% endfor %}
-</ul>
+              {% endfor %}
+            </ul>
 
                   <script>
                     function megafolderi(idd)
@@ -452,16 +443,18 @@ window.onclick = function(event) {
                     }
 
                     </script>
-                    <script src="{% static 'js/a076d05399.js' %} ></script>
+                    <script src="{% static 'js/a076d05399.js' %}" ></script>
                     <style>
                       .blu
                       {
                        
                         border-bottom: 1px solid #cfeceb;
+                        background-color: #d0f2f23d;
                       }
                       .greens
                       {
                         border-bottom: 1px solid #8080802e;
+                        background-color: #e0f7e082;
                       }
 
                     
@@ -798,22 +791,22 @@ window.onclick = function(event) {
                           }
 
 
-/*$(function(){
+                    /*$(function(){
 
-$('li').has('ul').click(function(event){
-    if(this == event.target) {
-        $(this).toggleClass('open');
-        $(this).children('ul').toggle();
-    }
-}).addClass('closed').children('ul').hide();
-});*/
-                  </script>
-                  <div class="feature-matchs">
+                    $('li').has('ul').click(function(event){
+                        if(this == event.target) {
+                            $(this).toggleClass('open');
+                            $(this).children('ul').toggle();
+                        }
+                    }).addClass('closed').children('ul').hide();
+                    });*/
+                      </script>
+                  <div class="feature-matchs" >
                   </div>
                 </aside>
               </div>
               <div class="col-lg-8 col-sm-8 col-xs-8">
-                <aside id="sidebar" class="left-bar">
+                <aside id="sidebar" class="left-bar" style="background-color: #f0f0f0">
                      <div class="feature-matchs">
                       <style>
                         .fnt
@@ -834,11 +827,11 @@ $('li').has('ul').click(function(event){
                       <script>
                         function file_data()
                         {
-                          alert("ok")
+                          //alert("ok")
                         }
 
                       </script>
-                        <h4 style="border-bottom:1px dotted grey; background-color: #f39c12; color:#fff; font-weight:bold; " class="fnt"> {{menu_bar}}</h4><input type="text" onchange="file_data()" placeholder="Search..">
+                        <h4 style="border-bottom:1px dotted grey; background-color: #f39c12; color:#fff; font-weight:bold; " class="fnt"> {{menu_bar}}</h4><!-- <input type="text" onchange="file_data()" placeholder="Search.."> -->
                         <div class="team-btw-match">
                           <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="col-lg-4 col-sm-4 col-xs-4"><h3> <span id="totallength"></span></h3>
@@ -865,13 +858,15 @@ $('li').has('ul').click(function(event){
                           </style>
 
                           
-                          <div class="col-lg-12 col-sm-12 col-xs-12" id="ackid" style="">
+                          <div class="col-lg-12 col-sm-12 col-xs-12" id="ackid" style="background-color: #f0f0f0;">
 
                             
 
                             
                             {% for manu_bar in policy %}
-                            <div class="col-lg-12 col-sm-12 col-xs-12 {% if forloop.counter|divisibleby:2 %}evens{% else %}odd{% endif %}" style="padding-top:3%; " ><div class="col-lg-2 col-sm-2 col-xs-2"><i class='fas fa-folder' style='font-size:48px;color:yellow'></i><!-- <i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
+                            <div class="col-lg-12 col-sm-12 col-xs-12 {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}" style="padding-top:3%; " data-aos="zoom-out-down"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000" ><div class="col-lg-2 col-sm-2 col-xs-2"><i class='fas fa-folder' style='font-size:48px;color:yellow'></i><!-- <i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
                               border-radius: 4px;
                               padding: 5px;
                               width: auto; border-color: #f7b7c2;"></i> --> </div><div class="col-lg-6 col-sm-6 col-xs-6" style="align:justify"><a href="#">{{manu_bar}}</a></div> <div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify"><a href="#">{% if forloop.counter|divisibleby:2 %}<img src="http://192.168.0.6:8088/static/images/downloads_icon.png" height="50px">{% else %}<img src="http://192.168.0.6:8088/static/images/downloads.png" height="50px"> {% endif %}</a></div><div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify">{{manu_bar.added_on | date:"m-d-Y"}}</div></div>
@@ -883,7 +878,7 @@ $('li').has('ul').click(function(event){
                               </div>
                               <div class="col-lg-6 col-sm-12 col-xs-12 pagination"   style="">
 
-
+                                
                             {% if policy.has_other_pages == True %}
                              <a href="#">&laquo;</a>
                                 {% if policy.has_other_pages == True %}
@@ -907,7 +902,7 @@ $('li').has('ul').click(function(event){
                                
 
 
-                                <a id="page{{i}}" class="selected active" href="/acknowledge/ackpolicy/?page={{i}}&&menutype={{menu_bar}}">{{i}}</a>
+                                <a id="page{{i}}" class="selected active" href="/acknowledge/ackpolicy/?page={{i}}&&menutype={{menu_bar}}" >{{i}}</a>
 
 
 <!-- 
@@ -947,6 +942,8 @@ $('li').has('ul').click(function(event){
             </div>
          </div>
       </section>
+     
+       {% include 'application/footer.html' %}
       
 
       
@@ -961,68 +958,7 @@ $('li').has('ul').click(function(event){
 
 
      
-      <footer id="footer" class="footer">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-4">
-                  <div class="full">
-                     <div class="footer-widget">
-                        <div class="footer-logo">
-                           <a href="#" style="color:#fff; font-weight:bold;">Naval Intranet Portal</a>
-                        </div>
-                        <!-- <p>Most of our events have hard and easy route choices as we are always keen to encourage new riders.</p> -->
-                        <ul class="social-icons style-4 pull-left">
-                           <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                           <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                           <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
-                           <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-2">
-                  <div class="full">
-                     <div class="footer-widget">
-                        <h3>Menu</h3>
-                        <ul class="footer-menu">
-                           <li><a href="about.html">About Us</a></li>
-                           <li><a href="team.html">Application </a></li>
-                           <li><a href="news.html">Acknowledge</a></li>
-                           <li><a href="matche.html">Blog</a></li>
-                           <li><a href="blog.html">Policy</a></li>
-                           <li><a href="contact.html">Contact Us</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-3">
-                  <div class="full">
-                     <div class="footer-widget">
-                        <h3>Contact us</h3>
-                        <ul class="address-list">
-                           <li><i class="fa fa-map-marker"></i> Lorem Ipsum is simply dummy text of the printing..</li>
-                           <li><i class="fa fa-phone"></i> 123 456 7890</li>
-                           <li><i style="font-size:20px;top:5px;" class="fa fa-envelope"></i> demo@gmail.com</li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-3">
-                  <div class="full">
-                     <div class="contact-footer">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d120615.72236587871!2d73.07890527988283!3d19.140910987164396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1527759905404" width="600" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="footer-bottom">
-            <div class="container">
-               <p>Copyright © 2020 Indian navy.All rights reserved.</p>
-            </div>
-         </div>
-      </footer>
-      <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+      
       <!-- ALL JS FILES -->
 
 
