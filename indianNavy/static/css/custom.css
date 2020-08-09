@@ -496,8 +496,9 @@
      position: relative;
     /* margin-top: 20px;*/
 }
+/*     Vikash */
  div.full-slider .carousel-indicators {
-     bottom: 145px;
+     bottom: 50px;
      margin-bottom: 0;
 }
  .full {

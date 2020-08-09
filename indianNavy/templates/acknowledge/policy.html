@@ -858,27 +858,35 @@ window.onclick = function(event) {
                           </style>
 
                           
-                          <div class="col-lg-12 col-sm-12 col-xs-12" id="ackid" style="background-color: #f0f0f0;">
+                          <div class="col-lg-12 col-sm-12 col-xs-12" id="ackid" style="background-color: #f0f0f0;"  data-aos="flip-right"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000" >
 
                             
 
                             
                             {% for manu_bar in policy %}
-                            <div class="col-lg-12 col-sm-12 col-xs-12 {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}" style="padding-top:3%; " data-aos="zoom-out-down"
+                            <div class="col-lg-12 col-sm-12 col-xs-12 {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}" style="padding-top:3%; "><div class="col-lg-2 col-sm-2 col-xs-2"  data-aos="zoom-out-down"
      data-aos-easing="ease-out-cubic"
-     data-aos-duration="2000" ><div class="col-lg-2 col-sm-2 col-xs-2"><i class='fas fa-folder' style='font-size:48px;color:yellow'></i><!-- <i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
+     data-aos-duration="2000" ><i class='fas fa-folder' style='font-size:48px;color:yellow'></i><!-- <i class="fa fa-file-pdf-o" style="font-size:36px;color:#FF6347; border: 1px solid #ddd;
                               border-radius: 4px;
                               padding: 5px;
-                              width: auto; border-color: #f7b7c2;"></i> --> </div><div class="col-lg-6 col-sm-6 col-xs-6" style="align:justify"><a href="#">{{manu_bar}}</a></div> <div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify"><a href="#">{% if forloop.counter|divisibleby:2 %}<img src="http://192.168.0.6:8088/static/images/downloads_icon.png" height="50px">{% else %}<img src="http://192.168.0.6:8088/static/images/downloads.png" height="50px"> {% endif %}</a></div><div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify">{{manu_bar.added_on | date:"m-d-Y"}}</div></div>
+                              width: auto; border-color: #f7b7c2;"></i> --> </div><div class="col-lg-6 col-sm-6 col-xs-6" style="align:justify"  data-aos="zoom-out-up"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000" ><a href="#">{{manu_bar}}</a></div> <div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify"><a href="#"  data-aos="zoom-out-down"
+     data-aos-easing="ease-out-right"
+     data-aos-duration="2000" >{% if forloop.counter|divisibleby:2 %}<img src="http://192.168.0.6:8088/static/images/downloads_icon.png" height="50px">{% else %}<img src="http://192.168.0.6:8088/static/images/downloads.png" height="50px"> {% endif %}</a></div><div class="col-lg-2 col-sm-2 col-xs-2" style="align:justify"  data-aos="zoom-out-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000" >{{manu_bar.added_on | date:"m-d-Y"}}</div></div>
 
                             {% endfor %}
-                            <div class="col-lg-12 col-sm-12 col-xs-12 pagination"   style="">
+                            <div class="col-lg-12 col-sm-12 col-xs-12 pagination"   style="" >
 
                               <div class="col-lg-6 col-sm-12 col-xs-12 pagination"   style="">
                               </div>
                               <div class="col-lg-6 col-sm-12 col-xs-12 pagination"   style="">
 
-                                
+
                             {% if policy.has_other_pages == True %}
                              <a href="#">&laquo;</a>
                                 {% if policy.has_other_pages == True %}
@@ -902,7 +910,7 @@ window.onclick = function(event) {
                                
 
 
-                                <a id="page{{i}}" class="selected active" href="/acknowledge/ackpolicy/?page={{i}}&&menutype={{menu_bar}}" >{{i}}</a>
+                                <a id="page{{i}}" class="selected active" href="/acknowledge/ackpolicy/?page={{i}}&&menutype={{menu_bar}}"  >{{i}}</a>
 
 
 <!-- 
@@ -942,7 +950,7 @@ window.onclick = function(event) {
             </div>
          </div>
       </section>
-     
+
        {% include 'application/footer.html' %}
       
 

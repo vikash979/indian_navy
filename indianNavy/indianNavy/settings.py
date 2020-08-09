@@ -16,9 +16,8 @@ import ldap
 import os
 from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 
-# Baseline configuration.
-AUTH_LDAP_SERVER_URI = 'ldap://ldap.example.com'
-
+# # Baseline configuration.
+AUTH_LDAP_SERVER_URI = 'ldap://192.168.0.6/'
 AUTH_LDAP_BIND_DN = 'cn=admin,dc=example,dc=com'
 AUTH_LDAP_BIND_PASSWORD = 'sudha007'
 AUTH_LDAP_USER_SEARCH = LDAPSearch(
@@ -26,55 +25,63 @@ AUTH_LDAP_USER_SEARCH = LDAPSearch(
     ldap.SCOPE_SUBTREE,
     '(uid=%(user)s)',
 )
-# Or:
-# AUTH_LDAP_USER_DN_TEMPLATE = 'uid=%(user)s,ou=users,dc=example,dc=com'
 
-# Set up the basic group parameters.
+## # Or:
+AUTH_LDAP_USER_DN_TEMPLATE = 'uid=%(user)s,ou=users,dc=example,dc=com'
+
+# # Set up the basic group parameters.
 AUTH_LDAP_GROUP_SEARCH = LDAPSearch(
     'ou=groups,ou=groups,dc=example,dc=com',
     ldap.SCOPE_SUBTREE,
     '(objectClass=groupOfNames)',
 )
+print(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::megha", AUTH_LDAP_GROUP_SEARCH)
+
 AUTH_LDAP_GROUP_TYPE = GroupOfNamesType(name_attr='cn')
 
 # Simple group restrictions
 AUTH_LDAP_REQUIRE_GROUP = 'cn=enabled,ou=django,ou=groups,dc=example,dc=com'
 AUTH_LDAP_DENY_GROUP = 'cn=disabled,ou=django,ou=groups,dc=example,dc=com'
 
-# Populate the Django user from the LDAP directory.
+# # Populate the Django user from the LDAP directory.
 AUTH_LDAP_USER_ATTR_MAP = {
     'first_name': 'givenName',
     'last_name': 'sn',
     'email': 'mail',
 }
 
-# AUTH_LDAP_USER_FLAGS_BY_GROUP = {
-#     'is_active': 'cn=active,ou=django,ou=groups,dc=example,dc=com',
-#     'is_staff': 'cn=staff,ou=django,ou=groups,dc=example,dc=com',
-#     'is_superuser': 'cn=superuser,ou=django,ou=groups,dc=example,dc=com',
-# }
+
+
+AUTH_LDAP_USER_FLAGS_BY_GROUP = {
+    'is_active': 'cn=active,ou=django,ou=groups,dc=example,dc=com',
+    'is_staff': 'cn=staff,ou=django,ou=groups,dc=example,dc=com',
+    'is_superuser': 'cn=superuser,ou=django,ou=groups,dc=example,dc=com',
+}
 from django_auth_ldap.config import LDAPGroupQuery
 AUTH_LDAP_USER_FLAGS_BY_GROUP = {"is_active": "cn=active,ou=groups,dc=example,dc=com",
 "is_staff": (LDAPGroupQuery("cn=staff,ou=groups,dc=example,dc=com")| LDAPGroupQuery("cn=admin,ou=groups,dc=example,dc=com")),
 "is_superuser": "cn=superuser,ou=groups,dc=example,dc=com",}
 
-# This is the default, but I like to be explicit.
+# # This is the default, but I like to be explicit.
 AUTH_LDAP_ALWAYS_UPDATE_USER = True
 
-# Use LDAP group membership to calculate group permissions.
+# # Use LDAP group membership to calculate group permissions.
 AUTH_LDAP_FIND_GROUP_PERMS = True
 
-# Cache distinguished names and group memberships for an hour to minimize
-# LDAP traffic.
+# # Cache distinguished names and group memberships for an hour to minimize
+# # LDAP traffic.
 AUTH_LDAP_CACHE_TIMEOUT = 3600
 
-# Keep ModelBackend around for per-user permissions and maybe a local
-# superuser.
-AUTHENTICATION_BACKENDS = (
-    'django_auth_ldap.backend.LDAPBackend',
-    'django.contrib.auth.backends.ModelBackend',
-)
-
+# # Keep ModelBackend around for per-user permissions and maybe a local
+# # superuser.
+# AUTHENTICATION_BACKENDS = (
+#     'django_auth_ldap.backend.LDAPBackend',
+#     'django.contrib.auth.backends.ModelBackend',
+# )
+# AUTHENTICATION_BACKENDS = (
+#     'django_auth_ldap.backend.LDAPBackend',
+#     'django.contrib.auth.backends.ModelBackend',
+# )
 #from django_auth_ldap.backend import LDAPBackend 
 
 
@@ -94,7 +101,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['192.168.0.6','localhost']
 
 #AUTH_USER_MODEL = "users.CustomUser"
-AUTH_USER_MODEL = "users.User"
+#AUTH_USER_MODEL = "users.User"
 # Application definition
 
 INSTALLED_APPS = [
@@ -107,7 +114,7 @@ INSTALLED_APPS = [
 ]
 LOCAL_APPS = [
             'application',
-            'users',
+            #'users',
             'acknowledge',
             'blogs',
             'rest_framework',
@@ -157,6 +164,12 @@ DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.sqlite3',
          'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #   'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'indiannavy',
+        # 'USER': 'postgres',
+        # 'PASSWORD': 'sudha',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
      }
    
     #'users': {
