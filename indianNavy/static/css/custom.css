@@ -18,20 +18,20 @@
      padding: 10px 15px;
 }
  .skyblue {
-     background-image:url('../images/banner/ai2.png');
+     background-image:url('../images/banner/C2rDia_UcAEyAsj.jpg');
 }
  .darkerskyblue {
-     background-image:url('../images/banner/AI2.jpg');
+     background-image:url('../images/banner/0Indian_Navy.jpg');
 }
  .deepskyblue {
-     background-image:url('../images/banner/AI4.png');
+     background-image:url('../images/banner/0Indian_Navy.jpg');
 }
 .skybluein {
-     background-image:url('../images/banner/banner2.png');
+     background-image:url('../images/banner/wp2998610.jpg');
 }
 
 .knowledgebluein {
-     background-image:url('../images/banner/DA.jpg');
+     background-image:url('../images/banner/0Indian_Navy.jpg');
 }
 
 
@@ -42,9 +42,10 @@
      background-image: none;
 }
  div.full-slider .carousel .item {
-     height: 70vh;
-     min-height: 70vh;
+     height: 60vh;
+     min-height: 60vh;
      width: 100%;
+     z-index:-1;
 }
  .carousel .icon-container {
      display: inline-block;
