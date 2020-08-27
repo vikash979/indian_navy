@@ -156,7 +156,7 @@
      display: flex;
      align-items: center;
 }
- header {
+ .header {
      float: left;
      width: 100%;
      position: absolute;

@@ -39,8 +39,8 @@ def login_required_custom(login_url=None):
     return function
 
 class headingViews(TemplateView):
-	template_name = "application/index.html"
-	@login_required_custom(login_url='/')
+	template_name = "application/index4.html"
+	#@login_required_custom(login_url='/')
 	def get(self, request, id=None):
 
 
@@ -364,6 +364,7 @@ class LoginViews(TemplateView):
 		user = authenticate(username=username, password=password)
 		
 		if user is not None:
+			
 
 			if user.is_active:
 				login(request, user)
