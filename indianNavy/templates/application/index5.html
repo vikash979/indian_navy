@@ -1,5 +1,5 @@
 
-{% extends "application/base.html" %}
+{% extends "application/base2.html" %}
 
 {% load static %}
 {% block header %}
@@ -14,6 +14,7 @@
    {% block title %}{% endblock %}
    <meta name="keywords" content="">
    <meta name="description" content="">
+   <link rel="stylesheet" href="{% static 'slider/style.css' %}">
 
    <style>
 
@@ -67,7 +68,7 @@
    <!-- font family -->
    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
    <!-- end font family -->
-   <link rel="stylesheet" href="{% static 'css/3dslider.css' %}" />
+   
    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
@@ -80,11 +81,7 @@
 
       <!-- scripts -->
       
-   <link rel="stylesheet" href="{% static 'aos.css' %}">
    
-      <!-- ALL PLUGINS -->
-      
-   <script src="{% static 'aos.js' %}"></script>
     
  
     
@@ -184,111 +181,24 @@ window.onclick = function(event) {
       </div>
       <!-- END LOADER -->
       
+      <section id="top" style="background-image: url({% static 'images/banner3.png' %});">
       
-           <section id="top" style="background-image: url({% static 'images/banner3.png' %});">
             <div class="container" >
-              <div class="row">
-               <div class="col-lg-2 col-sm-12 col-xs-12">
-                <div class="full">
+               <div class="header-top">
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="full">
                            <div class="logo">
-                              <span style="font-weight: bold;  color:#fff; font-size:15px;"> Naval Intranet Portal</span>     
+                            <!-- 
+                              <a href="index.html"><img src="{% static 'images/navy_logo.png' %}" alt="#" width="100%" height="20%"/></a> -->
+                           
+                              <span style="font-weight: bold;  color:#fff; font-size:28px;"> Naval Intranet Portal</span> 
+                              
                            </div>
                         </div>
-               </div>
-
-               <div class="col-lg-8 col-sm-12 col-xs-12">
-                  <ul class="exo-menu">
-                    <li><a class="active" href="#"><i class="fa fa-home"></i> Home</a></li>
-                    <li class="drop-down"><a href="#"><i class="fa fa-cogs"></i> Applicatio</a>
-                      <!--Drop Down-->
-                      <ul class="drop-down-ul animated fadeIn">
-                      <li class="flyout-right"><a href="#">Flyout Right</a><!--Flyout Right-->
-                        <ul class="animated fadeIn">
-                          <li><a href="#">Mobile</a></li>
-                          <li><a href="#">Computer</a></li>
-                          <li><a href="#">Watch</a></li>
-                        </ul>
-                      </li>
-                      
-                      <li class="flyout-left"><a href="#">Flyout Left</a><!--Flyout Left-->
-                        <ul class="animated fadeIn">
-                          <li><a href="#">Mobile</a></li>
-                          <li><a href="#">Computer</a></li>
-                          <li><a href="#">Watch</a></li>
-                        </ul>     
-                      </li>
-                      
-                      <li><a href="#">No Flyout</a></li>
-                       
-                      </ul>
-                      <!--//End drop down-->
-                    
-                    </li>
-                    <li><a href="#"><i class="fa fa-cogs"></i> Acknowledge</a></li>
-                    <li><a href="#"><i class="fa fa-briefcase"></i> Services</a></li>
-                    <li class="mega-drop-down"><a href="#"><i class="fa fa-list"></i> Mega Menu</a>
-                      <div class="animated fadeIn mega-menu">
-                        <div class="mega-menu-wrap">
-                          <div class="row">
-                          <div class="col-md-4">
-                            <h4 class="row mega-title">Feature</h4>
-                              <img class="img-responsive" src="https://3.bp.blogspot.com/-rUk36pd-LbM/VcLb48X4f-I/AAAAAAAAGCI/Y_UxBAgEqwA/s1600/Magento_themes.jpg">
-                            </div>
-                            <div class="col-md-2">
-                                <h4 class="row mega-title">Standers</h4>
-                                
-                              <ul class="stander">
-                                <li><a href="#">Mobile</a></li>
-                                <li><a href="#">Computer</a></li>
-                                <li><a href="#">Watch</a></li>
-                                <li><a href="#">laptop</a></li>
-                                <li><a href="#">Camera</a></li>
-                                <li><a href="#">I pad</a></li>
-                                <li><a class="view-more btn- btn-sm" href="#">View more</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-md-3">
-                              <h4 class="row mega-title">Description</h4>
-                              <ul class="description">
-                                <li><a href="#">Women</a>
-                                  <span>Description of Women</span>
-                                </li>
-                                <li><a href="#">Men</a>
-                                    <span>Description of men Cloths</span>
-                                </li>
-                                <li><a href="#">Kids</a>
-                                    <span>Description of Kids Cloths</span>
-                                </li>
-                                <li><a href="#">Others</a>
-                                    <span>Description of Others Cloths</span>
-                                </li>
-                                <li>
-                                <a class="view-more btn btn-sm " href="#">View more</a>
-                                     
-                                </li>
-                              </ul>
-                            </div>
-                            <div class="col-md-3">
-                            <h4 class="row mega-title">Icon + Description</h4>
-                              <ul class="icon-des">
-                                <li><a href="#"><i class="fa fa-globe"></i>Web</a></li>
-                                <li><a href="#"><i class="fa fa-mobile"></i>Mobile</a></li>
-                                <li><a href="#"><i class="fa fa-arrows-h"></i>Responsive</a></li>
-                                <li><a href="#"><i class="fa fa-desktop"></i>Desktop</a></li>
-                                <li><a href="#"><i class="fa fa-paint-brush"></i>UI/UX</a></li>
-                              </ul>
-                            </div>
-                            
-                          </div>
-                        </div>  
-                      </div>
-                    </li>
-                   
-                    <a href="#" class="toggle-menu visible-xs-block">|||</a>    
-                </ul>
-               </div>
-               <div class="col-lg-2 col-sm-12 col-xs-12">
-                 <div class="right_top_section">
+                     </div>
+                     <div class="col-md-6">
+                        <div class="right_top_section">
 
                            
 
@@ -303,14 +213,28 @@ window.onclick = function(event) {
                                   <a href="#home">Logout</a>
                                  
                                 </div>
-                            </div>
+                        </div>
                             Logout{% endif %}            
-                          
+                              <!-- <li class="login-modal">
+                                 <a href="#" class="login"><i class="fa fa-user"></i>Login</a>
+                              </li> -->
+                              <!-- <li>
+
+                                 <div class="cart-option">
+                                    <a href="#"><i class="fa fa-shopping-cart"></i>Register</a>
+                                 </div>
+                              </li> -->
+                           </ul>
 
                         </div>
+                     </div>
+                  </div>
                </div>
-             </div>
-           </div>
+                
+            </div>
+         </section>
+          <section id="top" style="background-color: #fff;">
+            <div class="container" >
              
  
   <!-- <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
@@ -328,16 +252,161 @@ $(function () {
 });
 
 </script>
-  
+    <ul class="exo-menu">
+      <li><a class="active" href="#"><i class="fa fa-home"></i> Home</a></li>
+      <li class="drop-down"><a href="#"><i class="fa fa-cogs"></i> Flyout</a>
+        <!--Drop Down-->
+        <ul class="drop-down-ul animated fadeIn">
+        <li class="flyout-right"><a href="#">Flyout Right</a><!--Flyout Right-->
+          <ul class="animated fadeIn">
+            <li><a href="#">Mobile</a></li>
+            <li><a href="#">Computer</a></li>
+            <li><a href="#">Watch</a></li>
+          </ul>
+        </li>
+        
+        <li class="flyout-left"><a href="#">Flyout Left</a><!--Flyout Left-->
+          <ul class="animated fadeIn">
+            <li><a href="#">Mobile</a></li>
+            <li><a href="#">Computer</a></li>
+            <li><a href="#">Watch</a></li>
+          </ul>     
+        </li>
+        
+        <li><a href="#">No Flyout</a></li>
+         
+        </ul>
+        <!--//End drop down-->
+      
+      </li>
+      <li><a href="#"><i class="fa fa-cogs"></i> Services</a></li>
+      <li><a href="#"><i class="fa fa-briefcase"></i> Portfolio</a></li>
+      <li class="mega-drop-down"><a href="#"><i class="fa fa-list"></i> Mega Menu</a>
+        <div class="animated fadeIn mega-menu">
+          <div class="mega-menu-wrap">
+            <div class="row">
+            <div class="col-md-4">
+              <h4 class="row mega-title">Feature</h4>
+                <img class="img-responsive" src="https://3.bp.blogspot.com/-rUk36pd-LbM/VcLb48X4f-I/AAAAAAAAGCI/Y_UxBAgEqwA/s1600/Magento_themes.jpg">
+              </div>
+              <div class="col-md-2">
+                  <h4 class="row mega-title">Standers</h4>
+                  
+                <ul class="stander">
+                  <li><a href="#">Mobile</a></li>
+                  <li><a href="#">Computer</a></li>
+                  <li><a href="#">Watch</a></li>
+                  <li><a href="#">laptop</a></li>
+                  <li><a href="#">Camera</a></li>
+                  <li><a href="#">I pad</a></li>
+                  <li><a class="view-more btn- btn-sm" href="#">View more</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <h4 class="row mega-title">Description</h4>
+                <ul class="description">
+                  <li><a href="#">Women</a>
+                    <span>Description of Women</span>
+                  </li>
+                  <li><a href="#">Men</a>
+                      <span>Description of men Cloths</span>
+                  </li>
+                  <li><a href="#">Kids</a>
+                      <span>Description of Kids Cloths</span>
+                  </li>
+                  <li><a href="#">Others</a>
+                      <span>Description of Others Cloths</span>
+                  </li>
+                  <li>
+                  <a class="view-more btn btn-sm " href="#">View more</a>
+                       
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+              <h4 class="row mega-title">Icon + Description</h4>
+                <ul class="icon-des">
+                  <li><a href="#"><i class="fa fa-globe"></i>Web</a></li>
+                  <li><a href="#"><i class="fa fa-mobile"></i>Mobile</a></li>
+                  <li><a href="#"><i class="fa fa-arrows-h"></i>Responsive</a></li>
+                  <li><a href="#"><i class="fa fa-desktop"></i>Desktop</a></li>
+                  <li><a href="#"><i class="fa fa-paint-brush"></i>UI/UX</a></li>
+                </ul>
+              </div>
+              
+            </div>
+          </div>  
+        </div>
+      </li>
+      <li class="blog-drop-down"><a href="#"><i class="fa fa-bullhorn"></i> Blog</a>
+        <div class="Blog animated fadeIn">
+          <div class="col-md-4">
+            <img class="img-responsive" src="https://2.bp.blogspot.com/-VG_e0pKfrDo/VcLb6JwZqfI/AAAAAAAAGCk/8ZgA9kZqTQ8/s1600/images3.jpg">
+            <div class="blog-des">
+          <h4 class="blog-title">Lorem ipsum dolor sit amet</h4>
+              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
+              tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
+              nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
+              Duis autem vel eum iriure dolor in hendrerit in vulputate. </p>
+              <a class="view-more btn- btn-sm" href="#">Read More</a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <img class="img-responsive" src="https://3.bp.blogspot.com/-hUt5FrdZHio/VcLb5dlwTBI/AAAAAAAAGCU/UUH5N1JkoQc/s1600/images1.jpg">
+            <div class="blog-des">
+            <h4 class="blog-title">Lorem ipsum dolor sit amet</h4>
+              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
+              tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
+              nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
+              Duis autem vel eum iriure dolor in hendrerit in vulputate. </p>
+                  <a class="view-more btn- btn-sm" href="#">Read More</a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <img class="img-responsive" src="https://4.bp.blogspot.com/-A7U1uPlSq6Y/VcLb5kKHCkI/AAAAAAAAGCc/7WghyndTEuY/s1600/images2.jpg">
+            <div class="blog-des">
+            <h4 class="blog-title">Lorem ipsum dolor sit amet</h4>
+              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
+              tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
+              nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
+              Duis autem vel eum iriure dolor in hendrerit in vulputate. </p>
+                  <a class="view-more btn- btn-sm" href="#">Read More</a>
+            </div>
+          </div>
+           
+          
+        </div>
+      </li>
+      <li  class="images-drop-down"><a  href="#"><i class="fa fa-photo"></i> Images</a>
+        <div class="Images animated fadeIn">
+          <div class="col-md-3">
+            <h4>Images Title </h4>
+            <img class="img-responsive" src="https://2.bp.blogspot.com/-VG_e0pKfrDo/VcLb6JwZqfI/AAAAAAAAGCk/8ZgA9kZqTQ8/s1600/images3.jpg">
+          </div>
+          <div class="col-md-3">
+          <h4>Images Title </h4>
+            <img class="img-responsive" src="https://3.bp.blogspot.com/-hUt5FrdZHio/VcLb5dlwTBI/AAAAAAAAGCU/UUH5N1JkoQc/s1600/images1.jpg">
+          </div>
+          <div class="col-md-3">
+          <h4>Images Title </h4>
+            <img class="img-responsive" src="https://4.bp.blogspot.com/-A7U1uPlSq6Y/VcLb5kKHCkI/AAAAAAAAGCc/7WghyndTEuY/s1600/images2.jpg">
+          </div>
+          <div class="col-md-3">
+          <h4>Images Title </h4>
+            <img class="img-responsive"  src="https://3.bp.blogspot.com/-hGrnZIjzL2k/VcLb47kyQKI/AAAAAAAAGCQ/J6Q2IAHIQvQ/s1600/image4.jpg">
+          </div>
+          
+        </div>
+      
+      </li>
+       
+  </ul>
    
    
  
    
 
 <style>
-  /*
-06639f
-  */
   *,
 :after,
 :before {
@@ -368,11 +437,11 @@ a, a:hover, a.active, a:active, a:visited, a:focus{
 }
 
 .exo-menu{
-  width: auto;
+  width: 100%;
   float: left;
   list-style: none;
   position:relative;
-  background: #10147E;
+  background: #23364B;
 }
 .exo-menu > li {  display: inline-block;float:left;}
 .exo-menu > li > a{
@@ -430,23 +499,14 @@ li.drop-down>ul>li>a,
 .flyout-left ul>li>a {
   color: #fff;
   display: block;
-  padding: 7px 22px;
+  padding: 20px 22px;
   text-decoration: none;
-  background-color: #06639f;
+  background-color: #365670;
   border-bottom: 1px dotted #547787;
   -webkit-transition: color 0.2s linear, background 0.2s linear;
   -moz-transition: color 0.2s linear, background 0.2s linear;
   -o-transition: color 0.2s linear, background 0.2s linear;
   transition: color 0.2s linear, background 0.2s linear;
-}
-
-.overlay {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    background: #000;
-    opacity: 0.3;
-    transition: all 0.2s ease-out;
 }
 .flyout-right ul>li>a ,
 .flyout-left ul>li>a {
@@ -561,7 +621,7 @@ ul.icon-des li {
   display:none;
   color:#fefefe;
   padding-top:15px;
-  background:#06639f;
+  background:#547787;
   padding-bottom:15px;
 }
 .Blog .blog-title{
@@ -585,7 +645,7 @@ ul.icon-des li {
    display:none;
   color:#fefefe;
   padding-top:15px;
-  background:#06639f;
+  background:#547787;
   padding-bottom:15px;
 }
 .Images h4 {
@@ -598,7 +658,7 @@ ul.icon-des li {
 .flyout-left ul>li>a,
 .flyout-mega-wrap,
 .mega-menu{
-  background-color: #06639f;
+  background-color: #547787;
 }
 
 /*hover*/
@@ -679,21 +739,102 @@ a.toggle-menu{
           </section>
 
       <section id="top" style="z-index:-999">
-        <div class="container">
-          <div class="full-slider" style="z-index:-999">
-            {% include 'application/slider.html' %}
+          <div class="hero-area" style="z-index:-999">
+          <div class="hero-slideshow owl-carousel">
 
+            <!-- Single Slide -->
+            <div class="single-slide bg-img">
+                <!-- Background Image-->
+                <div class="slide-bg-img bg-img bg-overlay" style="background-image: url({% static 'slider/img/bg-img/1.jpg' %});"></div>
+                <!-- Welcome Text -->
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center justify-content-center">
+                        <div class="col-12 col-lg-9">
+                            <div class="welcome-text text-center">
+                                <h6 data-animation="fadeInUp" data-delay="100ms">2 years interest</h6>
+                                <h2 data-animation="fadeInUp" data-delay="300ms">get your <span>loan</span> now</h2>
+                                <p data-animation="fadeInUp" data-delay="500ms">Vestibulum eu vehicula elit, nec elementum orci. Praesent aliquet ves tibulum tempus. Pellentesque posuere pharetra turpis, eget finibus erat porta placerat.</p>
+                                <a href="#" class="btn credit-btn mt-50" data-animation="fadeInUp" data-delay="700ms">Discover</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide Duration Indicator -->
+                <div class="slide-du-indicator"></div>
+            </div>
 
-          </div>
+            <!-- Single Slide -->
+            <div class="single-slide bg-img">
+                <!-- Background Image-->
+                <div class="slide-bg-img bg-img bg-overlay" style="background-image: url({% static 'slider/img/bg-img/5.jpg' %});"></div>
+                <!-- Welcome Text -->
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center justify-content-center">
+                        <div class="col-12 col-lg-9">
+                            <div class="welcome-text text-center">
+                                <h6 data-animation="fadeInDown" data-delay="100ms">2 years interest</h6>
+                                <h2 data-animation="fadeInDown" data-delay="300ms">get your <span>loan</span> now</h2>
+                                <p data-animation="fadeInDown" data-delay="500ms">Vestibulum eu vehicula elit, nec elementum orci. Praesent aliquet ves tibulum tempus. Pellentesque posuere pharetra turpis, eget finibus erat porta placerat.</p>
+                                <a href="#" class="btn credit-btn mt-50" data-animation="fadeInDown" data-delay="700ms">Discover</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide Duration Indicator -->
+                <div class="slide-du-indicator"></div>
+            </div>
+
+            <!-- Single Slide -->
+            <div class="single-slide bg-img">
+                <!-- Background Image-->
+                <div class="slide-bg-img bg-img bg-overlay" style="background-image: url({% static 'slider/img/bg-img/1.jpg' %});"></div>
+                <!-- Welcome Text -->
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center justify-content-center">
+                        <div class="col-12 col-lg-9">
+                            <div class="welcome-text text-center">
+                                <h6 data-animation="fadeInUp" data-delay="100ms">2 years interest</h6>
+                                <h2 data-animation="fadeInUp" data-delay="300ms">get your <span>loan</span> now</h2>
+                                <p data-animation="fadeInUp" data-delay="500ms">Vestibulum eu vehicula elit, nec elementum orci. Praesent aliquet ves tibulum tempus. Pellentesque posuere pharetra turpis, eget finibus erat porta placerat.</p>
+                                <a href="#" class="btn credit-btn mt-50" data-animation="fadeInUp" data-delay="700ms">Discover</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide Duration Indicator -->
+                <div class="slide-du-indicator"></div>
+            </div>
+
+            <!-- Single Slide -->
+            <div class="single-slide bg-img">
+                <!-- Background Image-->
+                <div class="slide-bg-img bg-img bg-overlay" style="background-image: url({% static 'slider/img/bg-img/5.jpg' %});"></div>
+                <!-- Welcome Text -->
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center justify-content-center">
+                        <div class="col-12 col-lg-9">
+                            <div class="welcome-text text-center">
+                                <h6 data-animation="fadeInDown" data-delay="100ms">2 years interest</h6>
+                                <h2 data-animation="fadeInDown" data-delay="300ms">get your <span>loan</span> now</h2>
+                                <p data-animation="fadeInDown" data-delay="500ms">Vestibulum eu vehicula elit, nec elementum orci. Praesent aliquet ves tibulum tempus. Pellentesque posuere pharetra turpis, eget finibus erat porta placerat.</p>
+                                <a href="#" class="btn credit-btn mt-50" data-animation="fadeInDown" data-delay="700ms">Discover</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide Duration Indicator -->
+                <div class="slide-du-indicator"></div>
+            </div>
+
         </div>
-      
+    </div>
        </section>
       
 
     
        <!-------------------------------------------------------->
 
- <style>
+<style>
                     .urlImg
                     {
                       /*border-bottom:1px dotted grey; */
@@ -756,16 +897,14 @@ a.toggle-menu{
 
                   <!------------------------------------------------------------------------>
 
-<section id="contant" class="contant" style="background:transparent !important; " data-aos="flip-left" data-aos="flip-left"
-     data-aos-easing="ease-out-cubic"
-     data-aos-duration="2000">
+<section id="contant" class="contant" style="background:transparent !important; " >
          <div class="container">
             <div class="row">
                <div class="col-lg-6 col-sm-6 col-xs-12">
                   <aside id="sidebar" class="left-bar" style="background-image: url({% static 'images/prod_bg2.jpg' %});border-top-left-radius: 30px;box-shadow: 10px 10px 5px grey;">
                      <div class="banner-sidebar" >
                       <div class="main-heading-holder" style="">
-                       <div class="main-heading sytle-2" data-aos="fade-down-right" data-aos-easing="linear" style="border-bottom: 1px solid #fff; ">
+                       <div class="main-heading sytle-2" style="border-bottom: 1px solid #fff; ">
                         <style>
                           
                         </style>
@@ -779,12 +918,10 @@ a.toggle-menu{
                                   
                                   
                       <div class="col-lg-4 col-sm-6 col-xs-12"  
-                        data-aos-easing="linear" data-aos="flip-left" style="">
+                        style="">
                         <aside id="sidebar" class="left-bar"  style="border-radius: 25px;box-shadow:2px  2px;background-color: #AFDEF9 ">
                          <div class="feature-matchs urlImg"  style="border-radius: 25px;box-shadow:2px  2px;background-color: #AFDEF9">
-                            <center style="padding-top:5%" onmouseover="myfunti('ddd_1')" onmouseout="normalImg('ddd_1')" data-aos="flip-left"
-                             data-aos-easing="ease-out-cubic"
-                             data-aos-duration="2000"> <img class="dd" id="dd_1" src="{% static 'images/quick_icons/application.png' %}" width="50%" height
+                            <center style="padding-top:5%" onmouseover="myfunti('ddd_1')" onmouseout="normalImg('ddd_1')" > <img class="dd" id="dd_1" src="{% static 'images/quick_icons/application.png' %}" width="50%" height
                               ="50%"> <img class="ddd" id="ddd_1"  style="display:none " src="{% static 'images/quick_icons/application2.png' %}" width="50%" height
                               ="50%" > 
                             </center>
@@ -799,9 +936,7 @@ a.toggle-menu{
                         <aside id="sidebar" class="left-bar"  style="border-radius: 25px;box-shadow:2px  2px;background-color: #AFDEF9">
                          <div class="feature-matchs urlImg"  style="border-radius: 25px;box-shadow:2px  2px;background-color: #AFDEF9">
                           <center style="padding-top:5%" onmouseover="myfunti('ddd_2')" onmouseout="normalImg('ddd_2')"> <img class="dd" id="dd_2" src="{% static 'images/quick_icons/covid-192.png' %}" width="50%" height
-                          ="50%" data-aos="flip-right"
-                           data-aos-easing="ease-out-cubic"
-                           data-aos-duration="2000"> <img class="ddd" id="ddd_2"  style="display:none " src="{% static 'images/quick_icons/covid-191.png' %}" width="50%" height
+                          ="50%" > <img class="ddd" id="ddd_2"  style="display:none " src="{% static 'images/quick_icons/covid-191.png' %}" width="50%" height
                           ="50%" > </center>
                           <center>
                           <span style=" font-weight: bold">Covid-19</span>
@@ -810,15 +945,11 @@ a.toggle-menu{
                           </div>
                         </aside>
                       </div>
-                      <div class="col-lg-4 col-sm-6 col-xs-12" data-aos="zoom-out-down"
-                         data-aos-easing="ease-out-cubic"
-                         data-aos-duration="2000" >
+                      <div class="col-lg-4 col-sm-6 col-xs-12" >
                           <aside id="sidebar" class="left-bar" style="border-radius: 25px;box-shadow:2px  2px;background-color: #AFDEF9">
                            <div class="feature-matchs urlImg" align="center" style="border-radius: 25px;box-shadow:2px  2px;background-color: #AFDEF9">
                             <center style="padding-top:5%" onmouseover="myfunti('ddd_3')" onmouseout="normalImg('ddd_3')"> <img class="dd" id="dd_3" src="{% static 'images/quick_icons/2Skyblue.png' %}" width="50%" height
-                            ="50%" data-aos="zoom-in-right"
-                             data-aos-easing="ease-out-cubic"
-                             data-aos-duration="2000"> <img class="ddd" id="ddd_3"  style="display:none " src="{% static 'images/quick_icons/2NavyBlue.png' %}" width="50%" height
+                            ="50%" > <img class="ddd" id="ddd_3"  style="display:none " src="{% static 'images/quick_icons/2NavyBlue.png' %}" width="50%" height
                             ="50%" > </center>
                             <center>
                             <span style="font-weight: bold">eOffice</span>
@@ -844,12 +975,10 @@ a.toggle-menu{
                     
                     
                     <div class="col-lg-4 col-sm-6 col-xs-12"  
-                        data-aos-easing="linear" data-aos="flip-left">
+                        >
                         <aside id="sidebar" class="left-bar" style="border-radius: 25px;box-shadow:2px  2px;background-color: #AFDEF9">
                          <div class="feature-matchs urlImg" style="border-radius: 25px;box-shadow:2px  2px;background-color: #AFDEF9">
-                            <center style="padding-top:5%" onmouseover="myfunti('ddd_7')" onmouseout="normalImg('ddd_7')" data-aos="flip-left"
-                             data-aos-easing="ease-out-cubic"
-                             data-aos-duration="2000"> <img class="dd" id="dd_7" src="{% static 'images/quick_icons/policy1.png' %}" width="50%" height
+                            <center style="padding-top:5%" onmouseover="myfunti('ddd_7')" onmouseout="normalImg('ddd_7')" > <img class="dd" id="dd_7" src="{% static 'images/quick_icons/policy1.png' %}" width="50%" height
                               ="50%"> <img class="ddd" id="ddd_7"  style="display:none " src="{% static 'images/quick_icons/policy2.png' %}" width="50%" height
                               ="50%" > 
                             </center>
@@ -861,12 +990,10 @@ a.toggle-menu{
                         </aside>
                       </div>
                       <div class="col-lg-4 col-sm-6 col-xs-12"  
-                        data-aos-easing="linear" data-aos="flip-left">
+                        >
                         <aside id="sidebar" class="left-bar" style="border-radius: 25px;box-shadow:2px  2px;background-color: #AFDEF9">
                          <div class="feature-matchs urlImg" style="border-radius: 25px;box-shadow:2px  2px;background-color: #AFDEF9">
-                            <center style="padding-top:5%" onmouseover="myfunti('ddd_8')" onmouseout="normalImg('ddd_8')" data-aos="flip-left"
-                             data-aos-easing="ease-out-cubic"
-                             data-aos-duration="2000"> <img class="dd" id="dd_8" src="{% static 'images/quick_icons/publication2.png' %}" width="50%" height
+                            <center style="padding-top:5%" onmouseover="myfunti('ddd_8')" onmouseout="normalImg('ddd_8')" > <img class="dd" id="dd_8" src="{% static 'images/quick_icons/publication2.png' %}" width="50%" height
                               ="50%"> <img class="ddd" id="ddd_8"  style="display:none " src="{% static 'images/quick_icons/publication1.png' %}" width="50%" height
                               ="50%" > 
                             </center>
@@ -903,12 +1030,10 @@ a.toggle-menu{
                         </aside>
                     </div>
                       <div class="col-lg-4 col-sm-6 col-xs-12"  
-                        data-aos-easing="linear" data-aos="flip-left">
+                        >
                         <aside id="sidebar" class="left-bar" style="border-radius: 25px;box-shadow:2px  2px;background-color: #AFDEF9">
                          <div class="feature-matchs urlImg" style="border-radius: 25px;box-shadow:2px  2px;background-color: #AFDEF9">
-                            <center style="padding-top:5%" onmouseover="myfunti('ddd_9')" onmouseout="normalImg('ddd_9')" data-aos="flip-left"
-                             data-aos-easing="ease-out-cubic"
-                             data-aos-duration="2000"> <img class="dd" id="dd_9" src="{% static 'images/quick_icons/e-seva2.png' %}" width="50%" height
+                            <center style="padding-top:5%" onmouseover="myfunti('ddd_9')" onmouseout="normalImg('ddd_9')" > <img class="dd" id="dd_9" src="{% static 'images/quick_icons/e-seva2.png' %}" width="50%" height
                               ="50%"> <img class="ddd" id="ddd_9"  style="display:none " src="{% static 'images/savings21.png' %}" width="50%" height
                               ="50%" > 
                             </center>
@@ -934,12 +1059,11 @@ a.toggle-menu{
 
                </div>
 
-               <div class="col-lg-6 col-sm-6 col-xs-12" data-aos="zoom-in-down"  data-aos-easing="ease-in-cubic"
-                data-aos-duration="2000">
+               <div class="col-lg-6 col-sm-6 col-xs-12" >
                   <aside id="sidebar" class="left-bar" style="background-image: url({% static 'images/prod_bgs2.jpg' %});border-top-right-radius: 30px;box-shadow: 10px 10px 5px grey;">
                      <div class="banner-sidebar" >
                       <div class="main-heading-holder" style="">
-                        <div class="main-heading sytle-2" data-aos="fade-down-right" data-aos-easing="linear" style="border-bottom: 1px solid #fff">
+                        <div class="main-heading sytle-2"  style="border-bottom: 1px solid #fff">
                         <style>
                           
                         </style>
@@ -951,15 +1075,15 @@ a.toggle-menu{
                       <div class="col-lg-12 col-sm-12 col-xs-12">
                         
                            
-                            <div class="news-post-widget table table-bordered journeyTable" id="post_widget_data " data-aos="zoom-in-down" style="box-shadow: 0px 3px 14px #a39c9c; 
+                            <div class="news-post-widget table table-bordered journeyTable" id="post_widget_data " style="box-shadow: 0px 3px 14px #a39c9c; 
                           border-top-left-radius: 30px; border-top-right-radius: 30px;  " >
-                          <button class="tablink tabs__item "  data-aos="zoom-in-up" style="box-shadow: 0px 3px 14px #a39c9c; 
+                          <button class="tablink tabs__item " style="box-shadow: 0px 3px 14px #a39c9c; 
                           border-top-left-radius: 30px; border-top-left-radius: 30px;  " onclick="openPage('NHQ', this, 'orange')" id="defaultOpen">NHQ</button>
-                          <button class="tablink tabs__link"  data-aos="zoom-in-left" onclick="openPage('ENC', this, 'orange')" >ENC</button>
-                          <button class="tablink tabs__link"  data-aos="zoom-in-right" onclick="openPage('SNC', this, 'orange')">SNC</button>
+                          <button class="tablink tabs__link"   onclick="openPage('ENC', this, 'orange')" >ENC</button>
+                          <button class="tablink tabs__link"  onclick="openPage('SNC', this, 'orange')">SNC</button>
 
-                          <button class="tablink tabs__link"  data-aos="zoom-in-right" onclick="openPage('WNC', this, 'orange')">WNC</button>
-                          <button class="tablink tabs__link"  data-aos="zoom-in-right" onclick="openPage('ANC', this, 'orange')" style="box-shadow: 0px 3px 14px #a39c9c; 
+                          <button class="tablink tabs__link"   onclick="openPage('WNC', this, 'orange')">WNC</button>
+                          <button class="tablink tabs__link"   onclick="openPage('ANC', this, 'orange')" style="box-shadow: 0px 3px 14px #a39c9c; 
                           border-top-right-radius: 30px; border-top-right-radius: 30px;  ">ANC</button>
 
 
@@ -1027,7 +1151,7 @@ a.toggle-menu{
 
                           </div> -->
                           <div id="NHQ" class="tabcontent">
-                                <div class="col-lg-12 col-sm-12 col-xs-12"> <h3>NHQ e-General Message</h3></div>
+                                
                                 <ul class="nav nav-tabs">
                                 <!-- <li class="active"><a data-toggle="tab" href="#home">Home</a></li> -->
                                 <li class="active"><a data-toggle="tab" href="#home" style="border-radius: 50px">CNS</a></li>
@@ -1065,17 +1189,6 @@ a.toggle-menu{
                                   </div>
                                 </div>
 
-                          </div>
-                          <div id="WNC" class="tabcontent">
-                                 <h3>WNC  e-General Message </h3>
-                                 <style>
-                                  .bs-example{
-                                      margin: 20px;
-                                    }
-                                  </style>
-
-
-                                 <p>Some news this fine day!</p>
                           </div>
                           <div id="ENC" class="tabcontent">
                             <div class="col-lg-12 col-sm-12 col-xs-12"> <h3>ENC e-General Message</h3></div>
@@ -1450,6 +1563,9 @@ a.toggle-menu{
 
         </div>
       
+
+        
+   
       <!-- </div> -->
 
 
@@ -1458,7 +1574,7 @@ a.toggle-menu{
 
 
 
-     {% include 'application/footer.html' %}
+     
       <!-- ALL JS FILES -->
 
 
