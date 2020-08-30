@@ -39,7 +39,7 @@ def login_required_custom(login_url=None):
     return function
 
 class headingViews(TemplateView):
-	template_name = "application/index4.html"
+	template_name = "application/index3.html"
 	#@login_required_custom(login_url='/')
 	def get(self, request, id=None):
 

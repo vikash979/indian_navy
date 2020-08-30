@@ -23,8 +23,9 @@ ol {
     list-style: none; }
 
 img {
-  height: auto;
-  max-width: 100%; }
+ /* height: auto;
+  max-width: 100%;*/
+   }
 
 .bg-img {
   background-position: center center;
